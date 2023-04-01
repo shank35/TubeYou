@@ -38,7 +38,7 @@ module TubeYou
 
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore,
-      key: '_tube_you_session',
+      key: '_tubeyou_session',
       same_site: :lax, 
       secure: Rails.env.production?
   end
