@@ -16,11 +16,6 @@ function PasswordForm({ onSubmit }) {
         <h2>Sign In</h2>
         <h3>to continue to TubeYou</h3>
         <form onSubmit={handleSubmit}>
-          <div classname="errors">
-            <ul>
-              {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
-          </div>
           <div className="inputBox">
             <input
                   type="password"
@@ -31,6 +26,12 @@ function PasswordForm({ onSubmit }) {
               <label>
                 Password
               </label>
+          </div>
+
+          <div className="errors">
+            <ul>
+              {errors.map(error => <li key={error}>{error}</li>)}
+            </ul>
           </div>
           
           <button type="submit">Sign In</button>
