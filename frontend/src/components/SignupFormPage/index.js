@@ -26,8 +26,6 @@ function SignupFormPage() {
   const [passwordValidationMessage, setPasswordValidationMessage] = useState("");
   const [confirmPasswordValidationMessage, setConfirmPasswordValidationMessage] = useState("");
 
-
-
   if (sessionUser) return <Redirect to="/" />;
 
   const validateEmail = (email) => {
@@ -145,7 +143,7 @@ function SignupFormPage() {
                 />
                 {emailValidationMessage && <div className={`validation-message ${emailValid ? 'valid' : 'invalid'}`}>{emailValidationMessage}</div>}
             <label>
-              Email
+              Your email address
             </label>
           </div>
           <div className="inputBox">
