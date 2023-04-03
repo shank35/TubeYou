@@ -18,6 +18,10 @@ function UsernameForm({ onSubmit }) {
     e.preventDefault();
     const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     setErrors([]); // clear the errors state
+    if (!username) {
+      setErrors(['Email address is required']);
+      return;
+    }
     if (!emailRegex.test(username)) {
       setErrors(['Invalid email address']);
       return;
@@ -57,10 +61,10 @@ function UsernameForm({ onSubmit }) {
               {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
           </div>
+          <button type="submit">Next</button>
           <div className="demo">
             <button type="submit" onClick={demoUser}>Demo User</button>
           </div>
-          <button type="submit">Next</button>
         </form>
       </div>
     </div>
