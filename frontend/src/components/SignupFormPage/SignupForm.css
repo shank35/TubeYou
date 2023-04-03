@@ -106,6 +106,11 @@
   float: center;
 }
 
+.box button[type="submit"]:hover {
+  background-color: #287ae6;
+  box-shadow: 0 1px 1px 0 rgba(66, 133, 244, 0.45), 0 1px 3px, 1px rgba(66, 133, 244, 0.34);
+}
+
 .error {
   font-size: 12px;
   margin-top: 5px;
