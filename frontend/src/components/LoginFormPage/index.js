@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
-// import './LoginForm.css';
+import './LoginForm.css';
 import UsernameForm from '../UserNameForm/index.js';
 import PasswordForm from '../PasswordForm/index.js';
 

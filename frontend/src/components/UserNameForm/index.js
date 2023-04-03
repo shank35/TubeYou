@@ -36,7 +36,7 @@ function UsernameForm({ onSubmit }) {
                 required
               />
             <label>
-              Username or Email
+              Email
             </label>
           </div>
           <div className="errors">
