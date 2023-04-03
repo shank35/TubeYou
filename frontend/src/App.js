@@ -1,15 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
+import SignupFormPage from "./components/SignupFormPage";
+import Navigation from "./components/Navigation";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/signin" component={LoginFormPage} />
-        <Route exact path="/password" component={LoginFormPage} />
-      </Switch>
-    </Router>
+    <>
+      <Navigation />
+        <Switch>
+          <Route exact path="/login" component={LoginFormPage} />
+          <Route exact path="/password" component={LoginFormPage} />
+          <Route path="/signup">
+            <SignupFormPage />
+          </Route>
+        </Switch>
+    </>
   );
 }
 

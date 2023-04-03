@@ -10,13 +10,15 @@ function UsernameForm({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    setErrors([]); // clear the errors state
     if (!emailRegex.test(username)) {
-      setErrors(errors => [...errors, 'Invalid email address']);
+      setErrors(['Invalid email address']);
       return;
     }
     onSubmit(username, setErrors);
     setToPassword(true);
   };
+  
 
   if (toPassword) return <Redirect to="/password" />;
 

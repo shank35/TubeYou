@@ -38,7 +38,7 @@ function LoginFormPage() {
 
   return (
     <Switch>
-      <Route exact path="/signin">
+      <Route exact path="/login">
         <UsernameForm onSubmit={handleUsernameSubmit} />
       </Route>
       <Route path="/password">
