@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: TubeYou_production
-  username: TubeYou
-  password: <%= ENV["TUBEYOU_DATABASE_PASSWORD"] %>
+  # database: TubeYou_production
+  # username: TubeYou
+  # password: <%= ENV["TUBEYOU_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
