@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as sessionActions from '../../store/session';
+
+import './reset.css';
 import './UserNameForm.css';
 
 function UsernameForm({ onSubmit }) {
+  const dispatch = useDispatch();
+
   const [username, setUsername] = useState('');
   const [toPassword, setToPassword] = useState(false);
   const [errors, setErrors] = useState([]);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +25,12 @@ function UsernameForm({ onSubmit }) {
     onSubmit(username, setErrors);
     setToPassword(true);
   };
+
+  // login demo user with button
+  function demoUser() {
+    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }));
+    // sessionActions.login({ credential: 'Demo-lition', password: 'password' });
+  }
   
 
   if (toPassword) return <Redirect to="/password" />;
@@ -44,7 +57,9 @@ function UsernameForm({ onSubmit }) {
               {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
           </div>
-          
+          <div className="demo">
+            <button type="submit" onClick={demoUser}>Demo User</button>
+          </div>
           <button type="submit">Next</button>
         </form>
       </div>

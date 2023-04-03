@@ -1,6 +1,9 @@
 import React from "react";
 import {useState} from "react";
+
+import "./reset.css";
 import "./HomePage.css";
+
 function HomePage() {
   const [navVisible, setNavVisible] = useState(true);
 

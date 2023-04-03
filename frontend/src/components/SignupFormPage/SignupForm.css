@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  background-color: white;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -43,6 +43,7 @@ body {
   border: 1px solid #1a73e8;
   background: transparent;
   border-radius: 4px;
+  width: 93%;
 }
 
 .box .inputBox label {

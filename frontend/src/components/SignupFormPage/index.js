@@ -50,8 +50,7 @@ function SignupFormPage() {
   };
   
   const validatePassword = (password) => {
-    // You can update the validation condition to match your requirements
-    if (password.length < 6) {
+    if (password.length < 5) {
       setPasswordValidationMessage("Password must be at least 6 characters long.");
       setPasswordValid(false);
     } else {
@@ -70,12 +69,8 @@ function SignupFormPage() {
     }
   };
   
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    // Call the validation functions for each input field
     validateEmail(email);
     validateUsername(username);
     validatePassword(password);
