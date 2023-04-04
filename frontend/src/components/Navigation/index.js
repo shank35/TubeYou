@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+
 
 import youtubeLogo from "../../assets/icons/youtube_logo.png";
 import search from "../../assets/icons/search.png";
@@ -12,7 +14,6 @@ function Navigation() {
   const [searchTerm, setSearchTerm] = useState("");
   const [profileDropdownVisible, setProfileDropdownVisible] = useState(false);
 
-  const [users, setUsers] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,16 +46,8 @@ function Navigation() {
       document.removeEventListener('click', profileOutsideCLick);
     };
   }, []);
+  
 
-  useEffect(() => {
-    fetch('/users.json')
-      .then(response => response.json())
-      .then(data => {
-        setUsers(data);
-      });
-  }, []);
-  
-  
 
   return (
     <div className="body">
@@ -174,8 +167,8 @@ function Navigation() {
                   <div className="profileHeader">
                     <img className="profileImage" src={profileDefault} alt="Profile" />
                     <div className="profileInfo">
-                      <p className="profileName">John Doe</p>
-                      <p className="profileEmail">john.doe@example.com</p>
+                      <p className="profileName">username</p>
+                      <p className="profileEmail">email</p>
                     </div>
                   </div>
                   <button className="dropdownButton">Your channel</button>
@@ -187,16 +180,11 @@ function Navigation() {
                 </div>
               )}
             </div>
-                
-
 
           </div>
         </div>
 
-        <div
-          id="mainSectionContainer"
-          className={navVisible ? "modalOpen" : ""}
-        >
+        <div id="mainSectionContainer" className={navVisible ? "modalOpen" : ""}>
           Main Section
         </div>
       </div>
