@@ -251,7 +251,7 @@
 }
 
 .sidebarMenuIcon {
-  margin-right: 25px;
+  margin-right: 0px;
 }
 
 .sidebarLine {
@@ -353,4 +353,10 @@
 
 .dropdownButton:hover {
   background-color: #f0f0f0;
+}
+
+.material-symbols-outlined {
+  padding-right: 15px;
+  /* make the symbol go down */
+  vertical-align: middle;
 }

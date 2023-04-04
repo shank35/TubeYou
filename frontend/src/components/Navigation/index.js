@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
+import * as sessionActions from '../../store/session';
 
+import { getUsername, getEmail } from '../../store/session';
 
 import youtubeLogo from "../../assets/icons/youtube_logo.png";
 import search from "../../assets/icons/search.png";
@@ -14,6 +17,10 @@ function Navigation() {
   const [searchTerm, setSearchTerm] = useState("");
   const [profileDropdownVisible, setProfileDropdownVisible] = useState(false);
 
+  const username = useSelector(getUsername);
+  const email = useSelector(getEmail)
+
+  const { user } = useSelector(state => state.session);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,19 +91,19 @@ function Navigation() {
                       <button className="sidebarText">Library</button>
                     </li>
                     <li className="sidebarMenuItem">
-                      <span class="material-symbols-outlined sidebarMenuIcon">history</span>
+                      <span className="material-symbols-outlined sidebarMenuIcon">history</span>
                       <button className="sidebarText">History</button>
                     </li>
                     <li className="sidebarMenuItem">
-                      <span class="material-symbols-outlined sidebarMenuIcon">smart_display</span>
+                      <span className="material-symbols-outlined sidebarMenuIcon">smart_display</span>
                       <button className="sidebarText">Your Videos</button>
                     </li>
                     <li className="sidebarMenuItem">
-                      <span class="material-symbols-outlined sidebarMenuIcon">schedule</span>
+                      <span className="material-symbols-outlined sidebarMenuIcon">schedule</span>
                       <button className="sidebarText">Watch Later</button>
                     </li>
                     <li className="sidebarMenuItem">
-                      <span class="material-symbols-outlined sidebarMenuIcon">thumb_up</span>
+                      <span className="material-symbols-outlined sidebarMenuIcon">thumb_up</span>
                       <button className="sidebarText">Like Videos</button>
                     </li>
                     <li className="sidebarLine"></li>
@@ -104,11 +111,11 @@ function Navigation() {
                       <span className="sidebarText">Subscriptions</span>
                     </li>
                     <li className="sidebarMenuItem">
-                      <span class="material-symbols-outlined sidebarMenuIcon">person</span>
+                      <span className="material-symbols-outlined sidebarMenuIcon">person</span>
                       <button className="sidebarText">Channel 1</button>
                     </li>
                     <li className="sidebarMenuItem">
-                      <span class="material-symbols-outlined sidebarMenuIcon">person</span>
+                      <span className="material-symbols-outlined sidebarMenuIcon">person</span>
                       <button className="sidebarText">Channel 2</button>
                     </li>
                     <li className="sidebarMenuItem">
@@ -120,7 +127,7 @@ function Navigation() {
                       <span className="sidebarText">Explore</span>
                     </li>
                     <li className="sidebarMenuItem">
-                      <span class="material-symbols-outlined sidebarMenuIcon">local_fire_department</span>
+                      <span className="material-symbols-outlined sidebarMenuIcon">local_fire_department</span>
                       <button className="sidebarText">Trending</button>                 
                     </li>
                     <li className="sidebarLine"></li>
@@ -167,16 +174,26 @@ function Navigation() {
                   <div className="profileHeader">
                     <img className="profileImage" src={profileDefault} alt="Profile" />
                     <div className="profileInfo">
-                      <p className="profileName">username</p>
-                      <p className="profileEmail">email</p>
+                      <p className="profileName">{username}</p>
+                      <p className="profileEmail">{email}</p>
                     </div>
                   </div>
-                  <button className="dropdownButton">Your channel</button>
-                  <button className="dropdownButton">Sign out</button>
+                  <button className="dropdownButton">
+                    <span className="material-symbols-outlined">account_box</span>
+                    Your Channel
+                  </button>
+                  <button className="dropdownButton">
+                  <span class="material-symbols-outlined">logout</span>
+                    Sign out
+                  </button>
                   <hr className="dropdownDivider" />
-                  <button className="dropdownButton">Dark mode</button>
+                  <button className="dropdownButton"><span class="material-symbols-outlined">mode_night</span>
+                    Dark mode
+                  </button>
                   <hr className="dropdownDivider" />
-                  <button className="dropdownButton">Settings</button>
+                  <button className="dropdownButton"><span class="material-symbols-outlined">settings</span>
+                    Settings
+                  </button>
                 </div>
               )}
             </div>

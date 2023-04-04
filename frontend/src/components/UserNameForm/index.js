@@ -33,7 +33,6 @@ function UsernameForm({ onSubmit }) {
   // login demo user with button
   function demoUser() {
     dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }));
-    // sessionActions.login({ credential: 'Demo-lition', password: 'password' });
   }
   
 
