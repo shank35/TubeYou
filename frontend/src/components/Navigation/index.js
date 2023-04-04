@@ -49,13 +49,13 @@ function Navigation() {
             </form>
           </div>
 
-          <div class="rightIcons">
-            <a href="#">
-              <img class="upload" src={upload}/>
+          <div className="rightIcons">
+            <a href="/">
+              <img className="upload" src={upload} alt="Upload" />
             </a>
 
-            <a href="#">
-              <img class="upload" src={profileDefault}/>
+            <a href="/">
+              <img className="upload" src={profileDefault} alt="Profile" />
             </a>
             </div>
 
