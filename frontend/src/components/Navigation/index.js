@@ -76,10 +76,12 @@ function Navigation() {
                       Subscriptions
                     </li>
                     <li className="sidebarMenuItem">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Channel 1
+                      <i class="fa-solid fa-user"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Channel 1
                     </li>
                     <li className="sidebarMenuItem">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Channel 2
+                      <i class="fa-solid fa-user"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Channel 2
                     </li>
                     <li className="sidebarMenuItem">
                       <i class="fa-solid fa-circle-plus"></i>
