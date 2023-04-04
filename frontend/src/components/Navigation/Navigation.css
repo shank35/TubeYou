@@ -241,8 +241,9 @@
 }
 
 .sidebarMenuItem {
-  display: block;
-  padding: 6px 12px 4px;
+  display: flex;
+  align-items: center;
+  padding: 6px 8px 6px;
   font-family: "Roboto","Arial",sans-serif;
   font-size: 1.0rem;
   line-height: 2rem;
@@ -260,6 +261,14 @@
 .sidebarMenuItem:hover {
   color: #ff0000;
 }
+
+.sidebarText {
+  margin-bottom: -5px;
+  font-size: 1.0rem;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
 
 .sidebarHeader {
   display: block;
@@ -286,4 +295,62 @@
 
 .fa-bars {
   font-size: 24px;
+}
+
+.profileImage {
+  margin-top: -7px;
+}
+
+.profileDropdown {
+  position: absolute;
+  top: 40px; /* adjust this value to position the dropdown correctly */
+  right: 10px;
+  width:280px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.profileHeader {
+  display: flex;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+.profileInfo {
+  margin-left: 12px;
+}
+
+.profileName {
+  font-weight: bold;
+  margin: 0;
+}
+
+.profileEmail {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.dropdownDivider {
+  margin: 6px 0;
+  border-top: 1px solid #ccc;
+}
+
+.dropdownButton {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.dropdownButton:hover {
+  background-color: #f0f0f0;
 }
