@@ -13,8 +13,8 @@ function HomePage() {
 
   return (
     <div className="body">
-      <div id="pageContainer">
-        <div id="mastHeadContainer">
+      <div id="page">
+        <div id="mastHead">
 
           <div id="mainSectionContainer">
             Main Section

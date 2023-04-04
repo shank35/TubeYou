@@ -48,13 +48,14 @@ body {
 
 .box .inputBox label {
   position: absolute;
-  top: 0;
+  top:3px;
   left: 10px;
   padding: 0.625rem 0;
   font-size: 1rem;
   color: grey;
   pointer-events: none;
   transition: 0.2s;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .box .inputBox input:focus ~ label,
@@ -96,12 +97,15 @@ body {
 .validation-message {
   font-size: 12px;
   margin-top: 5px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .validation-message.valid {
   color: green;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .validation-message.invalid {
   color: red;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }

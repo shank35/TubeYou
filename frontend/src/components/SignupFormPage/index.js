@@ -60,8 +60,8 @@ function SignupFormPage() {
   };
   
   const validateConfirmPassword = (confirmPassword) => {
-    if (confirmPassword !== password) {
-      setConfirmPasswordValidationMessage("Confirm Password field must be the same as the Password field.");
+    if (confirmPassword !== password || confirmPassword.length === 0) {
+      setConfirmPasswordValidationMessage("Confirm Password field must be the same as the Password field and must not be empty.");
       setConfirmPasswordValid(false);
     } else {
       setConfirmPasswordValidationMessage("Passwords match!");

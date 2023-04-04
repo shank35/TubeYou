@@ -26,27 +26,78 @@ function Navigation() {
       <div id="pageContainer">
         <div id="mastHeadContainer">
           <button onClick={handleMenuClick}>
-            <img src={menuImage} alt="menu" />
+            <i className="fa-sharp fa-solid fa-bars"></i>
           </button>
           {navVisible && (
             <div className="modalContainer">
               <div className="modalContent">
                 <div className="modalHeader">
-                  <button onClick={() => setNavVisible(false)}>X</button>
+                  <button className="modalButton" onClick={() => setNavVisible(false)}>
+                    <i className="fa-sharp fa-solid fa-bars"></i>
+                  </button>
+                  <a className="modalLogoContainer" href="/">
+                    <img src={youtubeLogo} alt="youtube logo" />
+                  </a>
                 </div>
                 <div className="modalBody">
                   {/* Add YouTube-like sidebar menu items here */}
                   <ul className="sidebarMenu">
-                    <li className="sidebarMenuItem">Home</li>
-                    <li className="sidebarMenuItem">Shorts</li>
-                    <li className="sidebarMenuItem">Subscriptions</li>
-                    <li>---------</li>
-                    <li className="sidebarMenuItem">Library</li>
-                    <li className="sidebarMenuItem">History</li>
-                    <li className="sidebarMenuItem">Your Videos</li>
-                    <li className="sidebarMenuItem">Watch Later</li>
-                    <li className="sidebarMenuItem">Like Videos</li>
-                    <li>---------</li>
+                    <li className="sidebarMenuItem">
+                    <i className="fa-sharp fa-solid fa-house"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home
+                    </li>
+                    <li className="sidebarMenuItem">
+                      <i class="fa-solid fa-address-book"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subscriptions
+                    </li>
+                    <li className="sidebarLine"></li>
+                    <li className="sidebarMenuItem">
+                    <i class="fa-solid fa-book"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library
+                      </li>
+                    <li className="sidebarMenuItem">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;History
+                    </li>
+                    <li className="sidebarMenuItem">
+                      <i className="fa-solid fa-video"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Videos
+                    </li>
+                    <li className="sidebarMenuItem">
+                      <i class="fa-solid fa-clock"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Watch Later
+                    </li>
+                    <li className="sidebarMenuItem">
+                      <i class="fa-solid fa-thumbs-up"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like Videos
+                    </li>
+                    <li className="sidebarLine"></li>
+                    <li className="sidebarHeader">
+                      Subscriptions
+                    </li>
+                    <li className="sidebarMenuItem">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Channel 1
+                    </li>
+                    <li className="sidebarMenuItem">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Channel 2
+                    </li>
+                    <li className="sidebarMenuItem">
+                      <i class="fa-solid fa-circle-plus"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Browse Channels
+                    </li>
+                    <li className="sidebarLine"></li>
+                    <li className="sidebarHeader">
+                      Subscriptions
+                    </li>
+                    <li className="sidebarMenuItem">
+                      <i class="fa-solid fa-fire"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trending
+                    </li>
+                    <li className="sidebarLine"></li>
+                    <li className="sidebarMenuItem">
+                      <i class="fa-solid fa-gear"></i>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settings
+                    </li>
                   </ul>
                 </div>
               </div>
