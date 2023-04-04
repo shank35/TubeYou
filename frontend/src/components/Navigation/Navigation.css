@@ -181,6 +181,10 @@
   margin-left: 16px;
 }
 
+.navButton {
+  margin-top: -1px;
+}
+
 /* sidebar modal */
 
 .modalContainer {
@@ -243,6 +247,10 @@
   font-size: 1.0rem;
   line-height: 2rem;
   font-weight: 300;
+}
+
+.sidebarMenuIcon {
+  margin-right: 25px;
 }
 
 .sidebarLine {
