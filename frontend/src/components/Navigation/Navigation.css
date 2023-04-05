@@ -8,6 +8,9 @@
   width: 100%;
   height: 100%;
   background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Navbar */
@@ -17,13 +20,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding: 7px 16px;
+  padding: 8px 16px;
   box-sizing: border-box;
   border-bottom: 1px solid #e8e8e8;
   background-color: #fff;
   z-index: 1;
   display: flex;
   align-items: center;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 #mastHeadContainer button:not(.searchButton),
@@ -60,6 +64,15 @@
   margin-left: 8px;
 }
 
+#mastHeadContainer .logoContainer {
+  width: 150px;
+}
+
+#mastHeadContainer .logoContainer img {
+  height: 60px;
+  margin-left: 8px;
+}
+
 #sideNavContainer {
   width: 240px;
   background-color: #f5f5f5;
@@ -74,101 +87,17 @@
 #mainSectionContainer {
   padding-top: 56px;
   display: flex;
+  padding: 16px 30px;
+  flex-grow: 1;
 }
 
 #mainSectionContainer.leftPadding {
   padding-left: 240px;
 }
 
-#mainContentContainer {
-  padding: 10px 30px;
-}
-
-/* Search button */
-#mastHeadContainer .searchBarContainer {
-  margin: 0 40px;
-  flex: 1;
-  display: flex;
-}
-
-#mastHeadContainer .searchBarContainer form {
-  flex: 1;
-  display: flex;
-}
-
-#mastHeadContainer .searchBarContainer .searchBar {
-  flex: 1;
-  max-width: 600px;
-  color: #111;
-  padding: 2px 6px;
-  font-size: 14px;
-  font-weight: 100;
-  border: 1px solid #ccc;
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
-  border-right: none;
-  height: 32px;
-  box-shadow: #eee 0px 1px 2px 0px inset;
-}
-
-#mastHeadContainer .searchBarContainer .searchButton {
-  height: 38px;
-  background-color: #f8f8f8;
-  border: 1px solid #d3d3d3;
-  border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  cursor: pointer;
-  width: 65px;
-}
-
-#mastHeadContainer .searchBarContainer .searchButton img {
-  height: 20px;
-  width: 20px;
-}
-
-#pageContainer {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-#mastHeadContainer {
-  display: flex;
-  align-items: center;
-  background-color: #f9f9f9;
-  padding: 8px 16px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
 .logoContainer {
   margin-right: 16px;
   
-}
-
-.searchBarContainer {
-  flex-grow: 1;
-  display: flex;
-  margin-right: 16px;
-}
-
-.searchBar {
-  flex-grow: 1;
-  border: 1px solid #ccc;
-  padding: 4px 8px;
-  border-radius: 2px 0 0 2px;
-}
-
-.searchButton {
-  background: none;
-  border: none;
-  padding: 4px 8px;
-  border: 1px solid #ccc;
-  border-left: none;
-  border-radius: 0 2px 2px 0;
-  cursor: pointer;
 }
 
 .rightIcons {
@@ -185,176 +114,8 @@
   margin-top: -1px;
 }
 
-/* sidebar modal */
-
-.modalContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding-top: 0px;
-}
-
-
-.modalContent {
-  background-color: #fff;
-  width: 210px;
-  height: 100%;
-  padding: 16px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.modalHeader {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: -10px;
-}
-
-.modalButton {
-  margin-top: 1px;
-  margin-left: 0px;
-}
-
-.modalLogoContainer {
-  width: 150px;
-}
-
-.modalLogoContainer img {
-  height: 60px;
-  margin-left: 8px;
-  margin-top: -10px;
-}
-
-.modalBody {
-  margin-top: 5px;
-}
-
-.sidebarMenu {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebarMenuItem {
-  display: flex;
-  align-items: center;
-  padding: 6px 8px 6px;
-  font-family: "Roboto","Arial",sans-serif;
-  font-size: 1.0rem;
-  line-height: 2rem;
-  font-weight: 300;
-  border-radius: 10px;
-}
-
-.sidebarMenuIcon {
-  margin-right: 0px;
-}
-
-.sidebarLine {
-  border-bottom: 1px solid grey;
-}
-
-.sidebarMenuItem:hover {
-  background-color: rgb(244, 244, 244);
-}
-
-.sidebarText {
-  margin-bottom: -5px;
-  font-size: 1.0rem;
-  font-weight: 300;
-  white-space: nowrap;
-}
-
-
-.sidebarHeader {
-  display: block;
-  padding: 6px 12px 4px;
-  font-family: "Roboto", "Arial", sans-serif;
-  line-height: 2.2rem;
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-
-#mainSectionContainer {
-  flex-grow: 1;
-  padding: 16px;
-}
-
-#mastHeadContainer .logoContainer {
-  width: 150px;
-}
-
-#mastHeadContainer .logoContainer img {
-  height: 60px;
-  margin-left: 8px;
-}
-
 .fa-bars {
   font-size: 24px;
-}
-
-.profileImage {
-  margin-top: -7px;
-}
-
-.profileDropdown {
-  position: absolute;
-  top: 40px; /* adjust this value to position the dropdown correctly */
-  right: 10px;
-  width:280px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.profileHeader {
-  display: flex;
-  padding: 12px;
-  border-bottom: 1px solid #ccc;
-}
-
-.profileInfo {
-  margin-left: 12px;
-}
-
-.profileName {
-  font-weight: bold;
-  margin: 0;
-}
-
-.profileEmail {
-  margin: 0;
-  font-size: 14px;
-  color: #666;
-}
-
-.dropdownDivider {
-  margin: 6px 0;
-  border-top: 1px solid #ccc;
-}
-
-.dropdownButton {
-  display: block;
-  width: 100%;
-  padding: 8px 12px;
-  text-align: left;
-  white-space: nowrap;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.dropdownList:hover {
-  text-decoration: none;
-  background-color: rgb(244, 244, 244);
 }
 
 .material-symbols-outlined {

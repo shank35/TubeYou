@@ -17,7 +17,7 @@ function HomePage() {
         <div id="mastHead">
 
           <div id="mainSectionContainer">
-            Main Section
+            {/* Main Section */}
           </div>
         </div>
       </div>

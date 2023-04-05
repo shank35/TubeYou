@@ -1,0 +1,59 @@
+.profileDropdown {
+  position: absolute;
+  top: 40px; /* adjust this value to position the dropdown correctly */
+  right: 10px;
+  width:280px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.profileHeader {
+  display: flex;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+.profileImage {
+  margin-top: -7px;
+}
+
+.profileInfo {
+  margin-left: 12px;
+}
+
+.profileName {
+  font-weight: bold;
+  margin: 0;
+}
+
+.profileEmail {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.dropdownButton {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.dropdownList:hover {
+  text-decoration: none;
+  background-color: rgb(244, 244, 244);
+}
+
+.dropdownDivider {
+  margin: 6px 0;
+  border-top: 1px solid #ccc;
+}
+
