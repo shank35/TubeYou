@@ -1,7 +1,12 @@
 .videoForm {
   margin-top: 60px;
 }
-/* .video-form-group {
+
+input[type="file"] {
+  display: none;
+}
+
+.video-form-group {
   margin-bottom: 20px;
   font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
 }
@@ -11,39 +16,22 @@
   margin-bottom: 5px;
 }
 
-input[type="text"],
-select,
-textarea {
+.title-form-control,
+.form-control,
+.description-form-control {
   border-radius: 2px;
   border: 1px solid #ccc;
   font-size: 16px;
   padding: 8px;
-  width: 100%;
-}
-
-input[type="file"] {
-  display: none;
-}
-
-.custom-file-upload {
-  background-color: #f8f8f8;
-  border-radius: 2px;
-  border: 1px solid #ccc;
-  color: #666;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 16px;
-  padding: 8px;
-  width: 100%;
-  text-align: center;
+  width: 50%;
 }
 
 .custom-file-upload:hover {
-  background-color: #eee;
+  background-color: #1a73e8;
 }
 
-button {
-  background-color: #1a73e8;
+.selectFile, .uploadVideo, .custom-file-upload {
+  background-color: #065FD4;
   border: none;
   border-radius: 2px;
   color: #fff;
@@ -54,63 +42,13 @@ button {
   text-decoration: none;
 }
 
-button:hover {
-  background-color: #287ae6;
+.selectFile, .uploadVideo:hover {
+  background-color: #1a73e8;
 }
 
-button:active {
+.selectFile, .uploadVideo:active {
   transform: translateY(1px);
 }
-
-@media (min-width: 576px) {
-  .form-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .form-group > * {
-    flex-basis: 100%;
-  }
-
-  .form-group > label {
-    flex-basis: 100%;
-    margin-bottom: 10px;
-  }
-
-  .form-group > select,
-  .form-group > textarea,
-  .form-group > input[type="text"] {
-    flex-basis: calc(100% - 20px);
-  }
-
-  .form-group > input[type="file"] {
-    flex-basis: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  .form-group {
-    margin-bottom: 30px;
-  }
-
-  .form-group > label {
-    margin-bottom: 15px;
-  }
-
-  .form-group > select,
-  .form-group > textarea,
-  .form-group > input[type="text"] {
-    font-size: 18px;
-    padding: 10px;
-  }
-
-  .custom-file-upload,
-  button {
-    font-size: 18px;
-    padding: 10px 20px;
-  }
-} */
 
 
 .modalVideoContainer {
@@ -137,7 +75,8 @@ button:active {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  width: 90%;
+  width: 70%;
+  max-width: 70%;
   height: 90%;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -149,6 +88,7 @@ button:active {
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid #ddd;
+  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
 }
 
 .modalVideoHeader h2 {
@@ -167,40 +107,42 @@ button:active {
 .modalVideoBody {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
+  text-align: center;
+  margin: auto;
+  padding-top: 200px;
 }
 
 .modalVideoUploadArea {
-  display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px dashed #ddd;
-  border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
-  cursor: pointer;
+}
+
+.modalVideoText1 {
+  padding-bottom: 10px;
+  color: #0D0D0D;
+}
+
+.modalVideoText2 {
+  padding-bottom: 10px;
+  color: #606060;
 }
 
 .modalVideoUploadIconContainer {
-  display: flex;
   align-items: center;
   justify-content: center;
   font-size: 5rem;
-  margin-right: 20px;
+  padding-bottom: 10px;
 }
 
-.modalVideoUploadTextContainer {
+.uploadLabelContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-}
-
-.modalVideoUploadTextContainer p {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.modalVideoUploadTextContainer span {
-  font-size: 0.8rem;
-  color: #aaa;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
