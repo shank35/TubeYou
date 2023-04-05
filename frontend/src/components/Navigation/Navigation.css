@@ -95,10 +95,17 @@
   display: flex;
 }
 
-.upload {
+.uploadVideoButton {
   width: 24px;
   height: 24px;
-  margin-left: 16px;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.uploadLink {
+  text-decoration: none;
 }
 
 .navButton {
@@ -112,6 +119,7 @@
 .material-symbols-outlined {
   padding-right: 7px;
   vertical-align: middle;
+  text-decoration: none;
 }
 
 .signInButton {

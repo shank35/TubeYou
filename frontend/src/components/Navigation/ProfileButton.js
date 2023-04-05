@@ -31,7 +31,7 @@ function ProfileButton() {
       {profileDropdownVisible && (
         <div className="profileDropdown">
           <div className="profileHeader">
-            <img className="profileImage" src={profileDefault} alt="Profile" />
+                <span className="material-symbols-outlined">account_circle</span>
             <div className="profileInfo">
               <p className="profileName">{username}</p>
               <p className="profileEmail">{email}</p>

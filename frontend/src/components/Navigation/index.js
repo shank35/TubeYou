@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import youtubeLogo from "../../assets/icons/youtube_logo.png";
-import upload from "../../assets/icons/upload.png";
 import "./Navigation.css";
 
 import ProfileButton from "./ProfileButton";
@@ -30,9 +29,13 @@ function Navigation() {
           </a>
           <SearchBar />
           <div className="rightIcons">
-            <a href="/">
-              <img className="upload" src={upload} alt="Upload" />
-            </a>
+            <ul>
+              <li className="uploadVideoButton">
+                <Link to="/videos" className="uploadLink">
+                  <span className="material-symbols-outlined">video_call</span>
+                </Link>
+              </li>
+            </ul>
             {user ? (
               <ProfileButton />
             ) : (
