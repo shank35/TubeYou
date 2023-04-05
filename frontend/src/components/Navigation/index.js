@@ -32,7 +32,7 @@ function Navigation() {
             <ul>
               <li className="uploadVideoButton">
                 <Link to="/videos" className="uploadLink">
-                  <span className="material-symbols-outlined">video_call</span>
+                  <span className="material-symbols-outlined" style={{fontSize: "35px"}}>video_call</span>
                 </Link>
               </li>
             </ul>
@@ -40,7 +40,7 @@ function Navigation() {
               <ProfileButton />
             ) : (
               <Link to="/login" className="signInButton">
-                <span className="material-symbols-outlined">account_circle</span>
+                <span className="material-symbols-outlined" >account_circle</span>
                 Sign In
               </Link>
             )}

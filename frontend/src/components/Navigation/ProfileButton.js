@@ -26,12 +26,12 @@ function ProfileButton() {
   return (
     <div className="profile">
       <button className="profileContainer" onClick={toggleProfileDropdown}>
-        <img className="profileImage" src={profileDefault} alt="Profile" />
+        <span className="material-symbols-outlined" style={{fontSize: "35px"}}>account_circle</span>
       </button>
       {profileDropdownVisible && (
         <div className="profileDropdown">
           <div className="profileHeader">
-                <span className="material-symbols-outlined">account_circle</span>
+                <span className="material-symbols-outlined" style={{fontSize: "35px"}}>account_circle</span>
             <div className="profileInfo">
               <p className="profileName">{username}</p>
               <p className="profileEmail">{email}</p>

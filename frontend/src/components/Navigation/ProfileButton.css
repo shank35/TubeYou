@@ -10,6 +10,13 @@
   z-index: 1;
 }
 
+.profileContainer {
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+
 .profileHeader {
   display: flex;
   padding: 12px;
