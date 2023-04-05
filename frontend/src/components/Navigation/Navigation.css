@@ -259,7 +259,7 @@
 }
 
 .sidebarMenuItem:hover {
-  color: #ff0000;
+  background-color: rgb(230, 230, 230);
 }
 
 .sidebarText {
@@ -356,7 +356,27 @@
 }
 
 .material-symbols-outlined {
-  padding-right: 15px;
-  /* make the symbol go down */
+  padding-right: 7px;
   vertical-align: middle;
+}
+
+.signInButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 24px;
+  border: 1px solid grey;
+  background-color: white;
+  color: #065fd4;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.signInButton:hover {
+  text-decoration: none;
+  background-color: #c2d8f7;
 }

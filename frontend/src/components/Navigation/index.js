@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import * as sessionActions from '../../store/session';
+import { useHistory } from "react-router-dom";
+import { logout } from '../../store/session';
 
 import { getUsername, getEmail } from '../../store/session';
 
@@ -13,12 +15,16 @@ import "./reset.css";
 import "./Navigation.css";
 
 function Navigation() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const [navVisible, setNavVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [profileDropdownVisible, setProfileDropdownVisible] = useState(false);
 
-  const username = useSelector(getUsername);
-  const email = useSelector(getEmail)
+  const username = useSelector(state => state.session.user?.username);
+  const email = useSelector(state => state.session.user?.email);
+   
 
   const { user } = useSelector(state => state.session);
 
@@ -45,6 +51,12 @@ function Navigation() {
     if (!e.target.closest('.profileDropdown') && !e.target.closest('.profileContainer')) {
       setProfileDropdownVisible(false);
     }
+  };
+
+  const handleSignOut = async () => {
+    await dispatch(logout());
+    setProfileDropdownVisible(false);
+    history.push("/login");
   };
   
   useEffect(() => {
@@ -165,38 +177,48 @@ function Navigation() {
               <img className="upload" src={upload} alt="Upload" />
             </a>
 
-            <div className="profile">
-              <button className="profileContainer" onClick={toggleProfileDropdown}>
-                <img className="profileImage" src={profileDefault} alt="Profile" />
-              </button>
-              {profileDropdownVisible && (
-                <div className="profileDropdown">
-                  <div className="profileHeader">
-                    <img className="profileImage" src={profileDefault} alt="Profile" />
-                    <div className="profileInfo">
-                      <p className="profileName">{username}</p>
-                      <p className="profileEmail">{email}</p>
+            {user ? (
+              <div className="profile">
+                <div className="profile">
+                <button className="profileContainer" onClick={toggleProfileDropdown}>
+                  <img className="profileImage" src={profileDefault} alt="Profile" />
+                </button>
+                {profileDropdownVisible && (
+                  <div className="profileDropdown">
+                    <div className="profileHeader">
+                      <img className="profileImage" src={profileDefault} alt="Profile" />
+                      <div className="profileInfo">
+                        <p className="profileName">{username}</p>
+                        <p className="profileEmail">{email}</p>
+                      </div>
                     </div>
+                    <button className="dropdownButton">
+                      <span className="material-symbols-outlined">account_box</span>
+                      Your Channel
+                    </button>
+                    <button className="dropdownButton" onClick={handleSignOut}>
+                      <span class="material-symbols-outlined">logout</span>
+                      Sign out
+                    </button>
+
+                    <hr className="dropdownDivider" />
+                    <button className="dropdownButton"><span class="material-symbols-outlined">mode_night</span>
+                      Dark mode
+                    </button>
+                    <hr className="dropdownDivider" />
+                    <button className="dropdownButton"><span class="material-symbols-outlined">settings</span>
+                      Settings
+                    </button>
                   </div>
-                  <button className="dropdownButton">
-                    <span className="material-symbols-outlined">account_box</span>
-                    Your Channel
-                  </button>
-                  <button className="dropdownButton">
-                  <span class="material-symbols-outlined">logout</span>
-                    Sign out
-                  </button>
-                  <hr className="dropdownDivider" />
-                  <button className="dropdownButton"><span class="material-symbols-outlined">mode_night</span>
-                    Dark mode
-                  </button>
-                  <hr className="dropdownDivider" />
-                  <button className="dropdownButton"><span class="material-symbols-outlined">settings</span>
-                    Settings
-                  </button>
+                )}
                 </div>
-              )}
-            </div>
+                    </div>
+                    ) : (
+                      <Link to="/login" className="signInButton">
+                        <span className="material-symbols-outlined">account_circle</span>
+                        Sign In
+                      </Link>
+                    )}
 
           </div>
         </div>
