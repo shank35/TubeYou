@@ -5,8 +5,6 @@ import * as sessionActions from '../../store/session';
 import { useHistory } from "react-router-dom";
 import { logout } from '../../store/session';
 
-import { getUsername, getEmail } from '../../store/session';
-
 import youtubeLogo from "../../assets/icons/youtube_logo.png";
 import search from "../../assets/icons/search.png";
 import profileDefault from "../../assets/profile/default.png";
