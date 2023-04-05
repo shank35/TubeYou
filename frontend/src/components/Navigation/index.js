@@ -46,9 +46,6 @@ function Navigation() {
             )}
           </div>
         </div>
-        <div id="mainSectionContainer" className={navVisible ? "modalOpen" : ""}>
-          Main Section
-        </div>
       </div>
     </div>
   );

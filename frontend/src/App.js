@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/login" component={LoginFormPage} />
         <Route exact path="/password" component={LoginFormPage} />
         <Route path="/signup" component={SignupFormPage} />
-        <Route exact path="/video" component={Video} />
+        <Route exact path="/videos" component={Video} />
       </Switch>
     </>
   );
