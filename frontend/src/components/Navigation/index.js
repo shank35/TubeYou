@@ -178,7 +178,6 @@ function Navigation() {
             </a>
 
             {user ? (
-              <div className="profile">
                 <div className="profile">
                 <button className="profileContainer" onClick={toggleProfileDropdown}>
                   <img className="profileImage" src={profileDefault} alt="Profile" />
@@ -192,27 +191,37 @@ function Navigation() {
                         <p className="profileEmail">{email}</p>
                       </div>
                     </div>
-                    <button className="dropdownButton">
-                      <span className="material-symbols-outlined">account_box</span>
-                      Your Channel
-                    </button>
-                    <button className="dropdownButton" onClick={handleSignOut}>
-                      <span class="material-symbols-outlined">logout</span>
-                      Sign out
-                    </button>
+                    <ul>
+                      <li className="dropdownList">
+                      <button className="dropdownButton">
+                          <span className="material-symbols-outlined">account_box</span>
+                          Your Channel
+                        </button>
+                      </li>
+                      <li className="dropdownList">
+                        <button className="dropdownButton" onClick={handleSignOut}>
+                          <span class="material-symbols-outlined">logout</span>
+                          Sign out
+                        </button>
+                      </li>
 
-                    <hr className="dropdownDivider" />
-                    <button className="dropdownButton"><span class="material-symbols-outlined">mode_night</span>
-                      Dark mode
-                    </button>
-                    <hr className="dropdownDivider" />
-                    <button className="dropdownButton"><span class="material-symbols-outlined">settings</span>
-                      Settings
-                    </button>
+                      <hr className="dropdownDivider" />
+
+                      <li className="dropdownList">
+                        <button className="dropdownButton"><span class="material-symbols-outlined">mode_night</span>
+                          Dark mode
+                        </button>
+                      </li>
+                      <hr className="dropdownDivider" />
+                      <li className="dropdownList">
+                        <button className="dropdownButton"><span class="material-symbols-outlined">settings</span>
+                          Settings
+                        </button>
+                      </li>
+                    </ul>
                   </div>
                 )}
                 </div>
-                    </div>
                     ) : (
                       <Link to="/login" className="signInButton">
                         <span className="material-symbols-outlined">account_circle</span>
