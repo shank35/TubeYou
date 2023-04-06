@@ -1,12 +1,16 @@
 import React from "react";
 import video1 from "./video1.png";
 
+import { useTheme } from "../Navigation/ThemeContext";
+
 import "./reset.css";
 import "./HomePage.css";
 
 function HomePage() {
+  const { theme } = useTheme();
+
   return (
-    <div className="body">
+    <div className={`body ${theme}-theme`}>
       <div id="page">
         <div id="mainSectionContainer">
           <div className="videoPlaceholder">

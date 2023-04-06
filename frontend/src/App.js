@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import Video from "./components/Video";
 
+
 function App() {
   const location = useLocation();
 

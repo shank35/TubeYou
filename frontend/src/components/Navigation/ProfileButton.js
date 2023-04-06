@@ -1,37 +1,73 @@
-import React, { useState } from "react";
+// ProfileButton.js
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useTheme } from "./ThemeContext";
+
 import { logout } from "../../store/session";
-import profileDefault from "../../assets/profile/default.png";
+import { useDropdown } from "./DropdownContext";
 import "./ProfileButton.css";
+import "./themes.css";
 
 function ProfileButton() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { theme, toggleTheme } = useTheme();
+  const { activeDropdown, setActiveDropdown } = useDropdown();
+  const username = useSelector((state) => state.session.user?.username);
+  const email = useSelector((state) => state.session.user?.email);
   const [profileDropdownVisible, setProfileDropdownVisible] = useState(false);
 
-  const username = useSelector(state => state.session.user?.username);
-  const email = useSelector(state => state.session.user?.email);
 
   const toggleProfileDropdown = () => {
-    setProfileDropdownVisible(!profileDropdownVisible);
+    if (activeDropdown === "profile") {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown("profile");
+    }
   };
+
+  useEffect(() => {
+    if (activeDropdown === "profile") {
+      setProfileDropdownVisible(true);
+    } else {
+      setProfileDropdownVisible(false);
+    }
+  }, [activeDropdown]);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest(".profile")) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [activeDropdown]);
 
   const handleSignOut = async () => {
     await dispatch(logout());
     setProfileDropdownVisible(false);
     history.push("/login");
   };
+  
 
   return (
-    <div className="profile">
+    <div className={`profile ${theme}-theme`}>
       <button className="profileContainer" onClick={toggleProfileDropdown}>
-        <span className="material-symbols-outlined" style={{fontSize: "35px"}}>account_circle</span>
+        <span className="material-symbols-outlined" style={{ fontSize: "35px" }}>
+          account_circle
+        </span>
       </button>
       {profileDropdownVisible && (
-        <div className="profileDropdown">
+        <div className="profileDropdown dropdown">
           <div className="profileHeader">
-                <span className="material-symbols-outlined" style={{fontSize: "35px"}}>account_circle</span>
+            <span className="material-symbols-outlined" style={{ fontSize: "35px" }}>
+              account_circle
+            </span>
             <div className="profileInfo">
               <p className="profileName">{username}</p>
               <p className="profileEmail">{email}</p>
@@ -46,7 +82,7 @@ function ProfileButton() {
             </li>
             <li className="dropdownList">
               <button className="dropdownButton" onClick={handleSignOut}>
-                <span class="material-symbols-outlined">logout</span>
+                <span className="material-symbols-outlined">logout</span>
                 Sign out
               </button>
             </li>
@@ -54,13 +90,23 @@ function ProfileButton() {
             <hr className="dropdownDivider" />
 
             <li className="dropdownList">
-              <button className="dropdownButton"><span class="material-symbols-outlined">mode_night</span>
-                Dark mode
+              <button className="dropdownButton" onClick={toggleTheme}>
+                <span className="material-symbols-outlined">
+                  {theme === "light" ? 
+                  <span class="material-symbols-outlined">mode_night</span>
+                   : 
+                   <span class="material-symbols-outlined">
+                  light_mode
+                  </span>
+                  }
+                </span>
+                {theme === "light" ? "Dark mode" : "Light mode"}
               </button>
             </li>
             <hr className="dropdownDivider" />
             <li className="dropdownList">
-              <button className="dropdownButton"><span class="material-symbols-outlined">settings</span>
+              <button className="dropdownButton">
+                <span className="material-symbols-outlined">settings</span>
                 Settings
               </button>
             </li>

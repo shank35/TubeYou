@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
@@ -7,6 +8,7 @@ import App from './App';
 import configureStore from './store';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
+import { ThemeProvider, useTheme } from "./components/Navigation/ThemeContext";
 
 
 const store = configureStore();
@@ -18,6 +20,13 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 function Root() {
+
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    document.body.className = `${theme}-theme`;
+  }, [theme]);
+
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -30,19 +39,13 @@ function Root() {
 const renderApplication = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <Root />
+      <ThemeProvider>
+        <Root />
+      </ThemeProvider>
     </React.StrictMode>,
     document.getElementById('root')
   );
 }
-
-ReactDOM.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
 
 if (
   sessionStorage.getItem("currentUser") === null ||

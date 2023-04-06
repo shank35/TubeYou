@@ -95,17 +95,6 @@
   display: flex;
 }
 
-.uploadVideoButton {
-  margin-left: 12px;
-  margin-right: 12px;
-  margin-top: 2px;
-  text-decoration: none;
-}
-
-.uploadLink {
-  text-decoration: none;
-}
-
 .navButton {
   margin-top: -1px;
 }

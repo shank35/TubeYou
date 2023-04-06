@@ -51,3 +51,15 @@ a, a:hover, a:focus, a:active {
 	outline: none;
 	color: inherit;
 }
+
+body.light-theme {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #e0e0e0;
+}
+
+body.dark-theme {
+  --bg-color: #212121;
+  --text-color: #ffffff;
+  --border-color: #424242;
+}

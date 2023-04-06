@@ -1,0 +1,12 @@
+.videoDropdown {
+  position: absolute;
+  top: 40px; /* adjust this value to position the dropdown correctly */
+  right: 80px;
+  width: 130px;
+  padding: 10px 10px 10px 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}

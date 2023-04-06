@@ -1,3 +1,5 @@
+@import "../Navigation/themes.css";
+
 .body {
   font-family: Arial, sans-serif;
 }
@@ -82,4 +84,40 @@
   .videoPlaceholder {
     width: 92%;
   }
+}
+
+/* Light theme */
+.light-theme .body {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.light-theme .videoTitle {
+  color: #333333;
+}
+
+.light-theme .videoChannel {
+  color: #777777;
+}
+
+.light-theme .videoViews {
+  color: #aaaaaa;
+}
+
+/* Dark theme */
+.dark-theme .body {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.dark-theme .videoTitle {
+  color: #ffffff;
+}
+
+.dark-theme .videoChannel {
+  color: #bbbbbb;
+}
+
+.dark-theme .videoViews {
+  color: #888888;
 }
