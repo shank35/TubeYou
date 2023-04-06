@@ -46,8 +46,8 @@
 .box .errors {
   background-color: transparent;
   border: none;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+  padding: 0.2rem;
+  margin-bottom: 0.2rem;
 }
 
 .box .inputBox {

@@ -33,7 +33,7 @@ function ProfileButton() {
     } else {
       setProfileDropdownVisible(false);
     }
-  }, [activeDropdown]);
+  }, [activeDropdown, setActiveDropdown]);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -46,7 +46,7 @@ function ProfileButton() {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, [activeDropdown]);
+  }, [activeDropdown, setActiveDropdown]);
 
   const handleSignOut = async () => {
     await dispatch(logout());

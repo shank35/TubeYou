@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -8,6 +9,8 @@ import './SignupForm.css';
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -82,7 +85,7 @@ function SignupFormPage() {
     }
   
     setErrors([]);
-    return dispatch(sessionActions.signup({ email, username, password }))
+    return dispatch(sessionActions.signup({ email, username, password, first_name: firstName, last_name: lastName }))
       .catch(async (res) => {
         let data;
         try {
@@ -115,6 +118,31 @@ function SignupFormPage() {
         <h2>Create your TubeYou Account</h2>
         <h3>to continue to TubeYou</h3>
         <form onSubmit={handleSubmit}>
+          <div className="name-container">
+            <div className="inputBox">
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+              <label>
+                First Name
+              </label>
+            </div>
+
+            <div className="inputBox">
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+              <label>
+                Last Name
+              </label>
+            </div>
+          </div>
           <div className="inputBox">
           <input
                 type="text"
@@ -141,33 +169,41 @@ function SignupFormPage() {
               Your email address
             </label>
           </div>
-          <div className="inputBox">
-            <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  onInput={() => validatePassword(password)}
-                  required
-                />
-                {passwordValidationMessage && <div className={`validation-message ${passwordValid ? 'valid' : 'invalid'}`}>{passwordValidationMessage}</div>}
-            <label>
-              Password
-            </label>
-          </div>
-          <div className="inputBox">
-            <input
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  onInput={(e) => validateConfirmPassword(e.target.value)}
-                  required
-                />
-                {confirmPasswordValidationMessage && <div className={`validation-message ${confirmPasswordValid ? 'valid' : 'invalid'}`}>{confirmPasswordValidationMessage}</div>}
-            <label>
-              Confirm Password
-            </label>
+          <div className="password-container">
+            <div className="inputBox">
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onInput={() => validatePassword(password)}
+                required
+              />
+              {passwordValidationMessage && <div className={`validation-message ${passwordValid ? 'valid' : 'invalid'}`}>{passwordValidationMessage}</div>}
+              <label>
+                Password
+              </label>
+            </div>
+
+            <div className="inputBox">
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                onInput={(e) => validateConfirmPassword(e.target.value)}
+                required
+              />
+              {confirmPasswordValidationMessage && <div className={`validation-message ${confirmPasswordValid ? 'valid' : 'invalid'}`}>{confirmPasswordValidationMessage}</div>}
+              <label>
+                Confirm Password
+              </label>
+            </div>
           </div>
           <button type="submit">Sign Up</button>
+          <div className="signInInstead">
+            <Link to="/login">
+              <button type="submit">Sign in instead</button>
+            </Link>
+          </div>
         </form>
       </div>
     </div>

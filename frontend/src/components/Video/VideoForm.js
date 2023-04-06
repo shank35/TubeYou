@@ -4,6 +4,7 @@ import './VideoForm.css';
 function VideoForm() {
 
   const [showModal, setShowModal] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -13,52 +14,68 @@ function VideoForm() {
     setShowModal(false);
   }
 
+  const handleFileInputChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  }
+
+  const handleUploadVideo = (event) => {
+    event.preventDefault();
+    // TODO: handle video upload logic
+  }
+
   return (
     <>
       <form className="video-form">
 
         <div className="video-form-group">
 
-          <div className="selectFileContainer">
-            <button className="selectFile" onClick={handleOpenModal}>Select files to upload</button>
-          </div>
+        <div className="selectFileContainer">
+          <button type="button" className="selectFile" onClick={handleOpenModal}>Select files to upload</button>
+        </div>
 
-          <div className="titleContainer">
-            <input className="title-form-control" type="text" placeholder="Title" name="titleInput" />
-          </div>
 
-          <div className="descriptionContainer">
-            <textarea className="description-form-control" placeholder="Description" name="descriptionInput" rows="3"></textarea>
-          </div>
+        </div>
 
-          {/* <div className="formControlContainer">
-            <select className="form-control" name="privacyInput">
-              <option value="0">Private</option>
-              <option value="1">Public</option>
-            </select>
-          </div> */}
+      </form>
 
-          <div className="uploadVideoContainer">
-            <button className="uploadVideo" type="submit">
-              Upload Video
-            </button>
-          </div>
+      {showModal && (
+        <div className="modalVideoContainer">
 
-          {showModal && (
-            <div className="modalVideoContainer">
+          <div className="modalVideoOverlay" onClick={handleCloseModal}></div>
 
-              <div className="modalVideoOverlay" onClick={handleCloseModal}></div>
+          <div className="modalVideoContent">
 
-              <div className="modalVideoContent">
+            <div className="modalVideoHeader">
+              <h2>Upload video</h2>
+              <button className="closeVideoModalButton" onClick={handleCloseModal}>×</button>
+            </div>
 
-                <div className="modalVideoHeader">
-                  <h2>Upload video</h2>
-                  <button className="closeVideoModalButton" onClick={handleCloseModal}>×</button>
-                </div>
+            <div className="modalVideoBody">
 
-                <div className="modalVideoBody">
+              <div className="modalVideoUploadArea">
 
-                  <div className="modalVideoUploadArea">
+                {selectedFile ? (
+                  <div className="modalVideoFormContainer">
+                    <form onSubmit={handleUploadVideo}>
+
+                      <div className="titleContainer">
+                        <input className="title-form-control" type="text" placeholder="Title" name="titleInput" />
+                      </div>
+
+                      <div className="descriptionContainer">
+                        <textarea className="description-form-control" placeholder="Description" name="descriptionInput" rows="3"></textarea>
+                      </div>
+
+                      <div className="uploadVideoContainer">
+                        <button className="uploadVideo" type="submit">
+                          Upload Video
+                        </button>
+                      </div>
+
+                    </form>
+                  </div>
+                ) : (
+                  <div className="modalVideoUploadFormContainer">
 
                     <div className="modalVideoUploadIconContainer">
                       <span class="material-symbols-outlined" style={{fontSize: "50px"}}>upload</span>                    
@@ -77,22 +94,22 @@ function VideoForm() {
                         <label htmlFor="fileInput" className="custom-file-upload">
                           <p>Select files</p>
                         </label>
-                        <input type="file" id="fileInput" name="fileInput" required />
+                        <input type="file" id="fileInput" name="fileInput" required onChange={handleFileInputChange} />
                       </div>
                     </div>
-                    
-                  </div>
 
-                </div>
+                  </div>
+                )}
 
               </div>
 
             </div>
-          )}
+
+          </div>
 
         </div>
+      )}
 
-      </form>
     </>
   );
 }

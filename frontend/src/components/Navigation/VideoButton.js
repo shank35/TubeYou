@@ -4,37 +4,25 @@ import { useDropdown } from "./DropdownContext";
 import "./VideoButton.css";
 
 function VideoButton() {
-  const { activeDropdown, setActiveDropdown } = useDropdown();
   const [videoDropdownVisible, setVideoDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
 
   const toggleVideoDropdown = () => {
-    if (activeDropdown === "videoButtonContainer") {
-      setActiveDropdown(null);
-    } else {
-      setActiveDropdown("videoButtonContainer");
-    }
+    setVideoDropdownVisible(!videoDropdownVisible);
   };
 
-  useEffect(() => {
-    if (activeDropdown === "videoButtonContainer") {
-      setVideoDropdownVisible(true);
-    } else {
-      setVideoDropdownVisible(false);
-    }
-  }, [activeDropdown]);
+  // const handleClickOutside = (event) => {
+  //   if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //     setVideoDropdownVisible(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setActiveDropdown(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
 
   return (
     <div className="videoButton">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
@@ -63,6 +64,11 @@ function UsernameForm({ onSubmit }) {
           <button type="submit">Next</button>
           <div className="demo">
             <button type="submit" onClick={demoUser}>Demo User</button>
+          </div>
+          <div className="createAccount">
+            <Link to="/signup">
+              <button type="submit">Create Account</button>
+            </Link>
           </div>
         </form>
       </div>

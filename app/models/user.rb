@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
+  has_one_attached :photo
+
   def self.find_by_credentials(credential, password)
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username
     user = User.find_by(field => credential)

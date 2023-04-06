@@ -10,7 +10,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 25rem;
+  width: 30rem;
   padding: 2.5rem;
   box-sizing: border-box;
   background-color: #fff;
@@ -108,4 +108,34 @@ body {
 .validation-message.invalid {
   color: red;
   font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+.box .name-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.box .name-container .inputBox {
+  width: 48%;
+  margin-right: 4%;
+}
+
+.box .name-container .inputBox:last-child {
+  margin-right: 0;
+}
+
+.box .password-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.box .password-container .inputBox {
+  width: 48%;
+  margin-right: 4%;
+}
+
+.box .password-container .inputBox:last-child {
+  margin-right: 0;
 }
