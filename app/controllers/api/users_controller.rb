@@ -1,14 +1,9 @@
 class Api::UsersController < ApplicationController
   wrap_parameters include: User.attribute_names + ['password']
 
-  def new 
-    @user = User.new
-    render :new
-  end
-
   def index 
     @users = User.all
-    render json: @users, status: 200
+    render :index
   end
 
   def create
