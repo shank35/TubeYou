@@ -35,7 +35,7 @@ function VideoButton() {
         <div className="videoDropdown dropdown" ref={dropdownRef}>
           <ul>
             <li className="uploadVideoButton">
-              <Link to="/videos" className="uploadLink">
+              <Link to="/videos/upload" className="uploadLink">
                 <span className="material-symbols-outlined">slideshow</span>
                 Upload Video
               </Link>
