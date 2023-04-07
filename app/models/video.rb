@@ -19,8 +19,15 @@ class Video < ApplicationRecord
     class_name: :User
 
   has_one_attached :video_file
+  
+  validates :video_file, attached: true, size: { less_than: 2000.megabytes }, content_type: ['video/mp4', 'video/mpeg', 'video/quicktime']
+
 
   validate :acceptable_video_file
+
+  def video_file_url
+    video_file.service_url if video_file.attached?
+  end
 
   private
 

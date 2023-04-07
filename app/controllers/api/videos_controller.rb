@@ -2,7 +2,7 @@ class Api::VideosController < ApplicationController
 
   def index
     @videos = Video.all
-    render json: @videos
+    render :index
   end
 
   def show

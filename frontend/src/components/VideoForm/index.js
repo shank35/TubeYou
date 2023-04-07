@@ -1,15 +1,15 @@
 import React from 'react';
-import VideoDetailsFormProvider from './VideoForm';
+import VideoForm from './VideoForm';
 import "./Video.css";
 
-function Video() {
+function VideoFormPage() {
   return (
     <>
       <div className="videoForm">
-        <VideoDetailsFormProvider />
+        <VideoForm />
       </div>
     </>
   );
 }
 
-export default Video;
+export default VideoFormPage;

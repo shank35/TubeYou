@@ -1,11 +1,12 @@
+// App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom'; // Change this line
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
-import Video from "./components/Video";
-
+import VideoFormPage from "./components/VideoForm";
+import VideoShowPage from "./components/VideoShow";
 
 function App() {
   const location = useLocation();
@@ -18,8 +19,8 @@ function App() {
         <Route exact path="/login" component={LoginFormPage} />
         <Route exact path="/password" component={LoginFormPage} />
         <Route path="/signup" component={SignupFormPage} />
-        <Route exact path="/videos/upload" component={Video} />
-        {/* <Route path="/videos/:videoId" component={VideoShow} /> */}
+        <Route exact path="/videos/upload" component={VideoFormPage} />
+        <Route path="/videos/:videoId" component={VideoShowPage} />
       </Switch>
     </>
   );

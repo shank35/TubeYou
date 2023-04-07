@@ -18,10 +18,26 @@ function VideoForm() {
     setSelectedFile(event.target.files[0]);
   }
 
-  const handleUploadVideo = (event) => {
+  const handleUploadVideo = async (event) => {
     event.preventDefault();
-    // TODO: handle video upload logic
-  }
+    const formData = new FormData();
+    formData.append('video[title]', event.target.titleInput.value);
+    formData.append('video[description]', event.target.descriptionInput.value);
+    formData.append('video[video_file]', selectedFile);
+  
+    const response = await fetch('/api/videos', {
+      method: 'POST',
+      body: formData,
+    });
+  
+    if (response.ok) {
+      handleCloseModal();
+    } else {
+      const errorData = await response.json();
+      console.error('Upload failed:', errorData.errors);
+    }
+  };
+  
 
   return (
     <>

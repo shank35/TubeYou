@@ -48,6 +48,8 @@ ApplicationRecord.transaction do
 
   # Create 20 random videos
   users = User.all
+  video_files = Dir[Rails.root.join('db', 'seeds', 'videos', '*')]
+
   20.times do
     title = Faker::Lorem.sentence(word_count: 3)
     description = Faker::Lorem.paragraph
@@ -55,7 +57,13 @@ ApplicationRecord.transaction do
     views = rand(0..10000)
     likes = rand(0..1000)
     dislikes = rand(0..100)
-    Video.create!(title: title, description: description, user: user, views: views, likes: likes, dislikes: dislikes)
+
+    video = Video.new(title: title, description: description, user: user, views: views, likes: likes, dislikes: dislikes)
+
+    video_url = "https://example-bucket.s3.amazonaws.com/example-video.mp4"
+    video.video_file.attach(io: URI.open(video_url), filename: "example-video.mp4", content_type: "video/mp4")  
+    
+    video.save!
   end
   
   puts "Seeded #{Video.count} videos."

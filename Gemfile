@@ -8,6 +8,8 @@ gem "jbuilder"
 gem "bcrypt"
 
 gem "aws-sdk-s3"
+gem 'open-uri'
+gem 'active_storage_validations'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"

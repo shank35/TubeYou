@@ -1,0 +1,34 @@
+.videoShow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.videoShow-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.video-player {
+  margin-bottom: 20px;
+}
+
+.video-player h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.video-player p {
+  font-size: 14px;
+  color: #606060;
+  margin-bottom: 20px;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
