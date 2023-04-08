@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { uploadVideo } from '../../actions/videoActions';
+
 import './VideoForm.css';
 
 function VideoForm() {
+
+  const dispatch = useDispatch()
 
   const [showModal, setShowModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -20,21 +25,12 @@ function VideoForm() {
 
   const handleUploadVideo = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append('video[title]', event.target.titleInput.value);
-    formData.append('video[description]', event.target.descriptionInput.value);
-    formData.append('video[video_file]', selectedFile);
-  
-    const response = await fetch('/api/videos', {
-      method: 'POST',
-      body: formData,
-    });
-  
-    if (response.ok) {
+    const title = event.target.titleInput.value;
+    const description = event.target.descriptionInput.value;
+    const action = await uploadVideo(title, description, selectedFile);
+    dispatch(action)
+    if (action.payload.success) {
       handleCloseModal();
-    } else {
-      const errorData = await response.json();
-      console.error('Upload failed:', errorData.errors);
     }
   };
   
@@ -48,7 +44,6 @@ function VideoForm() {
         <div className="selectFileContainer">
           <button type="button" className="selectFile" onClick={handleOpenModal}>Select files to upload</button>
         </div>
-
 
         </div>
 
