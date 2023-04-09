@@ -81,25 +81,26 @@ function VideoForm() {
                     <form onSubmit={handleUploadVideo}>
 
                       <div className="titleContainer">
-                      <input
-  className="title-form-control"
-  type="text"
-  placeholder="Title"
-  name="titleInput"
-  value={title}
-  onChange={(e) => setTitle(e.target.value)}
-/>
+                        <input
+                          className="title-form-control"
+                          type="text"
+                          placeholder="Title"
+                          name="titleInput"
+                          value={title}
+                          onChange={(e) => setTitle(e.target.value)}
+                        />
                       </div>
 
                       <div className="descriptionContainer">
-                      <textarea
-  className="description-form-control"
-  placeholder="Description"
-  name="descriptionInput"
-  rows="3"
-  value={description}
-  onChange={(e) => setDescription(e.target.value)}
-/>                      </div>
+                        <textarea
+                          className="description-form-control"
+                          placeholder="Description"
+                          name="descriptionInput"
+                          rows="3"
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                        />                      
+                      </div>
 
                       <div className="uploadVideoContainer">
                         <button className="uploadVideo" type="submit">

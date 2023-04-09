@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom'; // Change this line
+import { Route, Switch, useLocation } from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";

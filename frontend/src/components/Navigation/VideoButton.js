@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useDropdown } from "./DropdownContext";
+// import { useDropdown } from "./DropdownContext";
 import "./VideoButton.css";
 
 function VideoButton() {

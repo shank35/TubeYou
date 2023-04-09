@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -7,6 +7,7 @@ import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
 function SignupFormPage() {
+  // eslint-disable-next-line
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [firstName, setFirstName] = useState("");

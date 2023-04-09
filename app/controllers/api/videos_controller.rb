@@ -9,16 +9,7 @@ class Api::VideosController < ApplicationController
     @video = Video.find(params[:id])
     render :show
   end
-
-  # def create 
-  #   @video = Video.new(video_params.except(:video_file))
-  #   if @video.save
-  #     @video.video_file.attach(video_params[:video_file])
-  #     render :show, status: :created
-  #   else
-  #     render json: { errors: @video.errors.full_messages }, status: :unprocessable_entity
-  #   end
-  # end
+  
   def create 
     if params[:video]
       @video = Video.new(video_params)
