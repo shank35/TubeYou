@@ -10,6 +10,12 @@ function VideoForm() {
 
   const [showModal, setShowModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -20,19 +26,24 @@ function VideoForm() {
   }
 
   const handleFileInputChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  }
+    const file = event.target.files[0];
+    if (file.type === "video/mp4") {
+      setSelectedFile(file);
+    } else {
+      alert("Please upload a valid MP4 file.");
+    }
+  };
 
   const handleUploadVideo = async (event) => {
     event.preventDefault();
-    const title = event.target.titleInput.value;
-    const description = event.target.descriptionInput.value;
-    const action = await uploadVideo(title, description, selectedFile);
-    dispatch(action)
-    if (action.payload.success) {
+    setIsUploading(true);
+    await dispatch(uploadVideo(title, description, selectedFile, setUploadProgress));
+    setIsUploading(false);
+    if (!isUploading) {
       handleCloseModal();
     }
   };
+  
   
 
   return (
@@ -70,12 +81,25 @@ function VideoForm() {
                     <form onSubmit={handleUploadVideo}>
 
                       <div className="titleContainer">
-                        <input className="title-form-control" type="text" placeholder="Title" name="titleInput" />
+                      <input
+  className="title-form-control"
+  type="text"
+  placeholder="Title"
+  name="titleInput"
+  value={title}
+  onChange={(e) => setTitle(e.target.value)}
+/>
                       </div>
 
                       <div className="descriptionContainer">
-                        <textarea className="description-form-control" placeholder="Description" name="descriptionInput" rows="3"></textarea>
-                      </div>
+                      <textarea
+  className="description-form-control"
+  placeholder="Description"
+  name="descriptionInput"
+  rows="3"
+  value={description}
+  onChange={(e) => setDescription(e.target.value)}
+/>                      </div>
 
                       <div className="uploadVideoContainer">
                         <button className="uploadVideo" type="submit">
@@ -84,12 +108,19 @@ function VideoForm() {
                       </div>
 
                     </form>
+                    {isUploading && (
+                      <div className="progress-container">
+                        <progress value={uploadProgress} max="100" />
+                        <span>{uploadProgress}%</span>
+                      </div>
+                    )}
+
                   </div>
                 ) : (
                   <div className="modalVideoUploadFormContainer">
 
                     <div className="modalVideoUploadIconContainer">
-                      <span class="material-symbols-outlined" style={{fontSize: "50px"}}>upload</span>                    
+                      <span className="material-symbols-outlined" style={{fontSize: "50px"}}>upload</span>                    
                     </div>
 
                     <div className="modalVideoText1">
@@ -105,7 +136,7 @@ function VideoForm() {
                         <label htmlFor="fileInput" className="custom-file-upload">
                           <p>Select files</p>
                         </label>
-                        <input type="file" id="fileInput" name="fileInput" required onChange={handleFileInputChange} />
+                        <input type="file" id="fileInput" name="fileInput" required accept="video/mp4" onChange={handleFileInputChange} />
                       </div>
                     </div>
 

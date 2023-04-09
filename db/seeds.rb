@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require 'open-uri'
+
+
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
@@ -49,8 +53,9 @@ ApplicationRecord.transaction do
   # Create 20 random videos
   users = User.all
   video_files = Dir[Rails.root.join('db', 'seeds', 'videos', '*')]
+  video_url = "https://tubeyou-dev.s3.amazonaws.com/I+Cleaned+The+World%E2%80%99s+Dirtiest+Beach+%23TeamSeas.mp4"
 
-  20.times do
+  10.times do
     title = Faker::Lorem.sentence(word_count: 3)
     description = Faker::Lorem.paragraph
     user = users.sample
@@ -60,9 +65,8 @@ ApplicationRecord.transaction do
 
     video = Video.new(title: title, description: description, user: user, views: views, likes: likes, dislikes: dislikes)
 
-    video_url = "https://example-bucket.s3.amazonaws.com/example-video.mp4"
-    video.video_file.attach(io: URI.open(video_url), filename: "example-video.mp4", content_type: "video/mp4")  
-    
+    video.video_file.attach(io: URI.open(video_url), filename: "example-video.mp4")  
+
     video.save!
   end
   

@@ -10,15 +10,32 @@ class Api::VideosController < ApplicationController
     render :show
   end
 
+  # def create 
+  #   @video = Video.new(video_params.except(:video_file))
+  #   if @video.save
+  #     @video.video_file.attach(video_params[:video_file])
+  #     render :show, status: :created
+  #   else
+  #     render json: { errors: @video.errors.full_messages }, status: :unprocessable_entity
+  #   end
+  # end
   def create 
-    @video = Video.new(video_params.except(:video_file))
-    if @video.save
+    if params[:video]
+      @video = Video.new(video_params)
+      @video.user_id = current_user.id # or any other valid user ID
       @video.video_file.attach(video_params[:video_file])
-      render :show, status: :created
+      if @video.save
+        render :show, status: :created
+      else
+        puts @video.errors.full_messages
+        render json: { errors: @video.errors.full_messages }, status: :unprocessable_entity
+      end
     else
-      render json: { errors: @video.errors.full_messages }, status: :unprocessable_entity
+      render json: { error: "Missing 'video' parameter" }, status: :unprocessable_entity
     end
   end
+  
+  
 
   def update 
     @video = Video.find(params[:id])
