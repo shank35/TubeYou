@@ -15,6 +15,11 @@
 class Video < ApplicationRecord
   belongs_to :user
 
+  has_many :comments,
+    primary_key: :id,
+    foreign_key: :video_id,
+    class_name: :Comment
+
   has_one_attached :video_file
 
   def video_file_url

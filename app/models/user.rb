@@ -33,6 +33,11 @@ class User < ApplicationRecord
     class_name: :Video,
     dependent: :destroy
 
+  has_many :comments, 
+    foreign_key: :author_id,
+    class_name: :Comment, 
+    dependent: :destroy
+
   def self.find_by_credentials(credential, password)
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username
     user = User.find_by(field => credential)

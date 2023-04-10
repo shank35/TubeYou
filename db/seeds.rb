@@ -14,6 +14,8 @@ ApplicationRecord.transaction do
   # Unnecessary if using `rails db:seed:replant`
   User.destroy_all
   Video.destroy_all 
+  Comment.destroy_all
+
 
   puts "Resetting primary keys..."
   # For easy testing, so that after seeding, the first `User` has `id` of 1
@@ -72,6 +74,20 @@ ApplicationRecord.transaction do
   
   puts "Seeded #{Video.count} videos."
 
+  puts "Seeding comments..."
+
+  # Create 20 comments for each video
+  Video.all.each do |video|
+    5.times do
+      Comment.create!(
+        content: Faker::Lorem.sentence(word_count: 10),
+        author_id: User.pluck(:id).sample,
+        video_id: video.id
+      )
+    end
+  end
+
+  puts "Seeded #{Comment.count} comments."
 
   puts "Done!"
 end

@@ -35,7 +35,7 @@ function Sidebar({ navVisible, setNavVisible }) {
                 </li>
                 <li className="sidebarLine"></li>
                 <li className="sidebarMenuItem">
-                  <span class="material-symbols-outlined sidebarMenuIcon">video_library</span>
+                  <span className="material-symbols-outlined sidebarMenuIcon">video_library</span>
                   <button className="sidebarText">Library</button>
                 </li>
                 <li className="sidebarMenuItem">
@@ -67,7 +67,7 @@ function Sidebar({ navVisible, setNavVisible }) {
                   <button className="sidebarText">Channel 2</button>
                 </li>
                 <li className="sidebarMenuItem">
-                  <span class="material-symbols-outlined sidebarMenuIcon">add_circle</span>  
+                  <span className="material-symbols-outlined sidebarMenuIcon">add_circle</span>  
                   <button className="sidebarText">Browse Channels</button>
                 </li>
                 <li className="sidebarLine"></li>
