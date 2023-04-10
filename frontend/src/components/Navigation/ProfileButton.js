@@ -93,9 +93,9 @@ function ProfileButton() {
               <button className="dropdownButton" onClick={toggleTheme}>
                 <span className="material-symbols-outlined">
                   {theme === "light" ? 
-                  <span class="material-symbols-outlined">mode_night</span>
+                  <span className="material-symbols-outlined">mode_night</span>
                    : 
-                   <span class="material-symbols-outlined">
+                   <span className="material-symbols-outlined">
                   light_mode
                   </span>
                   }
