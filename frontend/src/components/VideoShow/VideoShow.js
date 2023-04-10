@@ -34,6 +34,7 @@ const VideoShow = ({ videoId }) => {
   }
 
   return video ? <VideoPlayer video={video} /> : <div>Loading...</div>;
+  
 };
 
 export default VideoShow;

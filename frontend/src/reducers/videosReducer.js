@@ -1,4 +1,4 @@
-import { UPLOAD_VIDEO } from "../actions/videoActions";
+import { UPLOAD_VIDEO, DELETE_VIDEO, EDIT_VIDEO } from "../actions/videoActions";
 
 const initialState = {
   uploadSuccess: false,
@@ -12,6 +12,18 @@ const videoReducer = (state = initialState, action) => {
         ...state,
         uploadSuccess: action.payload.success,
         uploadErrors: action.payload.errors || [],
+      };
+    case DELETE_VIDEO:
+      return {
+        ...state,
+        videos: state.videos.filter((video) => video._id !== action.payload),
+      };
+    case EDIT_VIDEO:
+      return {
+        ...state,
+        videos: state.videos.map((video) =>
+          video._id === action.payload._id ? action.payload : video
+        ),
       };
       default:
         return state;

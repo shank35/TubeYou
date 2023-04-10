@@ -1,27 +1,11 @@
+// videoActions.js
 import csrfFetch from '../store/csrf';
 
 export const UPLOAD_VIDEO = 'UPLOAD_VIDEO';
+export const DELETE_VIDEO = 'DELETE_VIDEO';
+export const EDIT_VIDEO = 'EDIT_VIDEO';
 
-// export const uploadVideo = async (title, description, selectedFile, onUploadProgress) => {
-//   const formData = new FormData();
-//   formData.append('video[title]', title);
-//   formData.append('video[description]', description);
-//   formData.append('video[video_file]', selectedFile);
 
-//   const response = await csrfFetch('/api/videos', {
-//     method: 'POST',
-//     body: formData,
-//   });
-
-//   if (response.ok) {
-//     return { type: UPLOAD_VIDEO, payload: {success: true} };
-//   } else {
-//     const errorData = await response.json();
-//     console.error('Upload failed:', errorData.errors);
-//     return { type: UPLOAD_VIDEO, payload: { success: false, errors: errorData.errors} };
-//   }
-
-// }
 
 export const uploadVideo = (title, description, file, setUploadProgress) => {
   return async (dispatch) => {
@@ -53,4 +37,54 @@ export const uploadVideo = (title, description, file, setUploadProgress) => {
       console.error(err);
     }
   };
+};
+
+// ...
+
+export const deleteVideo = (id) => async (dispatch) => {
+  try {
+    // Perform the delete request using your API
+    const response = await csrfFetch(`/api/videos/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw response;
+    }
+
+    dispatch({
+      type: DELETE_VIDEO,
+      payload: id,
+    });
+  } catch (error) {
+    // Handle error
+    console.error(error);
+  }
+};
+
+export const editVideo = (id, title, description) => async (dispatch) => {
+  try {
+    // Perform the update request using your API
+    const response = await csrfFetch(`/api/videos/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title, description }),
+    });
+
+    if (!response.ok) {
+      throw response;
+    }
+
+    const updatedVideo = await response.json();
+
+    dispatch({
+      type: EDIT_VIDEO,
+      payload: updatedVideo,
+    });
+  } catch (error) {
+    // Handle error
+    console.error(error);
+  }
 };

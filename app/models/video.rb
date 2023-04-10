@@ -18,7 +18,8 @@ class Video < ApplicationRecord
   has_many :comments,
     primary_key: :id,
     foreign_key: :video_id,
-    class_name: :Comment
+    class_name: :Comment,
+    dependent: :destroy
 
   has_one_attached :video_file
 

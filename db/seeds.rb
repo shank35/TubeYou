@@ -55,7 +55,7 @@ ApplicationRecord.transaction do
   # Create 20 random videos
   users = User.all
   video_files = Dir[Rails.root.join('db', 'seeds', 'videos', '*')]
-  videoFile = URI.open("https://tubeyou-dev.s3.amazonaws.com/cleaned.mp4")
+  videoFile = URI.open("https://tubeyou-dev.s3.amazonaws.com/Best+Highlights+of+Hinata+Shoyo+against+Inarizaki+_+Haikyuu+To+The+Top+Part+2.mp4")
 
   10.times do
     title = Faker::Lorem.sentence(word_count: 3)

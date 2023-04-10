@@ -1,34 +1,76 @@
 // videoPlayer.js
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { deleteVideo, editVideo } from '../../actions/videoActions';
 
 const VideoPlayer = ({ video }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const [editing, setEditing] = useState(false);
+  const [title, setTitle] = useState(video.title);
+  const [description, setDescription] = useState(video.description);
+
+  const handleDelete = async () => {
+    await dispatch(deleteVideo(video.id));
+    history.push('/'); // Redirect to homepage
+  };
+
+  const handleEdit = () => {
+    if (editing) {
+      dispatch(editVideo(video.id, title, description));
+    }
+    setEditing(!editing);
+  };
 
   if (!video) {
     return <div>Loading...</div>;
   }
 
-  const { title, description, videoFileUrl } = video;
+  const { videoFileUrl } = video;
 
   const handleDescriptionClick = () => {
     setShowFullDescription(!showFullDescription);
   };
 
+
   return (
     <div>
       <div className="video-player">
         <div className="video-container">
-          <video
-            width="100%"
-            controls
-            src={videoFileUrl}
-            type="video/mp4"
-          >
+          <video width="100%" controls src={videoFileUrl} type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
         <div className="video-details">
-          <h1 className="video-title">{title}</h1>
+          {editing ? (
+            <>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Title"
+              />
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Description"
+              ></textarea>
+            </>
+          ) : (
+            <>
+              <h1 className="video-title">{title}</h1>
+              <div className={`description ${showFullDescription ? 'expanded' : 'collapsed'}`}>
+                <p>{description}</p>
+                <button onClick={handleDescriptionClick} className="description-toggle">
+                  {showFullDescription ? 'Show less' : 'Show more'}
+                </button>
+              </div>
+            </>
+          )}
           <div className="video-info">
             <div className="views-and-likes">
               <p>1000 views</p>
@@ -51,16 +93,15 @@ const VideoPlayer = ({ video }) => {
               <button className="subscribe-button">Subscribe</button>
             </div>
           </div>
-          <div className={`description ${showFullDescription ? 'expanded' : 'collapsed'}`}>
-            <p>{description}</p>
-            <button onClick={handleDescriptionClick} className="description-toggle">
-              {showFullDescription ? 'Show less' : 'Show more'}
-            </button>
+          <div className="video-edit-delete">
+            <button onClick={handleEdit}>{editing ? 'Save' : 'Edit'}</button>
+            <button onClick={handleDelete}>Delete</button>
           </div>
         </div>
       </div>
     </div>
   );
+  
 };
 
 export default VideoPlayer;

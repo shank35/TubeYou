@@ -9,7 +9,7 @@ class Api::VideosController < ApplicationController
     @video = Video.find(params[:id])
     render :show
   end
-  
+
   def create 
     if params[:video]
       @video = Video.new(video_params)
@@ -25,7 +25,7 @@ class Api::VideosController < ApplicationController
       render json: { error: "Missing 'video' parameter" }, status: :unprocessable_entity
     end
   end
-  
+
   def update 
     @video = Video.find(params[:id])
     if @video.update(video_params)
