@@ -5,9 +5,7 @@ const Comment = ({ comment }) => {
   const renderReplies = () => {
     return comment.replies.map((reply) => <Comment key={reply.id} comment={reply} />);
   };
-  console.log(comment)
 
-  console.log(comment.author.username)
   return (
     <div className="comment">
       <div className="comment-author">{comment.author && comment.author.username}</div>
