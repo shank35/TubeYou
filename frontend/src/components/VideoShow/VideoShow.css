@@ -9,7 +9,6 @@
   gap: 1rem;
   padding-left: 20px;
   padding-bottom: 50px;
-
 }
 
 .video-container {
@@ -19,7 +18,6 @@
   width: 100%;
   max-width: 100%;
 }
-
 
 .video-container video {
   position: absolute;
@@ -123,6 +121,27 @@
 .description-toggle:hover {
   text-decoration: underline;
 }
+
+/* Add styles for edit and delete buttons */
+.video-edit-delete {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.video-edit-delete button {
+  background-color: #167AC6;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.video-edit-delete button:hover {
+  background-color: #115A93;
+}
+
 
 /* Media queries for responsiveness */
 @media (min-width: 1200px) {
