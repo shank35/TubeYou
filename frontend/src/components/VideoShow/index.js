@@ -10,13 +10,13 @@ import "./VideoShow.css";
 function VideoShowPage(props) {
   const { videoId } = useParams();
   const { user } = props;
-  // console.log(user)
+
   return (
     <>
       <div className="videoShow">
         <div className="videoShow-content">
         <VideoShow videoId={videoId} user={user} />
-        <CommentList videoId={videoId} />
+        <CommentList videoId={videoId} user={user} />
         </div>
       </div>
     </>

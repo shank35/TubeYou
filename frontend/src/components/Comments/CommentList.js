@@ -1,30 +1,39 @@
 // frontend/src/components/CommentList.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import csrfFetch from '../../store/csrf'; 
+import './CommentList.css';
 
 import Comment from './Comment';
 import CommentForm from './CommentForm';
 
-const CommentList = ({ videoId }) => {
+const CommentList = ({ videoId, user }) => {
   const [comments, setComments] = useState([]);
 
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get(`/api/videos/${videoId}/comments`);
+      setComments(Object.values(response.data).reverse());
+    } catch (error) {
+      console.error('Error fetching comments:', error);
+    }
+  };
+
   useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const response = await axios.get(`/api/videos/${videoId}/comments`);
-        setComments(Object.values(response.data));
-      } catch (error) {
-        console.error('Error fetching comments:', error);
-        // Handle the error, e.g. display an error message to the user
-      }
-    };
     fetchComments();
   }, [videoId]);
-  
+
   const handleCommentSubmit = (comment) => {
-    axios.post(`/api/videos/${videoId}/comments`, comment)
-      .then((response) => {
-        setComments((prevComments) => [...prevComments, response.data]);
+    csrfFetch(`/api/videos/${videoId}/comments`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ comment }),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        fetchComments();
       })
       .catch((error) => {
         console.error('Error submitting comment:', error);
@@ -32,22 +41,33 @@ const CommentList = ({ videoId }) => {
   };
   
   const handleCommentDelete = (comment) => {
-    axios.delete(`/api/comments/${comment.id}`)
+    csrfFetch(`/api/videos/${videoId}/comments/${comment.id}`, {
+      method: 'DELETE',
+    })
       .then(() => {
-        setComments((prevComments) => prevComments.filter((c) => c.id !== comment.id));
+        setComments((prevComments) =>
+          prevComments.filter((c) => c.id !== comment.id)
+        );
       })
       .catch((error) => {
         console.error('Error deleting comment:', error);
       });
   };
   
+  
   const handleCommentUpdate = (comment) => {
-    axios.put(`/api/comments/${comment.id}`, comment)
+    csrfFetch(`/api/videos/${videoId}/comments/${comment.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(comment),
+    })
       .then(() => {
         setComments((prevComments) => {
           return prevComments.map((c) => {
             if (c.id === comment.id) {
-              return comment;
+              return { ...c, ...comment };
             } else {
               return c;
             }
@@ -58,21 +78,37 @@ const CommentList = ({ videoId }) => {
         console.error('Error updating comment:', error);
       });
   };
-  console.log(comments)
 
+  const renderComment = (comment) => (
+    <Comment
+      key={comment.id}
+      comment={comment}
+      user={user}
+      onDelete={handleCommentDelete}
+      onUpdate={handleCommentUpdate}
+      videoId={videoId}
+      fetchComments={fetchComments}
+      renderComment={renderComment}
+    />
+  );
+
+  
   return (
     <div>
-      <CommentForm videoId={videoId} onSubmit={handleCommentSubmit} />
-      {comments.map((comment, index) => (
-        <Comment
-          key={`${comment.id}_${index}`}
-          comment={comment}
-          onDelete={handleCommentDelete}
-          onUpdate={handleCommentUpdate}
-        />
-      ))}
+      <CommentForm
+        videoId={videoId}
+        user={user} // Add this prop
+        onCommentSubmitted={fetchComments}
+      />
+      {comments
+        .filter((comment) => !comment.parent_comment_id)
+        .map((comment, index) => renderComment(comment))}
+
     </div>
   );
+
+
+  
 };
 
 export default CommentList;

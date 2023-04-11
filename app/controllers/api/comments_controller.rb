@@ -14,13 +14,10 @@ class Api::CommentsController < ApplicationController
     if @comment.save
       render :show, status: :created
     else
-      debugger
       render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end
   end
   
-  
-
   def show
     render :show
   end
@@ -35,8 +32,13 @@ class Api::CommentsController < ApplicationController
   
 
   def destroy
-    @comment.destroy
+    if @comment.destroy
+      render json: { message: 'Comment deleted' }, status: :ok
+    else
+      render json: { errors: 'Unable to delete comment' }, status: :unprocessable_entity
+    end
   end
+  
 
   private
 
@@ -45,7 +47,8 @@ class Api::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :video_id)
+    params.require(:comment).permit(:content, :video_id, :parent_comment_id)
   end
+  
   
 end
