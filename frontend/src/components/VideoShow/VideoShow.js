@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import VideoPlayer from './VideoPlayer';
 
-const VideoShow = ({ videoId }) => {
+const VideoShow = ({ videoId, user }) => {
   const [video, setVideo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -33,7 +33,7 @@ const VideoShow = ({ videoId }) => {
     return <div>Error: {error}</div>;
   }
 
-  return video ? <VideoPlayer video={video} /> : <div>Loading...</div>;
+  return video ? <VideoPlayer video={video} user={user} /> : <div>Loading...</div>;
   
 };
 

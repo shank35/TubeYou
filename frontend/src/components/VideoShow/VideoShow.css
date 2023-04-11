@@ -45,6 +45,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
+  margin-top: 1rem;
 }
 
 .video-actions {
@@ -141,6 +142,7 @@
 .video-edit-delete button:hover {
   background-color: #115A93;
 }
+
 
 
 /* Media queries for responsiveness */

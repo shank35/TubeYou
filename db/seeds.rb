@@ -15,6 +15,7 @@ ApplicationRecord.transaction do
   User.destroy_all
   Video.destroy_all 
   Comment.destroy_all
+  videoFile = URI.open("https://tubeyou-dev.s3.amazonaws.com/Best+Highlights+of+Hinata+Shoyo+against+Inarizaki+_+Haikyuu+To+The+Top+Part+2.mp4")
 
 
   puts "Resetting primary keys..."
@@ -31,7 +32,7 @@ ApplicationRecord.transaction do
     password: 'password'
   )
 
-  Video.create!(
+  video1 = Video.create!(
     title: "Introduction to Rails", 
     description: "Learn the basics of Rails in this introductory video.", 
     user_id: user1.id, 
@@ -39,6 +40,8 @@ ApplicationRecord.transaction do
     likes: 20, 
     dislikes: 5
   )
+  video1.video_file.attach(io: videoFile, filename: "test.mp4", content_type: "video/mp4")
+
 
   # Create 10 random users
   10.times do
@@ -55,7 +58,6 @@ ApplicationRecord.transaction do
   # Create 20 random videos
   users = User.all
   video_files = Dir[Rails.root.join('db', 'seeds', 'videos', '*')]
-  videoFile = URI.open("https://tubeyou-dev.s3.amazonaws.com/Best+Highlights+of+Hinata+Shoyo+against+Inarizaki+_+Haikyuu+To+The+Top+Part+2.mp4")
 
   10.times do
     title = Faker::Lorem.sentence(word_count: 3)
@@ -67,7 +69,7 @@ ApplicationRecord.transaction do
 
     video = Video.create!(title: title, description: description, user: user, views: views, likes: likes, dislikes: dislikes)
 
-    video.video_file.attach(io: videoFile, filename: "cleaned.mp4", content_type: "video/mp4")
+    video.video_file.attach(io: videoFile, filename: "test.mp4", content_type: "video/mp4")
 
     video.save!
   end

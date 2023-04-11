@@ -14,9 +14,11 @@ class Api::CommentsController < ApplicationController
     if @comment.save
       render :show, status: :created
     else
+      debugger
       render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end
   end
+  
   
 
   def show
@@ -43,6 +45,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :video_id, :author_id, :parent_comment_id)
+    params.require(:comment).permit(:content, :video_id)
   end
+  
 end

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import { deleteVideo, editVideo } from '../../actions/videoActions';
 
-const VideoPlayer = ({ video }) => {
+const VideoPlayer = ({ video, user }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -15,15 +15,23 @@ const VideoPlayer = ({ video }) => {
   const [description, setDescription] = useState(video.description);
 
   const handleDelete = async () => {
-    await dispatch(deleteVideo(video.id));
-    history.push('/'); // Redirect to homepage
+    if (user.id === video.userId) {
+      await dispatch(deleteVideo(video.id));
+      history.push('/');
+    } else {
+      alert('You are not authorized to delete this video.');
+    }
   };
 
   const handleEdit = () => {
-    if (editing) {
-      dispatch(editVideo(video.id, title, description));
+    if (user.id === video.userId) {
+      if (editing) {
+        dispatch(editVideo(video.id, title, description));
+      }
+      setEditing(!editing);
+    } else {
+      alert('You are not authorized to edit this video.');
     }
-    setEditing(!editing);
   };
 
   if (!video) {
@@ -54,6 +62,28 @@ const VideoPlayer = ({ video }) => {
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Title"
               />
+              <div className="video-info">
+                <div className="views-and-likes">
+                  <p>1000 views</p>
+                </div>
+                <div className="video-actions">
+                  <p>
+                    50 <span className="material-symbols-outlined">thumb_up</span>
+                  </p>
+                  <p>
+                    5 <span className="material-symbols-outlined">thumb_down</span>
+                  </p>
+                </div>
+              </div>
+              <div className="channel-info">
+                <div className="channel-avatar">
+                  <span className="material-symbols-outlined" style={{ fontSize: "50px" }}>face</span>
+                </div>
+                <div className="channel-name">
+                  <p>Channel Name</p>
+                  <button className="subscribe-button">Subscribe</button>
+                </div>
+              </div>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -63,6 +93,28 @@ const VideoPlayer = ({ video }) => {
           ) : (
             <>
               <h1 className="video-title">{title}</h1>
+              <div className="video-info">
+                <div className="views-and-likes">
+                  <p>1000 views</p>
+                </div>
+                <div className="video-actions">
+                  <p>
+                    50 <span className="material-symbols-outlined">thumb_up</span>
+                  </p>
+                  <p>
+                    5 <span className="material-symbols-outlined">thumb_down</span>
+                  </p>
+                </div>
+              </div>
+              <div className="channel-info">
+                <div className="channel-avatar">
+                  <span className="material-symbols-outlined" style={{ fontSize: "50px" }}>face</span>
+                </div>
+                <div className="channel-name">
+                  <p>Channel Name</p>
+                  <button className="subscribe-button">Subscribe</button>
+                </div>
+              </div>
               <div className={`description ${showFullDescription ? 'expanded' : 'collapsed'}`}>
                 <p>{description}</p>
                 <button onClick={handleDescriptionClick} className="description-toggle">
@@ -71,28 +123,6 @@ const VideoPlayer = ({ video }) => {
               </div>
             </>
           )}
-          <div className="video-info">
-            <div className="views-and-likes">
-              <p>1000 views</p>
-            </div>
-            <div className="video-actions">
-              <p>
-                50 <span className="material-symbols-outlined">thumb_up</span>
-              </p>
-              <p>
-                5 <span className="material-symbols-outlined">thumb_down</span>
-              </p>
-            </div>
-          </div>
-          <div className="channel-info">
-            <div className="channel-avatar">
-              <span className="material-symbols-outlined" style={{ fontSize: "50px" }}>face</span>
-            </div>
-            <div className="channel-name">
-              <p>Channel Name</p>
-              <button className="subscribe-button">Subscribe</button>
-            </div>
-          </div>
           <div className="video-edit-delete">
             <button onClick={handleEdit}>{editing ? 'Save' : 'Edit'}</button>
             <button onClick={handleDelete}>Delete</button>
