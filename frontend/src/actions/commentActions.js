@@ -1,23 +1,27 @@
-import axios from 'axios';
-import csrfFetch from '../store/csrf';
+// frontend/src/actions/commentActions.js
+export const SET_COMMENT = "SET_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 
-export const createComment = (commentData) => {
-  return (dispatch) => {
-    return csrfFetch('/api/csrf_token')
-      .then((response) => response.text())
-      .then((csrfToken) => {
-        const headers = {
-          'X-CSRF-Token': csrfToken,
-          'Content-Type': 'application/json',
-        };
-        return axios.post(`/api/videos/${commentData.videoId}/comments`, { comment: commentData }, { headers })
-          .then(response => {
-            const comment = response.data;
-            dispatch({ type: 'CREATE_COMMENT_SUCCESS', comment });
-          })
-          .catch(error => {
-            dispatch({ type: 'CREATE_COMMENT_FAILURE', error });
-          });
-      });
+export const receiveComments = (comments) => {
+  return {
+    type: RECEIVE_COMMENTS,
+    payload: comments,
   };
 };
+
+export const setComment = (comment) => ({
+  type: SET_COMMENT,
+  payload: comment,
+});
+
+export const editComment = (comment) => ({
+  type: EDIT_COMMENT,
+  payload: comment,
+});
+
+export const deleteComment = (commentId) => ({
+  type: DELETE_COMMENT,
+  payload: commentId,
+});

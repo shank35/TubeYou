@@ -1,29 +1,35 @@
 // frontend/src/components/CommentForm.js
-import React, { useState } from 'react';
-import csrfFetch from '../../store/csrf';
-import './CommentForm.css';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setComment } from "../../actions/commentActions";
+import csrfFetch from "../../store/csrf";
+import "./CommentForm.css";
 
-function CommentForm({ videoId, parentCommentId, onCommentSubmitted, user, onCancel }) {
-  const [content, setContent] = useState('');
+function CommentForm({ videoId, parentCommentId, onCommentSubmitted, user }) {
+  const [content, setContent] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting comment with parentCommentId:', parentCommentId); // Add this line
     const response = await csrfFetch(`/api/videos/${videoId}/comments`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ comment: { content, parent_comment_id: parentCommentId, author_id: user.id } }),
+      body: JSON.stringify({
+        comment: {
+          content,
+          parent_comment_id: parentCommentId,
+          author_id: user.id,
+        },
+      }),
     });
-  
+
     const data = await response.json();
-    console.log(data);
+    dispatch(setComment(data));
 
-    // Clear the content state variable to make the comment disappear
-    setContent('');
+    setContent("");
 
-    // Call the onCommentSubmitted callback function after submitting the comment
     if (onCommentSubmitted) {
       onCommentSubmitted();
     }
@@ -41,7 +47,9 @@ function CommentForm({ videoId, parentCommentId, onCommentSubmitted, user, onCan
           placeholder="Add a comment..."
         />
         <div className="comment-buttons">
-          <button type="button" onClick={onCancel}>CANCEL</button>
+          <button type="button" onClick={() => setContent("")}>
+            CANCEL
+          </button>
           <button type="submit">COMMENT</button>
         </div>
       </div>

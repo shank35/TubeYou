@@ -4,8 +4,14 @@ import csrfFetch from '../store/csrf';
 export const UPLOAD_VIDEO = 'UPLOAD_VIDEO';
 export const DELETE_VIDEO = 'DELETE_VIDEO';
 export const EDIT_VIDEO = 'EDIT_VIDEO';
+export const RECEIVE_VIDEO = 'RECEIVE_VIDEO';
 
-
+export const receiveVideo = (video) => {
+  return {
+    type: RECEIVE_VIDEO,
+    video,
+  };
+};
 
 export const uploadVideo = (title, description, file, setUploadProgress) => {
   return async (dispatch) => {

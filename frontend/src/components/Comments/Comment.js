@@ -1,19 +1,24 @@
 // frontend/src/components/Comment.js
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { editComment, deleteComment } from "../../actions/commentActions";
+
 import CommentForm from './CommentForm';
 import './Comment.css';
 
-const Comment = ({ comment, user, onDelete, onUpdate, videoId, fetchComments, renderComment }) => {
+const Comment = ({ comment, user, videoId, fetchComments, renderComment }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
   const [showReplyForm, setShowReplyForm] = useState(false);
+  const comments = useSelector((state) => state.comment.comments);
+  const dispatch = useDispatch();
 
   const handleReply = () => {
     setShowReplyForm(!showReplyForm);
   };
 
   const handleDelete = () => {
-    onDelete(comment);
+    dispatch(deleteComment(comment.id));
   };
 
   const handleEdit = () => {
@@ -21,7 +26,7 @@ const Comment = ({ comment, user, onDelete, onUpdate, videoId, fetchComments, re
   };
 
   const handleUpdate = async () => {
-    await onUpdate({ ...comment, content: editedContent });
+    await dispatch(editComment({ ...comment, content: editedContent }));
     setIsEditing(false);
   };
 
@@ -30,23 +35,19 @@ const Comment = ({ comment, user, onDelete, onUpdate, videoId, fetchComments, re
   };
 
   const renderCommentReplies = () => {
-    console.log("Rendering replies for comment:", comment.id); // Add this line
-
-    return comment.replies.map((reply, index) => (
-      <Comment
-        key={`${reply.id}_${index}`}
-        comment={reply}
-        user={user}
-        onDelete={onDelete}
-        onUpdate={onUpdate}
-        videoId={videoId}
-        fetchComments={fetchComments}
-        renderComment={renderComment}
-      />
-    ));
+    return comments
+      .filter((c) => c.parent_comment_id === comment.id)
+      .map((reply, index) => (
+        <Comment
+          key={`${reply.id}_${index}`}
+          comment={reply}
+          user={user}
+          videoId={videoId}
+          fetchComments={fetchComments}
+          renderComment={renderComment}
+        />
+      ));
   };
-  
-  
 
   return (
     <div className="comment">
@@ -79,11 +80,12 @@ const Comment = ({ comment, user, onDelete, onUpdate, videoId, fetchComments, re
           onCancel={handleCancel}
         />
       )}
-
-      {comment.replies && <div className="replies">{renderCommentReplies()}</div>}
+      {comment.replies && (
+        <div className="replies">{renderCommentReplies()}</div>
+      )}
     </div>
-
   );
 };
+
 
 export default Comment;

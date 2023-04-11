@@ -1,12 +1,16 @@
-import { UPLOAD_VIDEO, DELETE_VIDEO, EDIT_VIDEO } from "../actions/videoActions";
+import { UPLOAD_VIDEO, DELETE_VIDEO, EDIT_VIDEO, RECEIVE_VIDEO } from "../actions/videoActions";
 
 const initialState = {
-  uploadSuccess: false,
-  uploadErrors: []
-}
+  videos: []
+};
 
 const videoReducer = (state = initialState, action) => {
   switch (action.type) {
+    case RECEIVE_VIDEO:
+      return {
+        ...state,
+        [action.video.id]: action.video
+      };
     case UPLOAD_VIDEO:
       return {
         ...state,
@@ -25,8 +29,8 @@ const videoReducer = (state = initialState, action) => {
           video._id === action.payload._id ? action.payload : video
         ),
       };
-      default:
-        return state;
+    default:
+      return state;
   }
 };
 
