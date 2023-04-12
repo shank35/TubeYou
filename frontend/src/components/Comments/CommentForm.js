@@ -1,41 +1,22 @@
 // frontend/src/components/CommentForm.js
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setComment } from "../../actions/commentActions";
-import csrfFetch from "../../store/csrf";
+
 import "./CommentForm.css";
 
 function CommentForm({ videoId, parentCommentId, onCommentSubmitted, user }) {
   const [content, setContent] = useState("");
-  const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await csrfFetch(`/api/videos/${videoId}/comments`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        comment: {
-          content,
-          parent_comment_id: parentCommentId,
-          author_id: user.id,
-        },
-      }),
-    });
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (content.trim() === "") {
+    return;
+  }
+  if (onCommentSubmitted) {
+    onCommentSubmitted(content, parentCommentId);
+  }
+  setContent("");
+};
 
-    const data = await response.json();
-    dispatch(setComment({ comment: data }));
-    
-
-    setContent("");
-
-    if (onCommentSubmitted) {
-      onCommentSubmitted();
-    }
-    
-  };
 
   return (
     <form onSubmit={handleSubmit} className="comment-form">

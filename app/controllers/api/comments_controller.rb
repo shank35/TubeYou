@@ -3,11 +3,10 @@ class Api::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
 
   def index
-    @comments = Comment.where(video_id: params[:video_id])
+    @comments = Comment.joins(:author).where(video_id: params[:video_id])
     render :index
   end
-
-
+  
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.video_id = params[:video_id]
@@ -31,7 +30,6 @@ class Api::CommentsController < ApplicationController
     end
   end
   
-
   def destroy
     if @comment.destroy
       render json: { id: @comment.id }, status: :ok
@@ -40,8 +38,6 @@ class Api::CommentsController < ApplicationController
     end
   end
   
-  
-
   private
 
   def set_comment

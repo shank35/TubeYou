@@ -31,9 +31,26 @@ const CommentList = ({ videoId, user }) => {
     fetchComments();
   }, [videoId, dispatch]);
 
-  const handleCommentSubmit = (comment) => {
+  const handleCommentSubmit = async (content, parentCommentId) => {
+    const response = await csrfFetch(`/api/videos/${videoId}/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        comment: {
+          content,
+          parent_comment_id: parentCommentId,
+          author_id: user.id,
+        },
+      }),
+    });
+    const data = await response.json();
+    dispatch(setComment({ comment: data }));
     fetchComments();
   };
+  
+  
   
   const handleCommentDelete = async (comment) => {
     const response = await csrfFetch(`/api/videos/${videoId}/comments/${comment.id}`, {
@@ -52,11 +69,18 @@ const CommentList = ({ videoId, user }) => {
       },
       body: JSON.stringify({ content: updatedContent }),
     });
-  
-    const updatedComment = await response.json();
-    dispatch(editComment(updatedComment));
-    fetchComments();
+    const data = await response.json();
+    // Find the index of the comment to update
+    const commentIndex = comments.findIndex((comment) => comment.id === data.id);
+    if (commentIndex >= 0) {
+      // Create a new comments array with the updated comment
+      const newComments = [...comments];
+      newComments[commentIndex] = data;
+      // Update the state with the new comments array
+      dispatch(receiveComments(newComments));
+    }
   };
+  
   
 
   const renderComment = (comment, index) => {

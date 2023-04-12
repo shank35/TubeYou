@@ -1,8 +1,5 @@
 // frontend/src/components/Comment.js
 import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
-import { editComment, deleteComment } from "../../actions/commentActions";
-
 import CommentForm from './CommentForm';
 import './Comment.css';
 
@@ -10,12 +7,14 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
   const [showReplyForm, setShowReplyForm] = useState(false);
-  const dispatch = useDispatch();
+
+  const { content, author } = comment;
+  // console.log(author)
 
   const handleReply = () => {
     setShowReplyForm(!showReplyForm);
   };
-  
+
   const handleEdit = () => {
     setIsEditing(true);
   };
@@ -23,8 +22,8 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
   const handleUpdate = async () => {
     await onUpdate(comment.id, editedContent);
     setIsEditing(false);
+    fetchComments();
   };
-
 
   const handleCancel = () => {
     setShowReplyForm(false);

@@ -4,6 +4,7 @@
   margin-bottom: 24px;
   padding-left: 30px;
   padding-right: 30px;
+  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
 }
 
 .comment-author {
@@ -62,6 +63,39 @@
   border-top: none;
   padding-top: 0;
 }
+
+.comment input[type="text"],
+.comment textarea {
+  background-color: #edecec;
+  border: 1px solid #a2a2a2;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #444;
+  font-size: 14px;
+  padding: 8px 10px;
+  width: 100%;
+}
+
+.comment button {
+  background-color: #f00;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #666;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px 15px;
+  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+}
+
+.comment button:hover {
+  background-color: rgb(255, 75, 75);
+}
+
+.comment button:focus {
+  outline: none;
+}
+
 
 @media (min-width: 1200px) {
   .comment {
