@@ -6,7 +6,7 @@ import { editComment, deleteComment } from "../../actions/commentActions";
 import CommentForm from './CommentForm';
 import './Comment.css';
 
-const Comment = ({ comment, user, videoId, fetchComments, renderComment }) => {
+const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelete, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
   const [showReplyForm, setShowReplyForm] = useState(false);
@@ -15,19 +15,16 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment }) => {
   const handleReply = () => {
     setShowReplyForm(!showReplyForm);
   };
-
-  const handleDelete = async () => {
-    await dispatch(deleteComment(comment.id));
-  };
   
   const handleEdit = () => {
     setIsEditing(true);
   };
 
   const handleUpdate = async () => {
-    await dispatch(editComment({ ...comment, content: editedContent }));
+    await onUpdate(comment.id, editedContent);
     setIsEditing(false);
   };
+
 
   const handleCancel = () => {
     setShowReplyForm(false);
@@ -64,7 +61,7 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment }) => {
       {user && user.id === comment.authorId && !isEditing && (
         <div>
           <button onClick={handleEdit}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+          <button onClick={() => onDelete(comment)}>Delete</button>
           <button onClick={handleReply}>Reply</button>
         </div>
       )}

@@ -34,10 +34,8 @@ class Api::CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      puts "Comment with ID: #{params[:id]} was deleted."
-      render json: { message: 'Comment deleted' }, status: :ok
+      render json: { id: @comment.id }, status: :ok
     else
-      puts "Unable to delete comment with ID: #{params[:id]}."
       render json: { errors: 'Unable to delete comment' }, status: :unprocessable_entity
     end
   end

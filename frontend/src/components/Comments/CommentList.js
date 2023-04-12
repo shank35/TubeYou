@@ -15,6 +15,7 @@ const CommentList = ({ videoId, user }) => {
   const comments = useSelector((state) => Object.values(state.comment));
   const dispatch = useDispatch();
 
+
   const fetchComments = async () => {
     try {
       const response = await csrfFetch(`/api/videos/${videoId}/comments`);
@@ -35,18 +36,33 @@ const CommentList = ({ videoId, user }) => {
   };
   
   const handleCommentDelete = async (comment) => {
-    await dispatch(deleteComment(comment.id));
+    const response = await csrfFetch(`/api/videos/${videoId}/comments/${comment.id}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    dispatch(deleteComment(data.id));
+    return response;
   };
   
-  const handleCommentUpdate = (comment) => {
-    dispatch(editComment(comment));
+  const handleCommentUpdate = async (commentId, updatedContent) => {
+    const response = await csrfFetch(`/api/videos/${videoId}/comments/${commentId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ content: updatedContent }),
+    });
+  
+    const updatedComment = await response.json();
+    dispatch(editComment(updatedComment));
     fetchComments();
   };
+  
 
-  const renderComment = (comment) => {
+  const renderComment = (comment, index) => {
     return (
       <Comment
-        key={comment.id}
+        key={comment.id || index}
         comment={comment}
         user={user}
         onDelete={handleCommentDelete}
@@ -65,9 +81,9 @@ const CommentList = ({ videoId, user }) => {
         user={user}
         onCommentSubmitted={handleCommentSubmit}
       />
-      {comments
-        .filter((comment) => !comment.parent_comment_id).reverse()
-        .map((comment, index) => renderComment(comment, index))}
+    {comments
+      .filter((comment) => !comment.parent_comment_id).reverse()
+      .map((comment, index) => renderComment(comment, index))}
     </div>
   );
   

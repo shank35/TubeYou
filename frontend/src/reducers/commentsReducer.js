@@ -16,9 +16,10 @@ const commentReducer = (state = initialState, action) => {
         [action.payload.id]: action.payload,
       };
     case DELETE_COMMENT:
-      const comment = action.payload;
-      const { [comment]: _remove, ...newState } = state;
+      const commentId = action.payload;
+      const { [commentId]: _remove, ...newState } = state;
       return newState;
+    
     case RECEIVE_COMMENTS:
       const commentsObj = action.payload.reduce((acc, comment) => {
         acc[comment.id] = comment;
