@@ -104,12 +104,12 @@ function ProfileButton() {
               </button>
             </li>
             <hr className="dropdownDivider" />
-            <li className="dropdownList">
+            {/* <li className="dropdownList">
               <button className="dropdownButton">
                 <span className="material-symbols-outlined">settings</span>
                 Settings
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
       )}

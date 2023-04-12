@@ -111,22 +111,22 @@ const LikeButton = ({ videoId }) => {
 
 
   return (
-    <div class="like-buttons">
-      <span class="like-count">{likeCount}</span>
+    <div className="like-buttons">
+      <span className="like-count">{likeCount}</span>
       <button
         className={`like-button ${likeStatus === true ? 'active' : ''}`}
         onClick={handleLikes}
       >
-        <i class="fas fa-thumbs-up"></i>
+        <i className="fas fa-thumbs-up fa-2x"></i>
         Like
       </button>
       <span className="dislike-count">{dislikeCount}</span>
 
       <button
-        class={`dislike-button ${dislikeStatus === true ? 'active' : ''}`}
+        className={`dislike-button ${dislikeStatus === true ? 'active' : ''}`}
         onClick={handleDislike}
       >
-        <i className="fas fa-thumbs-down"></i>
+        <i className="fas fa-thumbs-down fa-2x"></i>
         Dislike
       </button>
     </div>

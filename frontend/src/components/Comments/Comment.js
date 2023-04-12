@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 import CommentForm from './CommentForm';
 import './Comment.css';
 
-const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelete, onUpdate, onReply, handleCommentSubmit }) => {
+const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelete, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
   const [showReplyForm, setShowReplyForm] = useState(false);
+
+  const { content, author } = comment;
+  // console.log(author)
 
   const handleReply = () => {
     setShowReplyForm(!showReplyForm);
@@ -19,6 +22,7 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
   const handleUpdate = async () => {
     await onUpdate(comment.id, editedContent);
     setIsEditing(false);
+    fetchComments();
   };
 
   const handleCancel = () => {
@@ -32,10 +36,8 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
           comment={reply}
           user={user}
           videoId={videoId}
+          fetchComments={fetchComments}
           renderComment={renderComment}
-          onDelete={onDelete}
-          onUpdate={onUpdate}
-          onReply={onReply}
         />
       ));
   };
@@ -67,7 +69,7 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
           videoId={videoId}
           user={user}
           parentCommentId={comment.id}
-          onCommentSubmitted={(content, parentCommentId) => handleCommentSubmit(content, parentCommentId, fetchComments)}
+          onCommentSubmitted={fetchComments}
           onCancel={handleCancel}
         />
       )}

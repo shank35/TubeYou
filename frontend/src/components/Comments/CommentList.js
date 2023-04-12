@@ -1,7 +1,7 @@
 // frontend/src/components/CommentList.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { setComment, deleteComment } from "../../actions/commentActions";
+import { setComment, editComment, deleteComment } from "../../actions/commentActions";
 import { receiveComments } from '../../actions/commentActions';
 
 import csrfFetch from '../../store/csrf'; 
@@ -14,6 +14,7 @@ const CommentList = ({ videoId, user }) => {
   
   const comments = useSelector((state) => Object.values(state.comment));
   const dispatch = useDispatch();
+
 
   const fetchComments = async () => {
     try {
@@ -50,6 +51,7 @@ const CommentList = ({ videoId, user }) => {
   };
   
   
+  
   const handleCommentDelete = async (comment) => {
     const response = await csrfFetch(`/api/videos/${videoId}/comments/${comment.id}`, {
       method: 'DELETE',
@@ -68,30 +70,31 @@ const CommentList = ({ videoId, user }) => {
       body: JSON.stringify({ content: updatedContent }),
     });
     const data = await response.json();
-    fetchComments();
+    // Find the index of the comment to update
+    const commentIndex = comments.findIndex((comment) => comment.id === data.id);
+    if (commentIndex >= 0) {
+      // Create a new comments array with the updated comment
+      const newComments = [...comments];
+      newComments[commentIndex] = data;
+      // Update the state with the new comments array
+      dispatch(receiveComments(newComments));
+    }
   };
   
+  
+
   const renderComment = (comment, index) => {
     return (
-      <div key={comment.id || index}>
-<Comment
-  key={comment.id || index}
-  comment={comment}
-  user={user}
-  onDelete={handleCommentDelete}
-  onUpdate={handleCommentUpdate}
-  videoId={videoId}
-  fetchComments={fetchComments}
-  handleCommentSubmit={handleCommentSubmit}
-  renderComment={renderComment}
-/>
-
-        {comment.replies && (
-          <div className="nested-replies">
-            {comment.replies.map((reply, index) => renderComment(reply, index))}
-          </div>
-        )}
-      </div>
+      <Comment
+        key={comment.id || index}
+        comment={comment}
+        user={user}
+        onDelete={handleCommentDelete}
+        onUpdate={handleCommentUpdate}
+        videoId={videoId}
+        fetchComments={fetchComments}
+        renderComment={renderComment}
+      />
     );
   };
   
@@ -100,13 +103,14 @@ const CommentList = ({ videoId, user }) => {
       <CommentForm
         videoId={videoId}
         user={user}
-        onCommentSubmitted={(content, parentCommentId) => handleCommentSubmit(content, parentCommentId, fetchComments)}
-      />  
-      {comments
-        .filter((comment) => !comment.parent_comment_id).reverse()
-        .map((comment, index) => renderComment(comment, index))}
+        onCommentSubmitted={handleCommentSubmit}
+      />
+    {comments
+      .filter((comment) => !comment.parent_comment_id).reverse()
+      .map((comment, index) => renderComment(comment, index))}
     </div>
   );
+  
 };
 
 export default CommentList;

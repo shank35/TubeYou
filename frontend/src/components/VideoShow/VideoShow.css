@@ -6,9 +6,12 @@
 .video-player {
   display: flex;
   flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
   padding-left: 20px;
   padding-bottom: 50px;
+  /* justify-content: center;
+  align-items: center;  */
 }
 
 .video-container {
@@ -33,6 +36,7 @@
   gap: 1rem;
   padding: 0 20px;
   max-width: 58vw;
+  
 }
 
 .video-title {

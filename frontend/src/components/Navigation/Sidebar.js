@@ -29,27 +29,27 @@ function Sidebar({ navVisible, setNavVisible }) {
                   <span className="material-symbols-outlined sidebarMenuIcon">home</span>
                   <button className="sidebarText">Home</button>                      
                 </li>
-                <li className="sidebarMenuItem">
+                {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">subscriptions</span>
                   <button className="sidebarText">Subscriptions</button>
-                </li>
+                </li> */}
                 <li className="sidebarLine"></li>
-                <li className="sidebarMenuItem">
+                {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">video_library</span>
                   <button className="sidebarText">Library</button>
-                </li>
-                <li className="sidebarMenuItem">
+                </li> */}
+                {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">history</span>
                   <button className="sidebarText">History</button>
-                </li>
+                </li> */}
                 <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">smart_display</span>
                   <button className="sidebarText">Your Videos</button>
                 </li>
-                <li className="sidebarMenuItem">
+                {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">schedule</span>
                   <button className="sidebarText">Watch Later</button>
-                </li>
+                </li> */}
                 <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">thumb_up</span>
                   <button className="sidebarText">Like Videos</button>
@@ -58,7 +58,7 @@ function Sidebar({ navVisible, setNavVisible }) {
                 <li className="sidebarHeader sidebarMenuIcon">
                   <span className="sidebarText">Subscriptions</span>
                 </li>
-                <li className="sidebarMenuItem">
+                {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">person</span>
                   <button className="sidebarText">Channel 1</button>
                 </li>
@@ -69,20 +69,20 @@ function Sidebar({ navVisible, setNavVisible }) {
                 <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">add_circle</span>  
                   <button className="sidebarText">Browse Channels</button>
-                </li>
-                <li className="sidebarLine"></li>
+                </li> */}
+                {/* <li className="sidebarLine"></li>
                 <li className="sidebarHeader sidebarMenuIcon">
                   <span className="sidebarText">Explore</span>
                 </li>
                 <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">local_fire_department</span>
                   <button className="sidebarText">Trending</button>                 
-                </li>
-                <li className="sidebarLine"></li>
+                </li> */}
+                {/* <li className="sidebarLine"></li>
                 <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">settings</span>                    
                   <button className="sidebarText">Settings</button>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
