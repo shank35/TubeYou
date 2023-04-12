@@ -15,7 +15,6 @@ function VideoShowPage(props) {
       <div className="videoShow">
         <div className="videoShow-content">
         <VideoShow videoId={videoId} user={user} />
-        <LikeButton videoId={videoId} />
         <CommentList videoId={videoId} user={user} />
         </div>
       </div>

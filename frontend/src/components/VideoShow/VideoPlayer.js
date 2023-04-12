@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import LikeButton from '../LikeShow/index';
 
 import { deleteVideo, editVideo } from '../../actions/videoActions';
 
@@ -67,12 +68,7 @@ const VideoPlayer = ({ video, user }) => {
                   <p>1000 views</p>
                 </div>
                 <div className="video-actions">
-                  <p>
-                    50 <span className="material-symbols-outlined">thumb_up</span>
-                  </p>
-                  <p>
-                    5 <span className="material-symbols-outlined">thumb_down</span>
-                  </p>
+                  <LikeButton videoId={video.id} />
                 </div>
               </div>
               <div className="channel-info">
@@ -98,12 +94,7 @@ const VideoPlayer = ({ video, user }) => {
                   <p>1000 views</p>
                 </div>
                 <div className="video-actions">
-                  <p>
-                    50 <span className="material-symbols-outlined">thumb_up</span>
-                  </p>
-                  <p>
-                    5 <span className="material-symbols-outlined">thumb_down</span>
-                  </p>
+                  <LikeButton videoId={video.id} />
                 </div>
               </div>
               <div className="channel-info">
