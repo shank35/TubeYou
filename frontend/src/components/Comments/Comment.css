@@ -39,7 +39,7 @@
   border: none;
   cursor: pointer;
   font-size: 14px;
-  color: #606060;
+  color: white;
 }
 
 .comment-buttons button:hover {
@@ -77,10 +77,10 @@
 }
 
 .comment button {
-  background-color: #f00;
+  background-color: #CC0000;
   border: 1px solid #ddd;
-  border-radius: 3px;
-  color: #666;
+  border-radius: 6px;
+  color: white;
   cursor: pointer;
   font-size: 14px;
   margin-right: 10px;
@@ -89,7 +89,7 @@
 }
 
 .comment button:hover {
-  background-color: rgb(255, 75, 75);
+  background-color: #A80000;
 }
 
 .comment button:focus {

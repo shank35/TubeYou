@@ -21,6 +21,8 @@ class Video < ApplicationRecord
     class_name: :Comment,
     dependent: :destroy
 
+  has_many :likes, dependent: :destroy
+
   has_one_attached :video_file
 
   def video_file_url

@@ -11,8 +11,10 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show, :index, :update]
     resources :videos, only: [:create, :show, :index, :update, :destroy] do 
       resources :comments, only: [:create, :show, :index, :update, :destroy]
+      resources :likes, only: [:create, :show, :destroy, :index], param: :liker_id
     end
   end
+  
 
   get '*path', to: "static_pages#frontend_index"
 

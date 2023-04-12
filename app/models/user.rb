@@ -38,6 +38,8 @@ class User < ApplicationRecord
     class_name: :Comment, 
     dependent: :destroy
 
+    has_many :likes, foreign_key: 'liker_id', dependent: :destroy
+
   def self.find_by_credentials(credential, password)
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username
     user = User.find_by(field => credential)

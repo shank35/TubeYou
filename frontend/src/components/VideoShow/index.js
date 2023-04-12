@@ -1,9 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import VideoShow from './VideoShow';
-// import CommentList from '../Comments/CommentList';
-import CommentForm from '../Comments/CommentForm';
 import CommentList from '../Comments/CommentList';
+import LikeButton from '../LikeShow/index';
 
 import "./VideoShow.css";
 
@@ -16,6 +15,7 @@ function VideoShowPage(props) {
       <div className="videoShow">
         <div className="videoShow-content">
         <VideoShow videoId={videoId} user={user} />
+        <LikeButton videoId={videoId} />
         <CommentList videoId={videoId} user={user} />
         </div>
       </div>
