@@ -1,8 +1,6 @@
 import { UPLOAD_VIDEO, DELETE_VIDEO, EDIT_VIDEO, RECEIVE_VIDEO } from "../actions/videoActions";
 
-const initialState = {
-  videos: []
-};
+const initialState = {};
 
 const videoReducer = (state = initialState, action) => {
   switch (action.type) {

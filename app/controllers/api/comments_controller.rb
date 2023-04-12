@@ -3,9 +3,10 @@ class Api::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
 
   def index
-    @comments = Comment.where(video_id: params[:video_id], parent_comment_id: nil)
+    @comments = Comment.where(video_id: params[:video_id])
     render :index
   end
+
 
   def create
     @comment = current_user.comments.new(comment_params)
@@ -33,11 +34,14 @@ class Api::CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
+      puts "Comment with ID: #{params[:id]} was deleted."
       render json: { message: 'Comment deleted' }, status: :ok
     else
+      puts "Unable to delete comment with ID: #{params[:id]}."
       render json: { errors: 'Unable to delete comment' }, status: :unprocessable_entity
     end
   end
+  
   
 
   private

@@ -1,37 +1,37 @@
 // commentReducer.js
 import { SET_COMMENT, EDIT_COMMENT, DELETE_COMMENT, RECEIVE_COMMENTS } from "../actions/commentActions";
 
-const initialState = {
-  comments: []
-};
+const initialState = {};
 
 const commentReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_COMMENT:
       return {
         ...state,
-        comments: [...state.comments, action.payload.comment],
+        [action.payload.comment.id]: action.payload.comment,
       };
     case EDIT_COMMENT:
       return {
         ...state,
-        comments: state.comments.map((comment) =>
-          comment.id === action.payload.comment.id ? action.payload.comment : comment
-        ),
+        [action.payload.id]: action.payload,
       };
     case DELETE_COMMENT:
-      return {
-        ...state,
-        comments: state.comments.filter((comment) => comment.id !== action.payload.id),
-      };
+      const comment = action.payload;
+      const { [comment]: _remove, ...newState } = state;
+      return newState;
     case RECEIVE_COMMENTS:
+      const commentsObj = action.payload.reduce((acc, comment) => {
+        acc[comment.id] = comment;
+        return acc;
+      }, {});
       return {
         ...state,
-        comments: action.payload.comments,
+        ...commentsObj,
       };
     default:
       return state;
   }
 };
+
 
 export default commentReducer;

@@ -26,13 +26,15 @@ function CommentForm({ videoId, parentCommentId, onCommentSubmitted, user }) {
     });
 
     const data = await response.json();
-    dispatch(setComment(data));
+    dispatch(setComment({ comment: data }));
+    
 
     setContent("");
 
     if (onCommentSubmitted) {
       onCommentSubmitted();
     }
+    
   };
 
   return (

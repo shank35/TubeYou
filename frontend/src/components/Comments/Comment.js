@@ -1,6 +1,6 @@
 // frontend/src/components/Comment.js
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { editComment, deleteComment } from "../../actions/commentActions";
 
 import CommentForm from './CommentForm';
@@ -10,17 +10,16 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
   const [showReplyForm, setShowReplyForm] = useState(false);
-  const comments = useSelector((state) => state.comment.comments);
   const dispatch = useDispatch();
 
   const handleReply = () => {
     setShowReplyForm(!showReplyForm);
   };
 
-  const handleDelete = () => {
-    dispatch(deleteComment(comment.id));
+  const handleDelete = async () => {
+    await dispatch(deleteComment(comment.id));
   };
-
+  
   const handleEdit = () => {
     setIsEditing(true);
   };
@@ -35,9 +34,7 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment }) => {
   };
 
   const renderCommentReplies = () => {
-    return comments
-      .filter((c) => c.parent_comment_id === comment.id)
-      .map((reply, index) => (
+    return renderComment && comment.replies && comment.replies.map((reply, index) => (
         <Comment
           key={`${reply.id}_${index}`}
           comment={reply}
@@ -80,12 +77,9 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment }) => {
           onCancel={handleCancel}
         />
       )}
-      {comment.replies && (
-        <div className="replies">{renderCommentReplies()}</div>
-      )}
+      {renderCommentReplies()}
     </div>
   );
 };
-
 
 export default Comment;

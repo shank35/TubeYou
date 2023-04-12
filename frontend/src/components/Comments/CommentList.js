@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setComment, editComment, deleteComment } from "../../actions/commentActions";
 import { receiveComments } from '../../actions/commentActions';
 
-import axios from 'axios';
 import csrfFetch from '../../store/csrf'; 
 import './CommentList.css';
 
@@ -13,37 +12,35 @@ import CommentForm from './CommentForm';
 
 const CommentList = ({ videoId, user }) => {
   
-  const comments = useSelector((state) => state.comment.comments);
+  const comments = useSelector((state) => Object.values(state.comment));
   const dispatch = useDispatch();
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`/api/videos/${videoId}/comments`);
-      const commentsArray = Object.values(response.data);
-
+      const response = await csrfFetch(`/api/videos/${videoId}/comments`);
+      const commentsArray = Object.values(await response.json());
+  
       dispatch(receiveComments(commentsArray));
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
   };
-
   
-
   useEffect(() => {
     fetchComments();
   }, [videoId, dispatch]);
 
   const handleCommentSubmit = (comment) => {
-    dispatch(setComment(comment));
+    fetchComments();
   };
   
-
-  const handleCommentDelete = (comment) => {
-    dispatch(deleteComment(comment.id));
+  const handleCommentDelete = async (comment) => {
+    await dispatch(deleteComment(comment.id));
   };
-
+  
   const handleCommentUpdate = (comment) => {
     dispatch(editComment(comment));
+    fetchComments();
   };
 
   const renderComment = (comment) => {
@@ -61,8 +58,6 @@ const CommentList = ({ videoId, user }) => {
     );
   };
   
-  
-
   return (
     <div>
       <CommentForm
@@ -71,12 +66,11 @@ const CommentList = ({ videoId, user }) => {
         onCommentSubmitted={handleCommentSubmit}
       />
       {comments
-        .filter((comment) => comment === null)
-        .map((comment, index) => renderComment(comment))}
+        .filter((comment) => !comment.parent_comment_id).reverse()
+        .map((comment, index) => renderComment(comment, index))}
     </div>
   );
   
 };
-
 
 export default CommentList;
