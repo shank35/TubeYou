@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import VideoFormPage from "./components/VideoForm";
 import VideoShowPage from "./components/VideoShow";
+import { SearchResults } from './components/Navigation/SearchBar.js';
 
 function App() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function App() {
     <>
       {location.pathname !== '/login' && location.pathname !== '/password' && location.pathname !== '/signup' && <Navigation />}
       <Switch>
+        <Route path="/search" component={SearchResults} />  
         <Route exact path="/" component={HomePage} />
         <Route exact path="/login" component={LoginFormPage} />
         <Route exact path="/password" component={LoginFormPage} />
