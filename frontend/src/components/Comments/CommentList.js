@@ -20,7 +20,7 @@ const CommentList = ({ videoId, user }) => {
     try {
       const response = await csrfFetch(`/api/videos/${videoId}/comments`);
       const commentsArray = Object.values(await response.json());
-  
+
       dispatch(receiveComments(commentsArray));
     } catch (error) {
       console.error("Error fetching comments:", error);
@@ -46,11 +46,10 @@ const CommentList = ({ videoId, user }) => {
       }),
     });
     const data = await response.json();
+
     dispatch(setComment({ comment: data }));
     fetchComments();
   };
-  
-  
   
   const handleCommentDelete = async (comment) => {
     const response = await csrfFetch(`/api/videos/${videoId}/comments/${comment.id}`, {
@@ -84,6 +83,7 @@ const CommentList = ({ videoId, user }) => {
   
 
   const renderComment = (comment, index) => {
+
     return (
       <Comment
         key={comment.id || index}

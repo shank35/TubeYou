@@ -30,17 +30,21 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
   };
 
   const renderCommentReplies = () => {
+
     return renderComment && comment.replies && comment.replies.map((reply, index) => (
-        <Comment
+      <Comment
           key={`${reply.id}_${index}`}
           comment={reply}
           user={user}
           videoId={videoId}
           fetchComments={fetchComments}
           renderComment={renderComment}
+          onDelete={onDelete}
+          onUpdate={onUpdate}
         />
       ));
   };
+  
 
   return (
     <div className="comment">
@@ -61,7 +65,7 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
         <div>
           <button onClick={handleEdit}>Edit</button>
           <button onClick={() => onDelete(comment)}>Delete</button>
-          <button onClick={handleReply}>Reply</button>
+          {/* <button onClick={handleReply}>Reply</button> */}
         </div>
       )}
       {showReplyForm && (

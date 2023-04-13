@@ -1,16 +1,17 @@
-// frontend/src/components/LikeButton.js
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import csrfFetch from '../../store/csrf';
-
-import './LikeShow.css'
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import csrfFetch from "../../store/csrf";
+import { setLikes, setLikeStatus } from "../../actions/likeActions";
+import "./LikeShow.css";
 
 const LikeButton = ({ videoId }) => {
-  const [likeStatus, setLikeStatus] = useState(null);
-  const [likeCount, setLikeCount] = useState(0);
-  const [dislikeCount, setDislikeCount] = useState(0);
-  const [dislikeStatus, setDislikeStatus] = useState(null);
+  const { likeStatus, likeCount, dislikeCount, dislikeStatus } = useSelector(
+    (state) => state.likes
+  );
   const user = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  const [isDisliked, setIsDisliked] = useState(null);
+
 
   const fetchLikeStatus = async () => {
     if (!user) return;
@@ -22,15 +23,15 @@ const LikeButton = ({ videoId }) => {
       }
       const data = await response.json();
       if (data.like) {
-        setLikeStatus(data.like.liked);
+        dispatch(setLikeStatus(data.like.liked, null));
       } else {
-        setLikeStatus(null);
+        dispatch(setLikeStatus(null, null));
       }
     } catch (err) {
       console.error(err);
     }
   };
-  
+
   const fetchLikesAndDislikes = async () => {
     try {
       const response = await csrfFetch(`/api/videos/${videoId}/likes/`);
@@ -38,19 +39,16 @@ const LikeButton = ({ videoId }) => {
         throw new Error(`Failed to fetch likes and dislikes: ${response.status}`);
       }
       const data = await response.json();
-      setLikeCount(data.like_count);
-      setDislikeCount(data.dislike_count);
+      dispatch(setLikes(data.like_count, data.dislike_count));
     } catch (err) {
       console.error(err);
     }
   };
-  
-  
+
   const handleLike = async (newLikeStatus) => {
     if (!user) {
       return;
     }
-  
     const response = await csrfFetch(`/api/videos/${videoId}/likes`, {
       method: 'POST',
       headers: {
@@ -61,54 +59,43 @@ const LikeButton = ({ videoId }) => {
   
     const data = await response.json();
     if (data.success) {
-      setLikeStatus(data.like.liked);
+      dispatch(setLikeStatus(data.like.liked, null));
     }
   };
-  
+
   const handleLikes = async () => {
     if (likeStatus === null || likeStatus === false) {
-      setLikeCount((prevCount) => prevCount + 1);
-      setLikeStatus(true);
-  
-      if (dislikeStatus === true) {
-        setDislikeCount((prevCount) => prevCount - 1);
-        setDislikeStatus(false);
-      }
+      dispatch(setLikes(likeCount + 1, dislikeCount - (dislikeStatus === true ? 1 : 0)));
+      dispatch(setLikeStatus(true, false));
       await handleLike(true);
     } else if (likeStatus === true) {
-      setLikeCount((prevCount) => prevCount - 1);
-      setLikeStatus(false);
-      setDislikeStatus(false);
+      dispatch(setLikes(likeCount - 1, dislikeCount));
+      dispatch(setLikeStatus(false, false));
       await handleLike(false);
     }
   };
-  
+
   const handleDislike = async () => {
-    if (dislikeStatus === null || dislikeStatus === false) {
-      setDislikeCount((prevCount) => prevCount + 1);
-      setDislikeStatus(true);
-  
-      if (likeStatus === true) {
-        setLikeCount((prevCount) => prevCount - 1);
-        setLikeStatus(false);
-      }
+    if (isDisliked) {
+      // User has already disliked the video, so remove the dislike
+      dispatch(setLikes(likeCount, dislikeCount - 1));
+      dispatch(setLikeStatus(null, null));
+      setIsDisliked(false);
       await handleLike(false);
     } else {
-      setDislikeCount((prevCount) => prevCount - 1);
-      setDislikeStatus(null);
-      setLikeStatus(null);
-      if (likeStatus === true) {
-        await handleLike(true);
-      }
+      // User has not disliked the video, so dislike it
+      dispatch(setLikes(likeCount - (likeStatus === true ? 1 : 0), dislikeCount + 1));
+      dispatch(setLikeStatus(false, true));
+      setIsDisliked(true);
+      await handleLike(false);
     }
   };
   
-// eslint-disable-next-line
+  
   useEffect(() => {
     fetchLikeStatus();
     fetchLikesAndDislikes();
   }, [videoId, user]);
-
 
   return (
     <div className="like-buttons">
@@ -130,7 +117,6 @@ const LikeButton = ({ videoId }) => {
         Dislike
       </button>
     </div>
-
   );
 };
 
