@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   end
   
 
-  get '*path', to: "static_pages#frontend_index"
+  get '*path', to: 'static_pages#frontend_index', constraints: ->(request) { !request.xhr? && request.format.html? }
 
 end

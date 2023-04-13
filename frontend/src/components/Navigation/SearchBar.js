@@ -1,20 +1,26 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { searchVideos } from "../../actions/searchActions";
 
 import search from "../../assets/icons/search.png";
 import "./SearchBar.css";
+import "./SearchResults.css";
 
 export function SearchResults({ location }) {
-  const searchParams = new URLSearchParams(location.search);
-  const searchTerm = searchParams.get("term");
-  const videos = location.state?.videos || [];
+  const videos = useSelector((state) => state.search.videos);
+  const searchTerm = new URLSearchParams(location.search).get("term");
 
   return (
-    <div>
+    <div className="searchResultsContainer">
       <h1>Search results for "{searchTerm}"</h1>
       <ul>
         {videos.map((video) => (
-          <li key={video.id}>{video.title}</li>
+          <li key={video.id}>
+            <Link to={`/videos/${video.id}`}>{video.title}</Link>
+          </li>
         ))}
       </ul>
     </div>
@@ -24,15 +30,23 @@ export function SearchResults({ location }) {
 
 function SearchBar() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`/videos?search=${searchTerm}`);
+    const response = await fetch(`http://localhost:3000/api/videos?search=${searchTerm}`);
     const data = await response.json();
-    history.push(`/search?term=${searchTerm}`, { videos: data.videos });
+    console.log("Data:", data);
+    
+    // Convert the object into an array of video objects
+    const videosArray = Object.values(data);
+    
+    dispatch(searchVideos(videosArray));
+    history.push(`/search?term=${searchTerm}`);
   };
+  
   
 
   return (

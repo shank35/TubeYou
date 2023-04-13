@@ -1,8 +1,9 @@
 class Api::VideosController < ApplicationController
 
   def index
-    if params[:search].present?
-      @videos = Video.where("title ILIKE ?", "%#{params[:search]}%")
+    search_term = params[:search]
+    if search_term.present?
+      @videos = Video.where("lower(title) LIKE ?", "%#{search_term.downcase}%")
     else
       @videos = Video.all
     end
