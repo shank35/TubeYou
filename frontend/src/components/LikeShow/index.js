@@ -65,31 +65,54 @@ const LikeButton = ({ videoId }) => {
 
   const handleLikes = async () => {
     if (likeStatus === null || likeStatus === false) {
+      await handleLike(true);
       dispatch(setLikes(likeCount + 1, dislikeCount - (dislikeStatus === true ? 1 : 0)));
       dispatch(setLikeStatus(true, false));
-      await handleLike(true);
     } else if (likeStatus === true) {
+      await handleLike(false);
       dispatch(setLikes(likeCount - 1, dislikeCount));
       dispatch(setLikeStatus(false, false));
-      await handleLike(false);
+    }
+  
+    try {
+      const response = await csrfFetch(`/api/videos/${videoId}/likes/`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch likes and dislikes: ${response.status}`);
+      }
+      const data = await response.json();
+      dispatch(setLikes(data.like_count, data.dislike_count));
+    } catch (err) {
+      console.error(err);
     }
   };
 
   const handleDislike = async () => {
-    if (isDisliked) {
-      // User has already disliked the video, so remove the dislike
+    if (dislikeStatus === null || dislikeStatus === false) {
+      await handleLike(false);
+      dispatch(
+        setLikes(likeCount - (likeStatus === true ? 1 : 0), dislikeCount - 1)
+      );
+      dispatch(setLikeStatus(false, true));
+      setIsDisliked(true);
+    } else if (dislikeStatus === true) {
+      await handleLike(false);
       dispatch(setLikes(likeCount, dislikeCount - 1));
       dispatch(setLikeStatus(null, null));
       setIsDisliked(false);
-      await handleLike(false);
-    } else {
-      // User has not disliked the video, so dislike it
-      dispatch(setLikes(likeCount - (likeStatus === true ? 1 : 0), dislikeCount + 1));
-      dispatch(setLikeStatus(false, true));
-      setIsDisliked(true);
-      await handleLike(false);
+    }
+  
+    try {
+      const response = await csrfFetch(`/api/videos/${videoId}/likes/`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch likes and dislikes: ${response.status}`);
+      }
+      const data = await response.json();
+      dispatch(setLikes(data.like_count, data.dislike_count));
+    } catch (err) {
+      console.error(err);
     }
   };
+  
   
   
   useEffect(() => {
