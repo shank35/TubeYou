@@ -4,7 +4,7 @@
     <p style="font-size: 32px; margin-left: 10px; flex: 1;">TubeYou</p>
   </a>
 </div> -->
-[<div style="text-align: center"><img src="frontend/src/assets/icons/TubeYou_2.png" alt="logo">TubeYou</div>](https://tubeyou.onrender.com/)
+[<div style="text-align: center" width="150" height="100">><img src="frontend/src/assets/icons/TubeYou_2.png" alt="logo">TubeYou</div>](https://tubeyou.onrender.com/)
 
 
 <h3 style="text-align: center">Share, explore, and discover</h3>
