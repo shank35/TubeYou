@@ -1,4 +1,7 @@
-[<div style="text-align: center"><img src="frontend/src/assets/icons/TubeYou_2.png" alt="logo"></div>](https://tubeyou.onrender.com/)
+<div style="text-align: center">
+  <img src="frontend/src/assets/icons/TubeYou_2.png" alt="logo">
+  <a href="https://tubeyou.onrender.com/">TubeYou</a>
+</div>
 
 
 <h3 style="text-align: center">Share, explore, and discover</h3>
@@ -9,8 +12,9 @@
 3. Recent Updates
 4. Technology
 5. A closer look
-    * Video Views
+    * Video
     * Smart Errors
+    * The Like Bar
 6. Final Notes
 
 # Introduction - At a glance
