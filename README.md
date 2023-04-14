@@ -5,8 +5,6 @@
   </a>
 </div>
 
-
-
 <h3 style="text-align: center">Share, explore, and discover</h3>
 
 # Table of Contents
