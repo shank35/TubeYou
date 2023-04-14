@@ -16,17 +16,19 @@ function HomePage() {
       const response = await fetch("http://localhost:3000/api/videos/random");
       const data = await response.json();
       console.log("Random video data:", data);
-      setVideos([data.video]);
+      setVideos(data.videos);
     };
     fetchRandomVideos();
   }, []);
+  
+  
 
   return (
     <div className={`body ${theme}-theme`}>
       <div id="page">
         <div id="mainSectionContainer">
           {Array.isArray(videos) && videos.map((video) => (
-            <Link to={`/videos/${video.id}`} key={video.id}>
+            <Link to={`/videos/${video.id}`} key={video.id} className="videoLink">
               <div className="videoPlaceholder">
                 {/* <img src={video.thumbnail} alt="video thumbnail" /> */}
                 <img src={video2} alt="video thumbnail" />

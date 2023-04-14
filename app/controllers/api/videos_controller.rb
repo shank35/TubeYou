@@ -14,11 +14,13 @@ class Api::VideosController < ApplicationController
     @video = Video.find(params[:id])
     render :show
   end
-
+  
   def random
-    @video = Video.order("RANDOM()").first
-    render :show
+    limit = 8
+    @videos = Video.order("RANDOM()").limit(limit)
+    render json: { videos: @videos }
   end
+  
   
 
 
