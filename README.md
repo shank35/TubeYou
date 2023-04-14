@@ -93,9 +93,119 @@ My goal was to make the process of logging in and signing up for TubeYou seamles
 
 <div style="text-align: center"><img src="frontend/src/assets/readme/login.gif" alt="video index"></div>
 
+```js
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    setErrors([]); // clear the errors state
+    if (!username) {
+      setErrors(['Email address is required']);
+      return;
+    }
+    if (!emailRegex.test(username)) {
+      setErrors(['Invalid email address']);
+      return;
+    }
+    onSubmit(username, setErrors);
+    setToPassword(true);
+  };
+  // login demo user with button
+  function demoUser() {
+    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }));
+  }
+  if (toPassword) return <Redirect to="/password" />;
+```
+
+```js
+  return (
+    <div className="container">
+      <div className="box">
+        <h2>Sign In</h2>
+        <h3>to continue to TubeYou</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="inputBox">
+            <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              <label>
+                Password
+              </label>
+          </div>
+
+          <div className="errors">
+            <ul>
+              {errors.map(error => <li key={error}>{error}</li>)}
+            </ul>
+          </div>
+          
+          <button type="submit">Sign In</button>
+        </form>
+      </div>
+    </div>
+  );
+```
+
 During the signup process, I recognized that there are multiple fields that could potentially be invalid. To ensure that users can easily identify the erroneous fields, I implemented a feature that highlights the specific input field in red, making it immediately clear where the issue lies. In addition, a descriptive error message is displayed directly below the field, providing users with clear guidance on how to resolve the error. With this approach, users can quickly and easily complete the signup process without experiencing any frustration or confusion.
 
 <div style="text-align: center"><img src="frontend/src/assets/readme/signup.gif" alt="video index"></div>
+
+```js
+  const validateEmail = (email) => {
+    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    if (!emailPattern.test(email)) {
+      setEmailValidationMessage("Please enter a valid email address.");
+      setEmailValid(false);
+    } else {
+      setEmailValidationMessage("Email looks good!");
+      setEmailValid(true);
+    }
+  };
+  
+  const validateUsername = (username) => {
+    if (username.length < 3) {
+      setUsernameValidationMessage("Username must be at least 3 characters long.");
+      setUsernameValid(false);
+    } else {
+      setUsernameValidationMessage("Username looks good!");
+      setUsernameValid(true);
+    }
+  };
+  
+  const validatePassword = (password) => {
+    if (password.length < 5) {
+      setPasswordValidationMessage("Password must be at least 6 characters long.");
+      setPasswordValid(false);
+    } else {
+      setPasswordValidationMessage("Password looks good!");
+      setPasswordValid(true);
+    }
+  };
+  
+  const validateConfirmPassword = (confirmPassword) => {
+    if (confirmPassword !== password || confirmPassword.length === 0) {
+      setConfirmPasswordValidationMessage("Confirm Password field must be the same as the Password field and must not be empty.");
+      setConfirmPasswordValid(false);
+    } else {
+      setConfirmPasswordValidationMessage("Passwords match!");
+      setConfirmPasswordValid(true);
+    }
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validateEmail(email);
+    validateUsername(username);
+    validatePassword(password);
+    validateConfirmPassword(confirmPassword);
+  
+    // Check if any of the input fields are invalid
+    if (!emailValid || !usernameValid || !passwordValid || !confirmPasswordValid) {
+      return;
+    }
+```
 
 Drawing on my extensive experience as a user myself, I am keenly aware of the importance of presenting information in a clear and unambiguous manner. I recognize that users should not have to rely on guesswork or make assumptions about how to navigate a website or application. Therefore, I strive to provide them with the most transparent and straightforward user experience possible.
 

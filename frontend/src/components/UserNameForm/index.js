@@ -30,13 +30,10 @@ function UsernameForm({ onSubmit }) {
     onSubmit(username, setErrors);
     setToPassword(true);
   };
-
   // login demo user with button
   function demoUser() {
     dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }));
   }
-  
-
   if (toPassword) return <Redirect to="/password" />;
 
   return (
