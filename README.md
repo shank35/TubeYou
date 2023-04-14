@@ -1,9 +1,8 @@
 <div style="text-align: center">
   <img src="frontend/src/assets/icons/TubeYou_2.png" alt="logo" width="150" height="100">
-<a href="https://tubeyou.onrender.com/">
-  <p style="font-size: 60px !important;">TubeYou</p>
-</a>
-
+  <a href="https://tubeyou.onrender.com/">
+    <p style="font-size: 60px;">TubeYou</p>
+  </a>
 </div>
 
 
