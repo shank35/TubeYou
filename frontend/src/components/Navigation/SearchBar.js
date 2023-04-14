@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import video2 from "../../components/HomePage/video2.png";
 
 import { searchVideos } from "../../actions/searchActions";
 
@@ -19,8 +20,12 @@ export function SearchResults({ location }) {
       <ul>
         {videos.map((video) => (
           <li key={video.id}>
-            <Link to={`/videos/${video.id}`}>{video.title}</Link>
+            <Link to={`/videos/${video.id}`}>
+              <img className="thumbnail" src={video2} alt="video thumbnail" />
+              <h2 className="search_title">{video.title}</h2>
+            </Link>
           </li>
+
         ))}
       </ul>
     </div>

@@ -48,7 +48,7 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
 
   return (
     <div className="comment">
-      <div className="comment-author">{comment.authorId}</div>
+      <div className="comment-author">{comment.authorUsername}</div>
       {isEditing ? (
         <div>
           <input

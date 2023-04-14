@@ -3,6 +3,7 @@ class Api::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
 
   def index
+    @comment_username = Comment.joins(:author).where(video_id: params[:video_id]).select("comments.*, users.username")
     @comments = Comment.where(video_id: params[:video_id])
     render :index
   end

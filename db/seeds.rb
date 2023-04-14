@@ -48,7 +48,7 @@ require 'open-uri'
   user4 = User.create!(
     first_name: 'Gary',
     last_name: 'Name',
-    username: 'garyhor', 
+    username: 'g-hor', 
     email: 'garyhor@gmail.com', 
     password: 'password'
   )

@@ -88,7 +88,6 @@
 
 .logoContainer {
   margin-right: -80px;
-  
 }
 
 .rightIcons {
@@ -128,4 +127,8 @@
 .signInButton:hover {
   text-decoration: none;
   background-color: #c2d8f7;
+}
+
+.logoText {
+  padding-right: 20px;
 }
