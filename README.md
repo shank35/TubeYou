@@ -1,9 +1,11 @@
-<div style="text-align: center">
-  <a href="https://tubeyou.onrender.com/">
-    <img src="frontend/src/assets/icons/TubeYou_2.png" alt="logo" width="100" height="100">
-    <p style="font-size: 24px;">TubeYou</p>
+<div style="display: flex; align-items: center;">
+  <a href="https://tubeyou.onrender.com/" style="display: flex; align-items: center;">
+    <img src="frontend/src/assets/icons/TubeYou_2.png" alt="logo" width="150" height="100">
+    <p style="font-size: 24px; margin-left: 10px;">TubeYou</p>
   </a>
+  <p style="font-size: 14px; margin-left: auto;">Welcome!</p>
 </div>
+
 
 
 <h3 style="text-align: center">Share, explore, and discover</h3>
