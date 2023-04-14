@@ -87,8 +87,8 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
-export const getUsername = state => state.session.user.username;
-export const getEmail = state => state.session.user.email;
+export const getUsername = state => state.session.user?.username;
+export const getEmail = state => state.session.user?.email;
 
 
 export default sessionReducer;

@@ -49,21 +49,21 @@ function Sidebar({ navVisible, setNavVisible }) {
                   <span className="material-symbols-outlined sidebarMenuIcon">history</span>
                   <button className="sidebarText">History</button>
                 </li> */}
-                <li className="sidebarMenuItem">
+                {/* <li className="sidebarMenuItem">
                   <a href="/videos">
                     <span className="material-symbols-outlined sidebarMenuIcon">smart_display</span>
                     <button className="sidebarText">Your Videos</button>
                   </a>
-                </li>
+                </li> */}
                 {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">schedule</span>
                   <button className="sidebarText">Watch Later</button>
                 </li> */}
-                <li className="sidebarMenuItem">
+                {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">thumb_up</span>
                   <button className="sidebarText">Like Videos</button>
                 </li>
-                <li className="sidebarLine"></li>
+                <li className="sidebarLine"></li> */}
                 {/* <li className="sidebarHeader sidebarMenuIcon">
                   <span className="sidebarText">Subscriptions</span>
                 </li> */}

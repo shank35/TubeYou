@@ -51,8 +51,11 @@ function ProfileButton() {
   const handleSignOut = async () => {
     await dispatch(logout());
     setProfileDropdownVisible(false);
+    console.log("Before push to /login"); // Add this line
     history.push("/login");
+    console.log("After push to /login"); // Add this line
   };
+  
   
 
   return (
