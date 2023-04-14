@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import VideoShow from './VideoShow';
 import CommentList from '../Comments/CommentList';
-import LikeButton from '../LikeShow/index';
 
 import "./VideoShow.css";
 

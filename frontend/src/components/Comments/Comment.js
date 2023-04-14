@@ -8,13 +8,6 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
   const [editedContent, setEditedContent] = useState(comment.content);
   const [showReplyForm, setShowReplyForm] = useState(false);
 
-  const { content, author } = comment;
-  // console.log(author)
-
-  const handleReply = () => {
-    setShowReplyForm(!showReplyForm);
-  };
-
   const handleEdit = () => {
     setIsEditing(true);
   };
@@ -45,7 +38,6 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
       ));
   };
   
-
   return (
     <div className="comment">
       <div className="comment-author">{comment.authorUsername}</div>

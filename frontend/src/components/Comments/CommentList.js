@@ -1,7 +1,7 @@
 // frontend/src/components/CommentList.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { setComment, editComment, deleteComment } from "../../actions/commentActions";
+import { setComment, deleteComment } from "../../actions/commentActions";
 import { receiveComments } from '../../actions/commentActions';
 
 import csrfFetch from '../../store/csrf'; 

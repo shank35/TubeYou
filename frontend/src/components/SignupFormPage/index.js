@@ -20,7 +20,6 @@ function SignupFormPage() {
   const [emailError, setEmailError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [emailValid, setEmailValid] = useState(false);
   const [usernameValid, setUsernameValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
@@ -112,9 +111,6 @@ function SignupFormPage() {
         else setErrors([res.statusText]);
       });
   };
-  
-  
-  
 
   return (
     <div className="container">
@@ -122,7 +118,7 @@ function SignupFormPage() {
         <h2>Create your TubeYou Account</h2>
         <h3>to continue to TubeYou</h3>
         <form onSubmit={handleSubmit}>
-          <div className="name-container">
+          {/* <div className="name-container">
             <div className="inputBox">
               <input
                 type="text"
@@ -146,7 +142,7 @@ function SignupFormPage() {
                 Last Name
               </label>
             </div>
-          </div>
+          </div> */}
           <div className="inputBox">
           <input
                 type="text"

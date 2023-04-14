@@ -22,32 +22,32 @@ require 'open-uri'
   puts "Creating users..."
   # Create one user with an easy to remember username, email, and password:
   user1 = User.create!(
-    first_name: 'Demo',
-    last_name: 'User',
+    # first_name: 'Demo',
+    # last_name: 'User',
     username: 'Demo-lition', 
     email: 'demo@user.io', 
     password: 'password'
   )
 
   user2 = User.create!(
-    first_name: 'Shan',
-    last_name: 'Kim',
+    # first_name: 'Shan',
+    # last_name: 'Kim',
     username: 'shank35', 
     email: 'shank35@gmail.com', 
     password: 'password'
   )
 
   user3 = User.create!(
-    first_name: 'Sean',
-    last_name: 'Name',
+    # first_name: 'Sean',
+    # last_name: 'Name',
     username: 'sean-a99', 
     email: 'seana99@gmail.com', 
     password: 'password'
   )
 
   user4 = User.create!(
-    first_name: 'Gary',
-    last_name: 'Name',
+    # first_name: 'Gary',
+    # last_name: 'Name',
     username: 'g-hor', 
     email: 'garyhor@gmail.com', 
     password: 'password'
