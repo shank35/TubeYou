@@ -31,14 +31,13 @@
   margin-left: 0px;
 }
 
-.modalLogoContainer {
-  width: 150px;
+.modalLogoContainer img {
+  margin-left: 8px;
 }
 
-.modalLogoContainer img {
-  height: 60px;
-  margin-left: 8px;
-  margin-top: -10px;
+.logoTextSideBar {
+  margin-left: 2px;
+  margin-top: 13px;
 }
 
 .modalBody {

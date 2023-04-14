@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import youtubeLogo from "../../assets/icons/youtube_logo.png";
+import youtubeLogo from "../../assets/icons/TubeYou_2.png";
 import "./Navigation.css";
 
 import { DropdownProvider } from "./DropdownContext";
@@ -29,7 +29,10 @@ function Navigation() {
           </button>
           <Sidebar navVisible={navVisible} setNavVisible={setNavVisible} />
           <a className="logoContainer" href="/">
-            <img src={youtubeLogo} alt="youtube logo" />
+            <img src={youtubeLogo} alt="youtube_logo" style={{ width: '60px', height: '40px' }} />
+          </a>
+          <a className="logoText" href="/">
+            <p>TubeYou</p>
           </a>
           <SearchBar />
           <DropdownProvider>

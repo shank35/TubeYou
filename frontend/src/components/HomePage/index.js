@@ -1,5 +1,6 @@
-import React from "react";
-import video1 from "./video1.png";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import video2 from "./video2.png";
 
 import { useTheme } from "../Navigation/ThemeContext";
 
@@ -8,63 +9,42 @@ import "./HomePage.css";
 
 function HomePage() {
   const { theme } = useTheme();
+  const [videos, setVideos] = useState({});
+
+  useEffect(() => {
+    const fetchRandomVideos = async () => {
+      const response = await fetch("http://localhost:3000/api/videos/random");
+      const data = await response.json();
+      console.log("Random video data:", data);
+      setVideos([data.video]);
+    };
+    fetchRandomVideos();
+  }, []);
 
   return (
     <div className={`body ${theme}-theme`}>
       <div id="page">
         <div id="mainSectionContainer">
-          <div className="videoPlaceholder">
-            <img src={video1} alt="video thumbnail" />
-            <div className="videoInfo">
-              <h3 className="videoTitle">Video Title</h3>
-              <p className="videoChannel">Channel Name</p>
-              <p className="videoViews">1.5M views • 1 week ago</p>
-            </div>
-          </div>
-          <div className="videoPlaceholder">
-          <img src={video1} alt="video thumbnail" />
-            <div className="videoInfo">
-              <h3 className="videoTitle">Video Title</h3>
-              <p className="videoChannel">Channel Name</p>
-              <p className="videoViews">3.2M views • 2 weeks ago</p>
-            </div>
-          </div>
-          <div className="videoPlaceholder">
-          <img src={video1} alt="video thumbnail" />
-            <div className="videoInfo">
-              <h3 className="videoTitle">Video Title</h3>
-              <p className="videoChannel">Channel Name</p>
-              <p className="videoViews">2.1M views • 3 weeks ago</p>
-            </div>
-          </div>
-          <div className="videoPlaceholder">
-          <img src={video1} alt="video thumbnail" />
-            <div className="videoInfo">
-              <h3 className="videoTitle">Video Title</h3>
-              <p className="videoChannel">Channel Name</p>
-              <p className="videoViews">4.5M views • 4 weeks ago</p>
-            </div>
-          </div>
-          <div className="videoPlaceholder">
-            <img src={video1} alt="video thumbnail" />
-            <div className="videoInfo">
-              <h3 className="videoTitle">Video Title</h3>
-              <p className="videoChannel">Channel Name</p>
-              <p className="videoViews">1.2M views • 5 weeks ago</p>
-            </div>
-          </div>
-          <div className="videoPlaceholder">
-            <img src={video1} alt="video thumbnail" />
-            <div className="videoInfo">
-              <h3 className="videoTitle">Video Title</h3>
-              <p className="videoChannel">Channel Name</p>
-              <p className="videoViews">2.8M views • 6 weeks ago</p>
-            </div>
-          </div>
+          {Array.isArray(videos) && videos.map((video) => (
+            <Link to={`/videos/${video.id}`} key={video.id}>
+              <div className="videoPlaceholder">
+                {/* <img src={video.thumbnail} alt="video thumbnail" /> */}
+                <img src={video2} alt="video thumbnail" />
+                <div className="videoInfo">
+                  <h3 className="videoTitle">{video.title}</h3>
+                  <p className="videoChannel">{video.channelName}</p>
+                  <p className="videoViews">
+                    {video.views} views • {video.uploadedAt}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
   );
 }
+
 
 export default HomePage;

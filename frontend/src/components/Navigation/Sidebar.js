@@ -1,5 +1,7 @@
 import React from "react";
-import youtubeLogo from "../../assets/icons/youtube_logo.png";
+import { Link } from "react-router-dom";
+
+import youtubeLogo from "../../assets/icons/TubeYou_2.png";
 import "./Sidebar.css";
 
 function Sidebar({ navVisible, setNavVisible }) {
@@ -19,15 +21,20 @@ function Sidebar({ navVisible, setNavVisible }) {
                 <i className="fa-sharp fa-solid fa-bars"></i>
               </button>
               <a className="modalLogoContainer" href="/">
-                <img src={youtubeLogo} alt="youtube logo" />
+                <img src={youtubeLogo} alt="youtube logo" style={{ width: '60px', height: '40px' }} />
               </a>
-            </div>
+              <a className="logoTextSideBar" href="/">
+                <p>TubeYou</p>
+              </a>
+           </div>
             <div className="modalBody">
               {/* Add YouTube-like sidebar menu items here */}
               <ul className="sidebarMenu">
                 <li className="sidebarMenuItem">
-                  <span className="material-symbols-outlined sidebarMenuIcon">home</span>
-                  <button className="sidebarText">Home</button>                      
+                  <a href="/">
+                    <span className="material-symbols-outlined sidebarMenuIcon">home</span>
+                    <button className="sidebarText">Home</button>                      
+                  </a>
                 </li>
                 {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">subscriptions</span>
@@ -43,8 +50,10 @@ function Sidebar({ navVisible, setNavVisible }) {
                   <button className="sidebarText">History</button>
                 </li> */}
                 <li className="sidebarMenuItem">
-                  <span className="material-symbols-outlined sidebarMenuIcon">smart_display</span>
-                  <button className="sidebarText">Your Videos</button>
+                  <a href="/videos">
+                    <span className="material-symbols-outlined sidebarMenuIcon">smart_display</span>
+                    <button className="sidebarText">Your Videos</button>
+                  </a>
                 </li>
                 {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">schedule</span>
@@ -55,9 +64,9 @@ function Sidebar({ navVisible, setNavVisible }) {
                   <button className="sidebarText">Like Videos</button>
                 </li>
                 <li className="sidebarLine"></li>
-                <li className="sidebarHeader sidebarMenuIcon">
+                {/* <li className="sidebarHeader sidebarMenuIcon">
                   <span className="sidebarText">Subscriptions</span>
-                </li>
+                </li> */}
                 {/* <li className="sidebarMenuItem">
                   <span className="material-symbols-outlined sidebarMenuIcon">person</span>
                   <button className="sidebarText">Channel 1</button>

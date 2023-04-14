@@ -15,6 +15,13 @@ class Api::VideosController < ApplicationController
     render :show
   end
 
+  def random
+    @video = Video.order("RANDOM()").first
+    render :show
+  end
+  
+
+
   def create 
     if params[:video]
       @video = Video.new(video_params)
