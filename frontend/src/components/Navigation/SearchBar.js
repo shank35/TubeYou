@@ -41,7 +41,7 @@ function SearchBar() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:3000/api/videos?search=${searchTerm}`);
+    const response = await fetch(`/api/videos?search=${searchTerm}`);
     const data = await response.json();
     console.log("Data:", data);
     

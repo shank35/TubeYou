@@ -14,7 +14,6 @@ const VideoShow = ({ videoId, user }) => {
   useEffect(() => {
     const fetchVideo = async () => {
       setLoading(true);
-
       try {
         const response = await axios.get(`/api/videos/${videoId}`);
         setVideo(response.data.video);
@@ -25,18 +24,15 @@ const VideoShow = ({ videoId, user }) => {
         setLoading(false);
       }
     };
-
     fetchVideo();
   }, [dispatch, videoId]);
-
+  
   if (loading) {
     return <div>Loading...</div>;
   }
-
   if (error) {
     return <div>Error: {error}</div>;
   }
-
   return video ? <VideoPlayer video={video} user={user} /> : <div>Loading...</div>;
 };
 

@@ -13,7 +13,7 @@ function HomePage() {
 
   useEffect(() => {
     const fetchRandomVideos = async () => {
-      const response = await fetch("http://localhost:3000/api/videos/random");
+      const response = await fetch("/api/videos/random");
       const data = await response.json();
       console.log("Random video data:", data);
       setVideos(data.videos);

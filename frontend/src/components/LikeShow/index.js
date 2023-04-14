@@ -12,10 +12,8 @@ const LikeButton = ({ videoId }) => {
   const dispatch = useDispatch();
   const [isDisliked, setIsDisliked] = useState(null);
 
-
   const fetchLikeStatus = async () => {
     if (!user) return;
-    
     try {
       const response = await csrfFetch(`/api/videos/${videoId}/likes/${user.id}`);
       if (!response.ok) {
@@ -56,7 +54,6 @@ const LikeButton = ({ videoId }) => {
       },
       body: JSON.stringify({ liked: newLikeStatus }),
     });
-  
     const data = await response.json();
     if (data.success) {
       dispatch(setLikeStatus(data.like.liked, null));
@@ -73,7 +70,6 @@ const LikeButton = ({ videoId }) => {
       dispatch(setLikes(likeCount - 1, dislikeCount));
       dispatch(setLikeStatus(false, false));
     }
-  
     try {
       const response = await csrfFetch(`/api/videos/${videoId}/likes/`);
       if (!response.ok) {
@@ -100,7 +96,6 @@ const LikeButton = ({ videoId }) => {
       dispatch(setLikeStatus(null, null));
       setIsDisliked(false);
     }
-  
     try {
       const response = await csrfFetch(`/api/videos/${videoId}/likes/`);
       if (!response.ok) {
@@ -112,8 +107,6 @@ const LikeButton = ({ videoId }) => {
       console.error(err);
     }
   };
-  
-  
   
   useEffect(() => {
     fetchLikeStatus();
