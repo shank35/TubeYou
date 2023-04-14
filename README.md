@@ -1,6 +1,8 @@
 <div style="text-align: center">
+  <a href="https://tubeyou.onrender.com/">
   <img src="frontend/src/assets/icons/TubeYou_2.png" alt="logo">
-  <a href="https://tubeyou.onrender.com/">TubeYou</a>
+  <p>TubeYou/p>
+  </a>
 </div>
 
 
