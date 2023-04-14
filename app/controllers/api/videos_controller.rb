@@ -20,9 +20,6 @@ class Api::VideosController < ApplicationController
     @videos = Video.order("RANDOM()").limit(limit)
     render json: { videos: @videos }
   end
-  
-  
-
 
   def create 
     if params[:video]

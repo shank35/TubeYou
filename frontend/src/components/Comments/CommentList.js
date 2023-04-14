@@ -80,8 +80,6 @@ const CommentList = ({ videoId, user }) => {
     }
   };
   
-  
-
   const renderComment = (comment, index) => {
 
     return (

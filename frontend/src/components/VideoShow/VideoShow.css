@@ -31,7 +31,7 @@
 .video-details {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
   padding: 0 20px;
   max-width: 58vw;
 }
@@ -41,12 +41,17 @@
   margin: 0;
 }
 
+.views-and-likes {
+  font-size: 1.5rem;
+  margin-top: 1.5rem; 
+}
+
+
 .video-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
-  margin-top: 1rem;
 }
 
 .video-actions {
