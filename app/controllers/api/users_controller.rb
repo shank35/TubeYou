@@ -7,15 +7,18 @@ class Api::UsersController < ApplicationController
   end
 
   def create
+    puts "User Params: #{user_params.inspect}" # Add this line for debugging
     @user = User.new(user_params)
-
+    puts "User: #{@user.inspect}" # Add this line for debugging
+  
     if @user.save
       login!(@user)
       render :show
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      render json: @user.errors.full_messages, status: 422
     end
   end
+  
 
   def show 
     @user = User.find(params[:id])
@@ -34,6 +37,8 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :username, :password)
+    params.require(:user).permit(:first_name, :last_name, :username, :email, :password)
   end
+  
+  
 end

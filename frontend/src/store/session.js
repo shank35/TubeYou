@@ -72,13 +72,15 @@ const sessionReducer = (state = initialState, action) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  const { username, email, password } = user;
+  const { username, email, password, firstName, lastName } = user;
   const response = await csrfFetch("/api/users", {
     method: "POST",
     body: JSON.stringify({
       username,
       email,
-      password
+      password,
+      firstName,
+      lastName
     })
   });
   const data = await response.json();

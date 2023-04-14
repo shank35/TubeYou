@@ -86,7 +86,8 @@ function SignupFormPage() {
     }
   
     setErrors([]);
-    return dispatch(sessionActions.signup({ email, username, password, first_name: firstName, last_name: lastName }))
+    console.log({email, username, password, firstName, lastName});
+    return dispatch(sessionActions.signup({ email, username, password, firstName, lastName }))
       .catch(async (res) => {
         let data;
         try {
@@ -110,7 +111,9 @@ function SignupFormPage() {
         } else if (data) setErrors([data]);
         else setErrors([res.statusText]);
       });
-  }; 
+  };
+  
+  
   
 
   return (
