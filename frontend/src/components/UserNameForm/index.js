@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 
 import './reset.css';
@@ -9,6 +10,7 @@ import './UserNameForm.css';
 
 function UsernameForm({ onSubmit }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [username, setUsername] = useState('');
   const [toPassword, setToPassword] = useState(false);
@@ -31,9 +33,12 @@ function UsernameForm({ onSubmit }) {
     setToPassword(true);
   };
   // login demo user with button
-  function demoUser() {
-    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }));
+  async function demoUser() {
+    await dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }));
+    history.push('/');
   }
+  
+  
   if (toPassword) return <Redirect to="/password" />;
 
   return (
@@ -58,11 +63,9 @@ function UsernameForm({ onSubmit }) {
               {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
           </div>
-          <button type="submit">Next</button>
-          <div className="demo">
-            <button type="submit" onClick={demoUser}>Demo User</button>
-          </div>
-          <div className="createAccount">
+          <div className="button-container">
+            <button type="submit">Next</button>
+            <button type="button" onClick={demoUser}>Demo User</button>
             <Link to="/signup">
               <button type="submit">Create Account</button>
             </Link>
