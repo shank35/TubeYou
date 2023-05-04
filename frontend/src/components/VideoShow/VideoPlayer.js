@@ -45,7 +45,6 @@ const VideoPlayer = ({ video, user }) => {
     setShowFullDescription(!showFullDescription);
   };
 
-
   return (
     <div>
       <div className="video-player">

@@ -25,14 +25,6 @@ class Video < ApplicationRecord
 
   has_one_attached :video_file
 
-  has_one_attached :thumbnail
-
-  def thumbnail_url
-    if thumbnail.attached?
-      thumbnail.url
-    end
-  end
-
   def video_file_url
     if video_file.attached?
       video_file.url

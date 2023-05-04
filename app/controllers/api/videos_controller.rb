@@ -21,19 +21,13 @@ class Api::VideosController < ApplicationController
     render json: { videos: @videos }
   end
 
-  def create
+  def create 
     if params[:video]
       @video = Video.new(video_params)
-      @video.user_id = current_user.id
+      @video.user_id = current_user.id # or any other valid user ID
       @video.video_file.attach(video_params[:video_file])
-  
-      # Generate thumbnail
-      video_file_path = @video.video_file.blob.service.path_for(@video.video_file.blob.key)
-      movie = FFMPEG::Movie.new(video_file_path)
-      thumbnail_path = Rails.root.join('tmp', "#{SecureRandom.uuid}.jpg")
-      movie.screenshot(thumbnail_path, { seek_time: rand(0..movie.duration) })
-      @video.thumbnail.attach(io: File.open(thumbnail_path), filename: 'thumbnail.jpg', content_type: 'image/jpeg')
-  
+      
+      
       if @video.save
         render :show, status: :created
       else
@@ -44,7 +38,6 @@ class Api::VideosController < ApplicationController
       render json: { error: "Missing 'video' parameter" }, status: :unprocessable_entity
     end
   end
-  
 
   def update 
     @video = Video.find(params[:id])
