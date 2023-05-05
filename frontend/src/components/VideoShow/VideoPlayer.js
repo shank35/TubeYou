@@ -64,7 +64,7 @@ const VideoPlayer = ({ video, user }) => {
               />
               <div className="video-info">
                 <div className="views-and-likes">
-                  <p>1000 views</p>
+                  <p>{video.views}</p>
                 </div>
                 <div className="video-actions">
                   <LikeButton videoId={video.id} />
@@ -101,7 +101,7 @@ const VideoPlayer = ({ video, user }) => {
                   <span className="material-symbols-outlined" style={{ fontSize: "50px" }}>face</span>
                 </div>
                 <div className="channel-name">
-                  <p>{user?.username}</p>
+                  <p>{video.userId}</p>
                   <button className="subscribe-button">Subscribe</button>
                 </div>
               </div>

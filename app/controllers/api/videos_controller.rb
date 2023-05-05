@@ -11,7 +11,7 @@ class Api::VideosController < ApplicationController
   end
 
   def show
-    @video = Video.find(params[:id])
+    @video = Video.joins(:user).where(id: params[:id]).select("videos.*, users.username as author_username").first
     render :show
   end
   
