@@ -101,7 +101,7 @@ const VideoPlayer = ({ video, user }) => {
                   <span className="material-symbols-outlined" style={{ fontSize: "50px" }}>face</span>
                 </div>
                 <div className="channel-name">
-                  <p>{video.userId}</p>
+                  <p>{video.authorUsername}</p>
                   <button className="subscribe-button">Subscribe</button>
                 </div>
               </div>

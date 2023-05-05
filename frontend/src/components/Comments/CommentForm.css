@@ -40,7 +40,7 @@ textarea {
 .comment-buttons button {
   margin-left: 16px;
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   color: white;
@@ -52,11 +52,35 @@ textarea {
 }
 
 .comment-buttons button[type="submit"] {
-  background-color: #CC0000;
+  background-color: #0066ff;
 }
 
 .comment-content {
   padding-bottom: 30px;
+}
+
+.comment-buttons {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.comment-buttons button {
+  margin-left: 8px;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+}
+
+.comment-buttons button:hover {
+  color: #000;
+}
+
+.comment-buttons button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0066ff;
 }
 
 @media (min-width: 1200px) {
