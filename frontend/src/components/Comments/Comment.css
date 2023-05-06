@@ -115,12 +115,20 @@
   background-color: #f1f1f1;
 }
 
-.dropdown-container:hover .dropdown-menu {
+.dropdown-menu.show {
   display: block;
 }
+
 
 @media (min-width: 1200px) {
   .comment {
     max-width: 58vw;
   }
 }
+ 
+@media (max-width: 900px) {
+  .comment {
+    max-width: 79vw;
+  }
+}
+

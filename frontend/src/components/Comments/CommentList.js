@@ -15,7 +15,6 @@ const CommentList = ({ videoId, user }) => {
   const comments = useSelector((state) => Object.values(state.comment));
   const dispatch = useDispatch();
 
-
   const fetchComments = async () => {
     try {
       const response = await csrfFetch(`/api/videos/${videoId}/comments`);
@@ -108,7 +107,6 @@ const CommentList = ({ videoId, user }) => {
       .map((comment, index) => renderComment(comment, index))}
     </div>
   );
-  
 };
 
 export default CommentList;

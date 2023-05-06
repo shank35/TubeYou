@@ -6,17 +6,16 @@ import "./CommentForm.css";
 function CommentForm({ videoId, parentCommentId, onCommentSubmitted, user }) {
   const [content, setContent] = useState("");
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (content.trim() === "") {
-    return;
-  }
-  if (onCommentSubmitted) {
-    onCommentSubmitted(content, parentCommentId);
-  }
-  setContent("");
-};
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (content.trim() === "") {
+      return;
+    }
+    if (onCommentSubmitted) {
+      onCommentSubmitted(content, parentCommentId);
+    }
+    setContent("");
+  };
 
   return (
     <form onSubmit={handleSubmit} className="comment-form">

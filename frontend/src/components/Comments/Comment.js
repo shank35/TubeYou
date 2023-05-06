@@ -1,5 +1,5 @@
 // frontend/src/components/Comment.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm';
 import './Comment.css';
 
@@ -43,6 +43,20 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
     ));
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownVisible && !event.target.closest('.dropdown-container')) {
+        setDropdownVisible(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [dropdownVisible]);
+
+
   return (
     <div className="comment">
       <div className="comment-author">{comment.authorUsername}</div>
@@ -64,9 +78,15 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
           <span className="material-symbols-outlined">more_vert</span>
           </button>
           {dropdownVisible && (
-            <div className="dropdown-menu">
-              <button className="dropdown-item" onClick={handleEdit}>Edit</button>
-              <button className="dropdown-item" onClick={() => onDelete(comment)}>Delete</button>
+            <div className={`dropdown-menu ${dropdownVisible ? 'show' : ''}`}>
+              <button className="dropdown-item" onClick={handleEdit}>
+                <span className="material-symbols-outlined">edit</span>
+                Edit
+              </button>
+              <button className="dropdown-item" onClick={() => onDelete(comment)}>
+                <span className="material-symbols-outlined">delete</span>
+                Delete
+              </button>
             </div>
           )}
         </div>
