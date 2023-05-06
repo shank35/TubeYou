@@ -19,6 +19,18 @@ class Api::LikesController < ApplicationController
   
   def create
     like = current_user.likes.find_or_initialize_by(video_id: params[:video_id])
+  
+    if params[:liked].nil?
+      # If liked is null, destroy the existing like/dislike and return success
+      if like.destroy
+        render json: { success: true }
+        return
+      else
+        render json: { success: false }
+        return
+      end
+    end
+  
     like.liked = params[:liked]
     if like.save
       render json: { success: true, like: like.as_json(only: [:id, :liker_id, :video_id, :liked]) }
@@ -26,6 +38,7 @@ class Api::LikesController < ApplicationController
       render json: { success: false }
     end
   end
+  
   
   def destroy
     like = current_user.likes.find_by(video_id: params[:video_id])
