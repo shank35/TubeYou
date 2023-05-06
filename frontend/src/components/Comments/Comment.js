@@ -28,13 +28,6 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
     setDropdownVisible(!dropdownVisible);
   };
 
-  const handleDropdownItemClick = (e) => {
-    e.stopPropagation();
-    setDropdownVisible(false);
-  };
-  
-  
-
   const renderCommentReplies = () => {
     return renderComment && comment.replies && comment.replies.map((reply, index) => (
       <Comment
