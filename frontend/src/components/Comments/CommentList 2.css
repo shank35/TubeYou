@@ -1,0 +1,123 @@
+/* frontend/src/components/CommentList.css */
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+}
+
+.comment-list .comment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.comment-list .comment:last-child {
+  margin-bottom: 0;
+}
+
+.comment-list .comment .comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.comment-list .comment .comment-header .comment-author {
+  font-weight: 500;
+}
+
+.comment-list .comment .comment-content {
+  margin-bottom: 8px;
+}
+
+.comment-list .comment .comment-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-list .comment .comment-buttons button {
+  background-color: transparent;
+  border: none;
+  color: #065fd4;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.comment-list .comment .comment-buttons button:hover {
+  text-decoration: underline;
+}
+
+.comment-list .comment .comment-buttons button:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+.comment-list .comment .comment-buttons button:active {
+  text-decoration: none;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.comment:last-child {
+  margin-bottom: 0;
+}
+
+.comment .comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.comment .comment-header .comment-author {
+  font-weight: 500;
+}
+
+.comment .comment-content {
+  margin-bottom: 8px;
+}
+
+.comment .comment-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment .comment-buttons button {
+  background-color: transparent;
+  border: none;
+  color: #065fd4;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.comment .comment-buttons button:hover {
+  text-decoration: underline;
+}
+
+.comment .comment-buttons button:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+.comment .comment-buttons button:active {
+  text-decoration: none;
+}
+
+@media (min-width: 1200px) {
+  .comment-list {
+    max-width: 58vw;
+  }
+}
