@@ -57,7 +57,6 @@ const LikeButton = ({ videoId }) => {
     const data = await response.json();
     if (data.success) {
       if (data.like) {
-        // Update like status only if the 'like' field is present in the response
         dispatch(setLikeStatus(data.like.liked, null));
       }
     }
@@ -70,9 +69,9 @@ const LikeButton = ({ videoId }) => {
       dispatch(setLikes(likeCount + 1, dislikeCount - (dislikeStatus === true ? 1 : 0)));
       dispatch(setLikeStatus(true, false));
     } else if (likeStatus === true) {
-      await handleLike(null); // Change this line
+      await handleLike(null);
       dispatch(setLikes(likeCount - 1, dislikeCount));
-      dispatch(setLikeStatus(null, null)); // Change this line
+      dispatch(setLikeStatus(null, null));
     }
     try {
       const response = await csrfFetch(`/api/videos/${videoId}/likes/`);
@@ -95,9 +94,9 @@ const LikeButton = ({ videoId }) => {
       dispatch(setLikeStatus(false, true));
       setIsDisliked(true);
     } else if (dislikeStatus === true) {
-      await handleLike(null); // Change this line
+      await handleLike(null);
       dispatch(setLikes(likeCount, dislikeCount - 1));
-      dispatch(setLikeStatus(null, null)); // Change this line
+      dispatch(setLikeStatus(null, null));
       setIsDisliked(false);
     }
     try {
