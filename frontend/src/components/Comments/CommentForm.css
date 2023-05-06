@@ -52,7 +52,7 @@ textarea {
 }
 
 .comment-buttons button[type="submit"] {
-  background-color: #0066ff;
+  background-color: #065fd4;
 }
 
 .comment-content {
@@ -74,13 +74,12 @@ textarea {
   color: white;
 }
 
-.comment-buttons button:hover {
-  color: #000;
+.comment-buttons .comment-cancel:hover {
+  background-color: #999;
 }
 
-.comment-buttons button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #0066ff;
+.comment-buttons .comment-comment:hover {
+  background-color: #044cb1;
 }
 
 @media (min-width: 1200px) {

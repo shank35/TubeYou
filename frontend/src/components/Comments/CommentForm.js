@@ -29,10 +29,10 @@ function CommentForm({ videoId, parentCommentId, onCommentSubmitted, user }) {
           placeholder="Add a comment..."
         />
         <div className="comment-buttons">
-          <button type="button" onClick={() => setContent("")}>
+          <button className="comment-cancel" type="button" onClick={() => setContent("")}>
             CANCEL
           </button>
-          <button type="submit">COMMENT</button>
+          <button className="comment-comment" type="submit">COMMENT</button>
         </div>
       </div>
     </form>

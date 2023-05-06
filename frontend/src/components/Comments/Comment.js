@@ -13,6 +13,11 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
     setIsEditing(true);
   };
 
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+    setEditedContent(comment.content);
+  };  
+
   const handleUpdate = async () => {
     await onUpdate(comment.id, editedContent);
     setIsEditing(false);
@@ -67,7 +72,10 @@ const Comment = ({ comment, user, videoId, fetchComments, renderComment, onDelet
             value={editedContent}
             onChange={(e) => setEditedContent(e.target.value)}
           />
-          <button className="save-button" onClick={handleUpdate}>Save</button>
+          <div className="button-container">
+            <button className="cancel-button" onClick={handleCancelEdit}>Cancel</button>
+            <button className="save-button" onClick={handleUpdate}>Save</button>
+          </div>
         </div>
       ) : (
         <div className="comment-content">{comment.content}</div>
