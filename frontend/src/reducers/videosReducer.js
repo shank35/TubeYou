@@ -1,14 +1,19 @@
 import { UPLOAD_VIDEO, DELETE_VIDEO, EDIT_VIDEO, RECEIVE_VIDEO } from "../actions/videoActions";
 
-const initialState = {};
+const initialState = {
+  videos: []
+};
 
 const videoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case RECEIVE_VIDEO:
+    case RECEIVE_VIDEO: {
+      const updatedVideos = state.videos.map(video => video.id === action.video.id ? action.video : video);
       return {
         ...state,
-        [action.video.id]: action.video
+        videos: updatedVideos,
       };
+    }
+    
     case UPLOAD_VIDEO:
       return {
         ...state,
