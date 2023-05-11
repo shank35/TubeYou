@@ -21,6 +21,11 @@ class Api::VideosController < ApplicationController
     render json: { videos: @videos }
   end
 
+  def user_videos
+    @videos = Video.where(user_id: params[:user_id])
+    render json: { videos: @videos }
+  end  
+
   def create 
     if params[:video]
       @video = Video.new(video_params)

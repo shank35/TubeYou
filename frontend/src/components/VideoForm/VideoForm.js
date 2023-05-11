@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { uploadVideo } from '../../actions/videoActions';
 import UserProfile from '../UserProfile';
 import './VideoForm.css';
+import video2 from "./video2.png";
 
 function VideoForm() {
   const user = useSelector(state => state?.session.user);
-  console.log(user)
   const dispatch = useDispatch()
 
   const [showModal, setShowModal] = useState(false);
@@ -16,6 +17,7 @@ function VideoForm() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [userVideos, setUserVideos] = useState([]);
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -43,6 +45,19 @@ function VideoForm() {
       handleCloseModal();
     }
   };
+
+  useEffect(() => {
+    const fetchUserVideos = async () => {
+      const response = await fetch(`/api/videos/user/${user.id}`);
+      const data = await response.json();
+      console.log("User video data:", data);
+      setUserVideos(data.videos);
+    };
+    if (user) {
+      fetchUserVideos();
+    }
+  }, [user]);
+  
 
   return (
     <>
@@ -120,6 +135,23 @@ function VideoForm() {
         </div>
       )}
       <div><UserProfile/></div>
+      <div>
+        <h2>My Videos</h2>
+        {userVideos?.map((video) => (
+          <div key={video.id}>
+            <Link to={`/videos/${video.id}`}>
+            <img src={video2} alt="video thumbnail" />
+                <div className="videoInfo">
+                  <h3 className="videoTitle">{video.title}</h3>
+                  <p className="videoChannel">{video.channelName}</p>
+                  <p className="videoViews">
+                    {video.views} views • {video.uploadedAt}
+                  </p>
+                </div>
+            </Link>
+          </div>
+        ))}
+      </div>
     </>
   );
 }

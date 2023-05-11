@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
     resources :users, only: [:create, :show, :index, :update]
     get '/videos/random', to: 'videos#random'
+    get '/videos/user/:user_id', to: 'videos#user_videos'
     resources :videos, only: [:create, :show, :index, :update, :destroy] do 
       resources :comments, only: [:create, :show, :index, :update, :destroy]
       resources :likes, only: [:create, :show, :destroy, :index], param: :liker_id
