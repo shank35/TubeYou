@@ -13,7 +13,7 @@ export const receiveComments = (comments) => {
 
 export const setComment = (comment) => ({
   type: SET_COMMENT,
-  payload: comment,
+  payload: comment.comment,
 });
 
 export const editComment = (comment) => ({
