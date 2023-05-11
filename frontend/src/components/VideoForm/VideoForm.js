@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { uploadVideo } from '../../actions/videoActions';
 
 import './VideoForm.css';
 
 function VideoForm() {
-
+  const user = useSelector(state => state?.session.user);
+  console.log(user)
   const dispatch = useDispatch()
 
   const [showModal, setShowModal] = useState(false);
@@ -42,43 +43,29 @@ function VideoForm() {
       handleCloseModal();
     }
   };
-  
-  
 
   return (
     <>
       <form className="video-form">
-
         <div className="video-form-group">
-
         <div className="selectFileContainer">
           <button type="button" className="selectFile" onClick={handleOpenModal}>Select files to upload</button>
         </div>
-
         </div>
-
       </form>
-
       {showModal && (
         <div className="modalVideoContainer">
-
           <div className="modalVideoOverlay" onClick={handleCloseModal}></div>
-
           <div className="modalVideoContent">
-
             <div className="modalVideoHeader">
               <h2>Upload video</h2>
               <button className="closeVideoModalButton" onClick={handleCloseModal}>×</button>
             </div>
-
             <div className="modalVideoBody">
-
               <div className="modalVideoUploadArea">
-
                 {selectedFile ? (
                   <div className="modalVideoFormContainer">
                     <form onSubmit={handleUploadVideo}>
-
                       <div className="titleContainer">
                         <input
                           className="title-form-control"
@@ -89,7 +76,6 @@ function VideoForm() {
                           onChange={(e) => setTitle(e.target.value)}
                         />
                       </div>
-
                       <div className="descriptionContainer">
                         <textarea
                           className="description-form-control"
@@ -100,37 +86,24 @@ function VideoForm() {
                           onChange={(e) => setDescription(e.target.value)}
                         />                      
                       </div>
-
                       <div className="uploadVideoContainer">
                         <button className="uploadVideo" type="submit">
                           Upload Video
                         </button>
                       </div>
-
                     </form>
-                    {isUploading && (
-                      <div className="progress-container">
-                        <progress value={uploadProgress} max="100" />
-                        <span>{uploadProgress}%</span>
-                      </div>
-                    )}
-
                   </div>
                 ) : (
                   <div className="modalVideoUploadFormContainer">
-
                     <div className="modalVideoUploadIconContainer">
                       <span className="material-symbols-outlined" style={{fontSize: "50px"}}>upload</span>                    
                     </div>
-
                     <div className="modalVideoText1">
                       <p>Click select files to upload a video.</p>
                     </div>
-
                     <div className="modalVideoText2">
                       <p>Accepted file type: MP4</p>
                     </div>
-
                     <div className="modalVideoUploadTextContainer">
                       <div className="uploadLabelContainer">
                         <label htmlFor="fileInput" className="custom-file-upload">
@@ -139,19 +112,14 @@ function VideoForm() {
                         <input type="file" id="fileInput" name="fileInput" required accept="video/mp4" onChange={handleFileInputChange} />
                       </div>
                     </div>
-
                   </div>
                 )}
-
               </div>
-
             </div>
-
           </div>
-
         </div>
       )}
-
+      <div>{user.username}</div>
     </>
   );
 }

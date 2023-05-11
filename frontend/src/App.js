@@ -12,7 +12,7 @@ import { SearchResults } from './components/Navigation/SearchBar.js';
 
 function App() {
   const location = useLocation();
-  const user = useSelector(state => state.session);
+  const user = useSelector(state => state?.session);
   return (
     <>
       {location.pathname !== '/login' && location.pathname !== '/password' && location.pathname !== '/signup' && <Navigation />}

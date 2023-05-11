@@ -45,8 +45,6 @@ export const uploadVideo = (title, description, file, setUploadProgress) => {
   };
 };
 
-// ...
-
 export const deleteVideo = (id) => async (dispatch) => {
   try {
     // Perform the delete request using your API
@@ -57,7 +55,6 @@ export const deleteVideo = (id) => async (dispatch) => {
     if (!response.ok) {
       throw response;
     }
-
     dispatch({
       type: DELETE_VIDEO,
       payload: id,
