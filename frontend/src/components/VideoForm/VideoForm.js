@@ -61,91 +61,93 @@ function VideoForm() {
 
   return (
     <>
-      <form className="video-form">
-        <div className="video-form-group">
-          <button type="button" className="selectFile" onClick={handleOpenModal}>Upload Video</button>
-        </div>
-      </form>
-      {showModal && (
-        <div className="modalVideoContainer">
-          <div className="modalVideoOverlay" onClick={handleCloseModal}></div>
-          <div className="modalVideoContent">
-            <div className="modalVideoHeader">
-              <h2>Upload video</h2>
-              <button className="closeVideoModalButton" onClick={handleCloseModal}>×</button>
-            </div>
-            <div className="modalVideoBody">
-              <div className="modalVideoUploadArea">
-                {selectedFile ? (
-                  <div className="modalVideoFormContainer">
-                    <form onSubmit={handleUploadVideo}>
-                      <div className="titleContainer">
-                        <input
-                          className="title-form-control"
-                          type="text"
-                          placeholder="Title"
-                          name="titleInput"
-                          value={title}
-                          onChange={(e) => setTitle(e.target.value)}
-                        />
-                      </div>
-                      <div className="descriptionContainer">
-                        <textarea
-                          className="description-form-control"
-                          placeholder="Description"
-                          name="descriptionInput"
-                          rows="3"
-                          value={description}
-                          onChange={(e) => setDescription(e.target.value)}
-                        />                      
-                      </div>
-                      <div className="uploadVideoContainer">
-                        <button className="uploadVideo" type="submit">
-                          Upload Video
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                ) : (
-                  <div className="modalVideoUploadFormContainer">
-                    <div className="modalVideoUploadIconContainer">
-                      <span className="material-symbols-outlined" style={{fontSize: "50px"}}>upload</span>                    
+      <div className="center-container">
+        <form className="video-form">
+          <div className="video-form-group">
+            <button type="button" className="selectFile" onClick={handleOpenModal}>Upload Video</button>
+          </div>
+        </form>
+        {showModal && (
+          <div className="modalVideoContainer">
+            <div className="modalVideoOverlay" onClick={handleCloseModal}></div>
+            <div className="modalVideoContent">
+              <div className="modalVideoHeader">
+                <h2>Upload video</h2>
+                <button className="closeVideoModalButton" onClick={handleCloseModal}>×</button>
+              </div>
+              <div className="modalVideoBody">
+                <div className="modalVideoUploadArea">
+                  {selectedFile ? (
+                    <div className="modalVideoFormContainer">
+                      <form onSubmit={handleUploadVideo}>
+                        <div className="titleContainer">
+                          <input
+                            className="title-form-control"
+                            type="text"
+                            placeholder="Title"
+                            name="titleInput"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                          />
+                        </div>
+                        <div className="descriptionContainer">
+                          <textarea
+                            className="description-form-control"
+                            placeholder="Description"
+                            name="descriptionInput"
+                            rows="3"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                          />                      
+                        </div>
+                        <div className="uploadVideoContainer">
+                          <button className="uploadVideo" type="submit">
+                            Upload Video
+                          </button>
+                        </div>
+                      </form>
                     </div>
-                    <div className="modalVideoText1">
-                      <p>Click select files to upload a video.</p>
-                    </div>
-                    <div className="modalVideoText2">
-                      <p>Accepted file type: MP4</p>
-                    </div>
-                    <div className="modalVideoUploadTextContainer">
-                      <div className="uploadLabelContainer">
-                        <label htmlFor="fileInput" className="custom-file-upload">
-                          <p>Select files</p>
-                        </label>
-                        <input type="file" id="fileInput" name="fileInput" required accept="video/mp4" onChange={handleFileInputChange} />
+                  ) : (
+                    <div className="modalVideoUploadFormContainer">
+                      <div className="modalVideoUploadIconContainer">
+                        <span className="material-symbols-outlined" style={{fontSize: "50px"}}>upload</span>                    
+                      </div>
+                      <div className="modalVideoText1">
+                        <p>Click select files to upload a video.</p>
+                      </div>
+                      <div className="modalVideoText2">
+                        <p>Accepted file type: MP4</p>
+                      </div>
+                      <div className="modalVideoUploadTextContainer">
+                        <div className="uploadLabelContainer">
+                          <label htmlFor="fileInput" className="custom-file-upload">
+                            <p>Select files</p>
+                          </label>
+                          <input type="file" id="fileInput" name="fileInput" required accept="video/mp4" onChange={handleFileInputChange} />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-      <div><UserProfile/></div>
-      <div className="video-section">
-        <h2>My Videos</h2>
-        {userVideos?.map((video) => (
-          <div key={video.id} className="video-form-container">
-            <Link to={`/videos/${video.id}`}>
-              <img src={video2} alt="video thumbnail" className="video-thumbnail" />
+        )}
+        <div><UserProfile/></div>
+        <div className="video-section">
+          <h2>My Videos</h2>
+          {userVideos?.map((video) => (
+            <div key={video.id} className="video-form-container">
+              <Link to={`/videos/${video.id}`}>
+                <img src={video2} alt="video thumbnail" className="video-thumbnail" />
+              </Link>
               <div className="videoInfo">
                 <h3 className="videoTitle">{video.title}</h3>
                 <button className="delete-video-button">DELETE VIDEO</button>
               </div>
-            </Link>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
