@@ -53,6 +53,14 @@ const VideoPlayer = ({ video, user }) => {
             Your browser does not support the video tag.
           </video>
         </div>
+        <div className="video-edit-delete">
+          {user.id === video.userId && (
+            <>
+              <button onClick={handleEdit}>{editing ? 'Save' : 'Edit Video'}</button>
+              <button onClick={handleDelete}>Delete Video</button>
+            </>
+          )}
+        </div>
         <div className="video-details">
           {editing ? (
             <>
@@ -113,10 +121,6 @@ const VideoPlayer = ({ video, user }) => {
               </div>
             </>
           )}
-          <div className="video-edit-delete">
-            <button onClick={handleEdit}>{editing ? 'Save' : 'Edit'}</button>
-            <button onClick={handleDelete}>Delete</button>
-          </div>
         </div>
       </div>
     </div>
