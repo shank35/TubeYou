@@ -11,7 +11,6 @@ input[type="file"] {
   font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
 }
 
-
 .selectFile {
   font-weight: bold;
   margin-bottom: 5px;
@@ -61,7 +60,6 @@ input[type="file"] {
 .selectFile, .uploadVideo:active {
   transform: translateY(1px);
 }
-
 
 .modalVideoContainer {
   position: fixed;
@@ -137,6 +135,7 @@ input[type="file"] {
 .modalVideoText1 {
   padding-bottom: 10px;
   color: #0D0D0D;
+  font-weight: bold;
 }
 
 .modalVideoText2 {
@@ -171,4 +170,49 @@ input[type="file"] {
 
 .modalVideoFormContainer, .modalVideoUploadFormContainer {
   font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+}
+
+.modalVideoUploadFormContainer {
+  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  padding-top: 20px;
+}
+
+.video-section {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+  margin-top: 0px;
+}
+
+.video-form-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0px;
+}
+
+.video-thumbnail {
+  width: 160px;
+  height: 90px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.delete-video-button {
+  border: none;
+  background: none;
+  color: #065fd4;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.video-form-group {
+  position: relative;
+}
+
+.selectFile {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

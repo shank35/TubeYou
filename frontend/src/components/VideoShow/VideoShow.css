@@ -104,7 +104,11 @@
 }
 
 .description.collapsed {
-  height: 4em;
+  height: 4.2em;
+}
+
+.description.show-toggle {
+  max-height: 4em;
 }
 
 .description.expanded {
@@ -116,6 +120,9 @@
 }
 
 .description-toggle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   background-color: transparent;
   padding: 0.25rem;
   border: none;
@@ -125,11 +132,11 @@
   text-transform: uppercase;
 }
 
+
 .description-toggle:hover {
   text-decoration: underline;
 }
 
-/* Add styles for edit and delete buttons */
 .video-edit-delete {
   display: flex;
   gap: 0.5rem;
@@ -149,15 +156,12 @@
   background-color: #115A93;
 }
 
-
-
 /* Media queries for responsiveness */
 @media (min-width: 1200px) {
   .container {
     width: 60vw;
     margin: 0 auto;
   }
-  
   
   .video-player {
     display: flex;

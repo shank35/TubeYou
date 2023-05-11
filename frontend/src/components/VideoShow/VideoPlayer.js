@@ -14,6 +14,7 @@ const VideoPlayer = ({ video, user }) => {
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(video.title);
   const [description, setDescription] = useState(video.description);
+  const descriptionThreshold = 150;
 
   const handleDelete = async () => {
     if (user.id === video.userId) {
@@ -84,7 +85,7 @@ const VideoPlayer = ({ video, user }) => {
                 </div>
                 <div className="channel-name">
                   <p>Channel Name</p>
-                  <button className="subscribe-button">Subscribe</button>
+                  {/* <button className="subscribe-button">Subscribe</button> */}
                 </div>
               </div>
               <textarea
@@ -110,14 +111,16 @@ const VideoPlayer = ({ video, user }) => {
                 </div>
                 <div className="channel-name">
                   <p>{video.authorUsername}</p>
-                  <button className="subscribe-button">Subscribe</button>
+                  {/* <button className="subscribe-button">Subscribe</button> */}
                 </div>
               </div>
-              <div className={`description ${showFullDescription ? 'expanded' : 'collapsed'}`}>
+              <div className={`description ${showFullDescription ? 'expanded' : description.length > descriptionThreshold ? 'show-toggle' : 'collapsed'}`}>
                 <p>{description}</p>
-                <button onClick={handleDescriptionClick} className="description-toggle">
-                  {showFullDescription ? 'Show less' : 'Show more'}
-                </button>
+                {description.length > descriptionThreshold && (
+                  <button onClick={handleDescriptionClick} className="description-toggle">
+                    {showFullDescription ? 'Show less' : 'Show more'}
+                  </button>
+                )}
               </div>
             </>
           )}

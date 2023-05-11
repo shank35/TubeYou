@@ -13,7 +13,6 @@ const videoReducer = (state = initialState, action) => {
         videos: updatedVideos,
       };
     }
-    
     case UPLOAD_VIDEO:
       return {
         ...state,
