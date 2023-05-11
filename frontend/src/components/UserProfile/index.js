@@ -22,8 +22,10 @@ function UserProfile() {
   return (
     <div className="user-profile">
       <UserAvatar username={user.username} />
-      <h1>Your Channel</h1>
-      <h2>{user.username}</h2>
+      <div className="user-info">
+        <h1>Your Channel</h1>
+        <h2>{user.username}</h2>
+      </div>
     </div>
   );
 }
