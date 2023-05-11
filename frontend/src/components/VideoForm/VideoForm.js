@@ -124,11 +124,11 @@ function VideoForm() {
                     </div>
 
                     <div className="modalVideoText1">
-                      <p>Drag and drop video files to upload</p>
+                      <p>Click select files to upload a video.</p>
                     </div>
 
                     <div className="modalVideoText2">
-                      <p>Your videos will be private until you publish them.</p>
+                      <p>Accepted file type: MP4</p>
                     </div>
 
                     <div className="modalVideoUploadTextContainer">
