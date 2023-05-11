@@ -61,9 +61,6 @@
   text-decoration: none;
 }
 
-
-/* frontend/src/components/Comment.css */
-
 .comment {
   display: flex;
   flex-direction: column;
