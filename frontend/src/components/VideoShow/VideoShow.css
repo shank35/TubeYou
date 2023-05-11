@@ -104,18 +104,26 @@
 }
 
 .description.collapsed {
-  height: 4em;
+  height: 4.2em;
+}
+
+.description.show-toggle {
+  max-height: 4em;
 }
 
 .description.expanded {
   height: auto;
 }
 
+
 .description p {
   margin-bottom: 1.5em;
 }
 
 .description-toggle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   background-color: transparent;
   padding: 0.25rem;
   border: none;
@@ -125,11 +133,11 @@
   text-transform: uppercase;
 }
 
+
 .description-toggle:hover {
   text-decoration: underline;
 }
 
-/* Add styles for edit and delete buttons */
 .video-edit-delete {
   display: flex;
   gap: 0.5rem;

@@ -114,7 +114,7 @@ const VideoPlayer = ({ video, user }) => {
                   {/* <button className="subscribe-button">Subscribe</button> */}
                 </div>
               </div>
-              <div className={`description ${showFullDescription ? 'expanded' : 'collapsed'}`}>
+              <div className={`description ${showFullDescription ? 'expanded' : description.length > descriptionThreshold ? 'show-toggle' : 'collapsed'}`}>
                 <p>{description}</p>
                 {description.length > descriptionThreshold && (
                   <button onClick={handleDescriptionClick} className="description-toggle">
