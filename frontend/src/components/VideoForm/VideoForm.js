@@ -63,9 +63,7 @@ function VideoForm() {
     <>
       <form className="video-form">
         <div className="video-form-group">
-        <div className="selectFileContainer">
-          <button type="button" className="selectFile" onClick={handleOpenModal}>Select files to upload</button>
-        </div>
+          <button type="button" className="selectFile" onClick={handleOpenModal}>Upload Video</button>
         </div>
       </form>
       {showModal && (
@@ -135,19 +133,16 @@ function VideoForm() {
         </div>
       )}
       <div><UserProfile/></div>
-      <div>
+      <div className="video-section">
         <h2>My Videos</h2>
         {userVideos?.map((video) => (
-          <div key={video.id}>
+          <div key={video.id} className="video-form-container">
             <Link to={`/videos/${video.id}`}>
-            <img src={video2} alt="video thumbnail" />
-                <div className="videoInfo">
-                  <h3 className="videoTitle">{video.title}</h3>
-                  <p className="videoChannel">{video.channelName}</p>
-                  <p className="videoViews">
-                    {video.views} views • {video.uploadedAt}
-                  </p>
-                </div>
+              <img src={video2} alt="video thumbnail" className="video-thumbnail" />
+              <div className="videoInfo">
+                <h3 className="videoTitle">{video.title}</h3>
+                <button className="delete-video-button">DELETE VIDEO</button>
+              </div>
             </Link>
           </div>
         ))}
