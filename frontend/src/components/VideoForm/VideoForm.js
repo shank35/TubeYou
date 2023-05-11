@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadVideo } from '../../actions/videoActions';
-
+import UserProfile from '../UserProfile';
 import './VideoForm.css';
 
 function VideoForm() {
@@ -119,7 +119,7 @@ function VideoForm() {
           </div>
         </div>
       )}
-      <div>{user.username}</div>
+      <div><UserProfile/></div>
     </>
   );
 }
