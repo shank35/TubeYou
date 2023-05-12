@@ -15,9 +15,10 @@ const VideoPlayer = ({ video, user }) => {
   const [title, setTitle] = useState(video.title);
   const [description, setDescription] = useState(video.description);
   const descriptionThreshold = 150;
+  const userId = user ? user.id : null;
 
   const handleDelete = async () => {
-    if (user.id === video.userId) {
+    if (userId === video?.userId) {
       await dispatch(deleteVideo(video.id));
       history.push('/');
     } else {
@@ -26,7 +27,7 @@ const VideoPlayer = ({ video, user }) => {
   };
 
   const handleEdit = () => {
-    if (user.id === video.userId) {
+    if (userId === video.userId) {
       if (editing) {
         dispatch(editVideo(video.id, title, description));
       }
@@ -35,6 +36,7 @@ const VideoPlayer = ({ video, user }) => {
       alert('You are not authorized to edit this video.');
     }
   };
+  
 
   if (!video) {
     return <div>Loading...</div>;
@@ -55,12 +57,12 @@ const VideoPlayer = ({ video, user }) => {
           </video>
         </div>
         <div className="video-edit-delete">
-          {user.id === video.userId && (
-            <>
-              <button onClick={handleEdit}>{editing ? 'Save' : 'Edit Video'}</button>
-              <button onClick={handleDelete}>Delete Video</button>
-            </>
-          )}
+        {userId === video.userId && (
+          <>
+            <button onClick={handleEdit}>{editing ? 'Save' : 'Edit Video'}</button>
+            <button onClick={handleDelete}>Delete Video</button>
+          </>
+        )}
         </div>
         <div className="video-details">
           {editing ? (
