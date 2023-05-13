@@ -28,13 +28,12 @@ function HomePage() {
           {Array.isArray(videos) && videos.map((video) => (
             <Link to={`/videos/${video.id}`} key={video.id} className="videoLink">
               <div className="videoPlaceholder">
-                {/* <img src={video.thumbnail} alt="video thumbnail" /> */}
-                <img src={video2} alt="video thumbnail" />
+                <img src={video.thumbnail_url || video2} alt="video thumbnail" />
                 <div className="videoInfo">
                   <h3 className="videoTitle">{video.title}</h3>
-                  <p className="videoChannel">{video.channelName}</p>
+                  <p className="videoChannel">{video.author_username}</p>
                   <p className="videoViews">
-                    {video.views} views • {video.uploadedAt}
+                    {video.views} views • {video.created_at}
                   </p>
                 </div>
               </div>
