@@ -29,9 +29,9 @@ class Api::VideosController < ApplicationController
   def create 
     if params[:video]
       @video = Video.new(video_params)
-      @video.user_id = current_user.id # or any other valid user ID
+      @video.user_id = current_user.id
       @video.video_file.attach(video_params[:video_file])
-      
+      @video.thumbnail.attach(video_params[:thumbnail])
       
       if @video.save
         render :show, status: :created
