@@ -25,6 +25,8 @@ class Video < ApplicationRecord
 
   has_one_attached :video_file
 
+  has_one_attached :thumbnail
+
   def author_username
     user.username
   end
@@ -35,20 +37,9 @@ class Video < ApplicationRecord
     end
   end
 
-  def random_thumbnail_url
-    if video_file.attached?
-      output_dir = Rails.root.join("public", "thumbnails")
-      FileUtils.mkdir_p(output_dir) unless File.directory?(output_dir)
-
-      video = FFMPEG::Movie.new(video_file.service_url)
-      random_time = rand(0..video.duration).to_i
-      output_path = output_dir.join("#{id}-thumbnail-#{random_time}.jpg")
-
-      unless File.exist?(output_path)
-        video.screenshot(output_path.to_s, seek_time: random_time)
-      end
-
-      "/thumbnails/#{id}-thumbnail-#{random_time}.jpg"
+  def thumbnail_url
+    if thumbnail.attached?
+      thumbnail.url
     end
   end
   
