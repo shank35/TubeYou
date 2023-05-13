@@ -101,17 +101,21 @@ function VideoForm() {
                             onChange={(e) => setDescription(e.target.value)}
                           />                      
                         </div>
-                        <label htmlFor="thumbnailInput" className="custom-file-upload">
-                          <p>Select Thumbnail</p>
-                        </label>
-                        <input
-                          type="file"
-                          id="thumbnailInput"
-                          name="thumbnailInput"
-                          required
-                          accept="image/*"
-                          onChange={(e) => setThumbnailFile(e.target.files[0])}
-                        />
+                        <div className="modalVideoUploadTextContainer">
+                          <div className="uploadLabelContainer">
+                            <label htmlFor="thumbnailInput" className="custom-file-upload">
+                              <p>Select Thumbnail</p>
+                            </label>
+                            <input
+                              type="file"
+                              id="thumbnailInput"
+                              name="thumbnailInput"
+                              required
+                              accept="image/*"
+                              onChange={(e) => setThumbnailFile(e.target.files[0])}
+                            />
+                          </div>
+                        </div>
                         <div className="uploadVideoContainer">
                           <button className="uploadVideo" type="submit">
                             Upload Video

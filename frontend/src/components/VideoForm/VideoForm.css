@@ -33,7 +33,7 @@ input[type="file"] {
   border: 1px solid #ccc;
   font-size: 16px;
   padding: 8px;
-  width: 100%;
+  width: 60%;
   font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
 }
 
@@ -41,8 +41,10 @@ input[type="file"] {
   background-color: #1a73e8;
 }
 
-.selectFile, .uploadVideo, .custom-file-upload {
-  background-color: #065FD4;
+.selectFile,
+.uploadVideo,
+.custom-file-upload {
+  background-color: #065fd4;
   border: none;
   border-radius: 2px;
   color: #fff;
@@ -53,11 +55,13 @@ input[type="file"] {
   text-decoration: none;
 }
 
-.selectFile, .uploadVideo:hover {
+.selectFile,
+.uploadVideo:hover {
   background-color: #1a73e8;
 }
 
-.selectFile, .uploadVideo:active {
+.selectFile,
+.uploadVideo:active {
   transform: translateY(1px);
 }
 
@@ -134,7 +138,7 @@ input[type="file"] {
 
 .modalVideoText1 {
   padding-bottom: 10px;
-  color: #0D0D0D;
+  color: #0d0d0d;
   font-weight: bold;
 }
 
@@ -158,7 +162,8 @@ input[type="file"] {
   text-align: center;
 }
 
-.titleContainer, .descriptionContainer {
+.titleContainer,
+.descriptionContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,7 +173,8 @@ input[type="file"] {
   width: 1000px;
 }
 
-.modalVideoFormContainer, .modalVideoUploadFormContainer {
+.modalVideoFormContainer,
+.modalVideoUploadFormContainer {
   font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
 }
 
@@ -219,10 +225,7 @@ input[type="file"] {
 }
 
 .center-container {
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
   margin-left: 20px;
   font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
 }
+

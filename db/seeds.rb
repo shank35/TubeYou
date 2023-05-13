@@ -58,8 +58,8 @@ require 'open-uri'
   puts "Seeding videos..."
 
   video1 = Video.create!(
-    title: "Introduction to Rails", 
-    description: "Learn the basics of Rails in this introductory video.", 
+    title: "Haikyuu highlights", 
+    description: "Haikyuuuuu!!!!", 
     user_id: user1.id, 
     views: 100, 
     likes: [], 
