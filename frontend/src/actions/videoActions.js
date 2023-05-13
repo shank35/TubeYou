@@ -13,13 +13,14 @@ export const receiveVideo = (video) => {
   };
 };
 
-export const uploadVideo = (title, description, file, setUploadProgress) => {
+export const uploadVideo = (title, description, file, thumbnailFile, setUploadProgress) => {
   return async (dispatch) => {
     try {
       const formData = new FormData();
       formData.append('video[title]', title);
       formData.append('video[description]', description);
       formData.append('video[video_file]', file);
+      formData.append('video[thumbnail]', thumbnailFile);
 
       const response = await csrfFetch('/api/videos', {
         method: 'POST',

@@ -14,6 +14,7 @@ function VideoForm() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
+  const [thumbnailFile, setThumbnailFile] = useState(null);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -39,7 +40,7 @@ function VideoForm() {
   const handleUploadVideo = async (event) => {
     event.preventDefault();
     setIsUploading(true);
-    await dispatch(uploadVideo(title, description, selectedFile, setUploadProgress));
+    await dispatch(uploadVideo(title, description, selectedFile, thumbnailFile, setUploadProgress));
     setIsUploading(false);
     if (!isUploading) {
       handleCloseModal();
@@ -100,6 +101,17 @@ function VideoForm() {
                             onChange={(e) => setDescription(e.target.value)}
                           />                      
                         </div>
+                        <label htmlFor="thumbnailInput" className="custom-file-upload">
+                          <p>Select Thumbnail</p>
+                        </label>
+                        <input
+                          type="file"
+                          id="thumbnailInput"
+                          name="thumbnailInput"
+                          required
+                          accept="image/*"
+                          onChange={(e) => setThumbnailFile(e.target.files[0])}
+                        />
                         <div className="uploadVideoContainer">
                           <button className="uploadVideo" type="submit">
                             Upload Video
