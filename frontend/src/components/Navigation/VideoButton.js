@@ -1,32 +1,41 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-// import { useDropdown } from "./DropdownContext";
 import "./VideoButton.css";
 
 function VideoButton() {
   const [videoDropdownVisible, setVideoDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const toggleVideoDropdown = () => {
     setVideoDropdownVisible(!videoDropdownVisible);
   };
 
-  // const handleClickOutside = (event) => {
-  //   if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-  //     setVideoDropdownVisible(false);
-  //   }
-  // };
+  const handleClickOutside = (event) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target) &&
+      buttonRef.current &&
+      !buttonRef.current.contains(event.target)
+    ) {
+      setVideoDropdownVisible(false);
+    }
+  };
 
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, []);
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="videoButton">
-      <button className="videoButtonContainer" onClick={toggleVideoDropdown}>
+      <button
+        ref={buttonRef}
+        className="videoButtonContainer"
+        onClick={toggleVideoDropdown}
+      >
         <span className="material-symbols-outlined" style={{ fontSize: "35px" }}>
           video_call
         </span>
