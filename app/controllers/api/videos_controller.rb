@@ -9,9 +9,12 @@ class Api::VideosController < ApplicationController
     end
     videos_json = @videos.map do |video|
       video.as_json.merge(
+        video_file_url: video.video_file_url,
+        thumbnail_url: video.thumbnail_url,
+        author_username: video.author_username,
         updated_at: video.updated_at.strftime("%B %d, %Y")
       )
-    end
+    end   
     render json: { videos: videos_json }
   end
   
