@@ -34,7 +34,7 @@ function HomePage() {
                   <h3 className="videoTitle">{video.title}</h3>
                   <p className="videoChannel">{video.author_username}</p>
                   <p className="videoViews">
-                    {video.views} views • {video.created_at}
+                    {video.views} views • {video.updated_at}
                   </p>
                 </div>
               </div>

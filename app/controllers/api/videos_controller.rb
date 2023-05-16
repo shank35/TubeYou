@@ -13,7 +13,7 @@ class Api::VideosController < ApplicationController
   def show
     @video = Video.joins(:user).where(id: params[:id]).select("videos.*, users.username as author_username").first
     render :show
-  end
+  end  
   
   def random
     limit = 8
@@ -21,9 +21,11 @@ class Api::VideosController < ApplicationController
     videos_json = @videos.map do |video|
       video.as_json.merge(
         video_file_url: video.video_file_url,
-        thumbnail_url: video.thumbnail_url
+        thumbnail_url: video.thumbnail_url,
+        author_username: video.author_username,
+        updated_at: video.updated_at.strftime("%B %d, %Y") # formats the date to "Month Day, Year"
       )
-    end
+    end    
     render json: { videos: videos_json }
   end
   
