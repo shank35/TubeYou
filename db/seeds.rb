@@ -146,17 +146,17 @@ require 'open-uri'
   # thumbnailFile4 = URI.open("")
   # thumbnailFile5 = URI.open("")
   # thumbnailFile6 = URI.open("")
-  # thumbnailFile7 = URI.open("")
+  thumbnailFile7 = URI.open("https://tubeyou-dev.s3.amazonaws.com/blackpink+-+'pretty+savage'.webp")
   # thumbnailFile8 = URI.open("")
 
-  # video1.thumbnail.attach(io: thumbnail1, filename: "thumbnail1.jpg", content_type: "image/jpeg")
-  # video2.thumbnail.attach(io: thumbnail2, filename: "thumbnail2.jpg", content_type: "image/jpeg")
-  # video3.thumbnail.attach(io: thumbnail3, filename: "thumbnail3.jpg", content_type: "image/jpeg")
-  # video4.thumbnail.attach(io: thumbnail4, filename: "thumbnail4.jpg", content_type: "image/jpeg")
-  # video5.thumbnail.attach(io: thumbnail5, filename: "thumbnail5.jpg", content_type: "image/jpeg")
-  # video6.thumbnail.attach(io: thumbnail6, filename: "thumbnail6.jpg", content_type: "image/jpeg")
-  # video7.thumbnail.attach(io: thumbnail7, filename: "thumbnail7.jpg", content_type: "image/jpeg")
-  # video8.thumbnail.attach(io: thumbnail8, filename: "thumbnail8.jpg", content_type: "image/jpeg")
+  # video1.thumbnail.attach(io: thumbnailFile1, filename: "thumbnail1.jpg", content_type: "image/jpeg")
+  # video2.thumbnail.attach(io: thumbnailFile2, filename: "thumbnail2.jpg", content_type: "image/jpeg")
+  # video3.thumbnail.attach(io: thumbnailFile3, filename: "thumbnail3.jpg", content_type: "image/jpeg")
+  # video4.thumbnail.attach(io: thumbnailFile4, filename: "thumbnail4.jpg", content_type: "image/jpeg")
+  # video5.thumbnail.attach(io: thumbnailFile5, filename: "thumbnail5.jpg", content_type: "image/jpeg")
+  # video6.thumbnail.attach(io: thumbnailFile6, filename: "thumbnail6.jpg", content_type: "image/jpeg")
+  video7.thumbnail.attach(io: thumbnailFile7, filename: "thumbnail7.jpg", content_type: "image/webp")
+  # video8.thumbnail.attach(io: thumbnailFile8, filename: "thumbnail8.jpg", content_type: "image/jpeg")
 
   video1.video_file.attach(io: videoFile1, filename: "Best+Highlights+of+Hinata+Shoyo+against+Inarizaki+_+Haikyuu+To+The+Top+Part+2.mp4", content_type: "video/mp4")
   video2.video_file.attach(io: videoFile2, filename: "kobe_highlights.mp4", content_type: "video/mp4")
@@ -751,4 +751,5 @@ require 'open-uri'
   puts "Seeded #{Comment.count} comments."
 
   puts "Done!"
-# end
+
+# rails db:seed

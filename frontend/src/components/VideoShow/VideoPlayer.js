@@ -43,7 +43,7 @@ const VideoPlayer = ({ video, user }) => {
   }
 
   const { videoFileUrl } = video;
-
+  console.log(video.thumbnailUrl)
   const handleDescriptionClick = () => {
     setShowFullDescription(!showFullDescription);
   };

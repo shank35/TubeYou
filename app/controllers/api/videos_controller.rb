@@ -18,8 +18,15 @@ class Api::VideosController < ApplicationController
   def random
     limit = 8
     @videos = Video.order("RANDOM()").limit(limit)
-    render json: { videos: @videos }
+    videos_json = @videos.map do |video|
+      video.as_json.merge(
+        video_file_url: video.video_file_url,
+        thumbnail_url: video.thumbnail_url
+      )
+    end
+    render json: { videos: videos_json }
   end
+  
 
   def user_videos
     @videos = Video.where(user_id: params[:user_id])
