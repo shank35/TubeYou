@@ -21,8 +21,14 @@ export function SearchResults({ location }) {
         {videos.map((video) => (
           <li key={video.id}>
             <Link to={`/videos/${video.id}`}>
-              <img className="thumbnail" src={video2} alt="video thumbnail" />
-              <h2 className="search_title">{video.title}</h2>
+              <img className="thumbnail" src={video.thumbnailUrl || video2} alt="Video thumbnail" />
+              <div className="videoInfo">
+                  <h3 className="videoTitle">{video.title}</h3>
+                  <p className="videoChannel">{video.authorUsername}</p>
+                  <p className="videoViews">
+                    {video.views} views • {video.updated_at}
+                  </p>
+                </div>
             </Link>
           </li>
 
@@ -46,11 +52,12 @@ function SearchBar() {
     console.log("Data:", data);
     
     // Convert the object into an array of video objects
-    const videosArray = Object.values(data);
+    const videosArray = Object.values(data.videos);
     
     dispatch(searchVideos(videosArray));
     history.push(`/search?term=${searchTerm}`);
   };
+  
   
   
 

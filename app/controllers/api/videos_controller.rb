@@ -7,8 +7,14 @@ class Api::VideosController < ApplicationController
     else
       @videos = Video.all
     end
-    render :index
+    videos_json = @videos.map do |video|
+      video.as_json.merge(
+        updated_at: video.updated_at.strftime("%B %d, %Y")
+      )
+    end
+    render json: { videos: videos_json }
   end
+  
 
   def show
     @video = Video.joins(:user).where(id: params[:id]).select("videos.*, users.username as author_username").first
@@ -23,7 +29,7 @@ class Api::VideosController < ApplicationController
         video_file_url: video.video_file_url,
         thumbnail_url: video.thumbnail_url,
         author_username: video.author_username,
-        updated_at: video.updated_at.strftime("%B %d, %Y") # formats the date to "Month Day, Year"
+        updated_at: video.updated_at.strftime("%B %d, %Y")
       )
     end    
     render json: { videos: videos_json }
