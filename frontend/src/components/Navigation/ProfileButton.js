@@ -53,8 +53,6 @@ function ProfileButton() {
     setProfileDropdownVisible(false);
     history.push("/login");
   };
-  
-  
 
   return (
     <div className={`profile ${theme}-theme`}>
@@ -75,12 +73,12 @@ function ProfileButton() {
             </div>
           </div>
           <ul>
-            <li className="dropdownList">
+            {/* <li className="dropdownList">
               <button className="dropdownButton">
                 <span className="material-symbols-outlined">account_box</span>
                 Your Channel
               </button>
-            </li>
+            </li> */}
             <li className="dropdownList">
               <button className="dropdownButton" onClick={handleSignOut}>
                 <span className="material-symbols-outlined">logout</span>
@@ -90,7 +88,7 @@ function ProfileButton() {
 
             <hr className="dropdownDivider" />
 
-            <li className="dropdownList">
+            {/* <li className="dropdownList">
               <button className="dropdownButton" onClick={toggleTheme}>
                 <span className="material-symbols-outlined">
                   {theme === "light" ? 
@@ -104,7 +102,7 @@ function ProfileButton() {
                 {theme === "light" ? "Dark mode" : "Light mode"}
               </button>
             </li>
-            <hr className="dropdownDivider" />
+            <hr className="dropdownDivider" /> */}
             {/* <li className="dropdownList">
               <button className="dropdownButton">
                 <span className="material-symbols-outlined">settings</span>
