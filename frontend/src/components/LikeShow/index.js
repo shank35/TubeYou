@@ -61,7 +61,6 @@ const LikeButton = ({ videoId }) => {
       }
     }
   };
-  
 
   const handleLikes = async () => {
     if (likeStatus === null || likeStatus === false) {
