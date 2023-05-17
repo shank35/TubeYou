@@ -100,7 +100,7 @@ const VideoPlayer = ({ video, user }) => {
               <h1 className="video-title">{title}</h1>
               <div className="video-info">
                 <div className="views-and-likes">
-                  <p>{video.views}</p>
+                  <p>{video.views} views</p>
                 </div>
                 <div className="video-actions">
                   <LikeButton videoId={video.id} />
