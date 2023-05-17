@@ -5,7 +5,7 @@
   margin-bottom: 24px;
   padding-left: 30px;
   padding-right: 30px;
-  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .comment-author {
@@ -61,7 +61,7 @@
   border: none;
   font-size: 14px;
   padding: 5px 15px;
-  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .dropdown-item button:hover {

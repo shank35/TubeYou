@@ -1,13 +1,14 @@
 @import "../Navigation/themes.css";
 
 .body {
-  font-family: Arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 #page {
   width: 95%;
   padding: 24px;
   padding-left: 80px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 #mainSectionContainer {
@@ -16,6 +17,7 @@
   justify-content: flex-start;
   grid-gap: 20px;
   margin-top: 60px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .videoPlaceholder {
@@ -50,7 +52,7 @@
   background-color: transparent;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  font-family: Roboto, Arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .videoTitle {
@@ -59,7 +61,7 @@
   font-weight: 500;
   line-height: 1.2;
   color: #0f0f0f;
-  font-family: Roboto, Arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .videoChannel {
@@ -68,7 +70,7 @@
   font-weight: 400;
   line-height: 1.2;
   color: #606060;
-  font-family: Roboto, Arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .videoViews {
@@ -77,7 +79,7 @@
   font-weight: 400;
   line-height: 1.2;
   color: #606060;
-  font-family: Roboto, Arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 @media (min-width: 1200px) {

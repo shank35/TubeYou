@@ -1,6 +1,7 @@
 .video-form {
   margin-top: 60px;
   width: 100%;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 input[type="file"] {
@@ -9,12 +10,13 @@ input[type="file"] {
 
 .video-form-group {
   margin-bottom: 20px;
-  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .selectFile {
   font-weight: bold;
   margin-bottom: 5px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .selectFileContainer {
@@ -24,6 +26,7 @@ input[type="file"] {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .title-form-control,
@@ -34,7 +37,7 @@ input[type="file"] {
   font-size: 16px;
   padding: 8px;
   width: 60%;
-  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .custom-file-upload:hover {
@@ -53,6 +56,7 @@ input[type="file"] {
   padding: 8px 16px;
   text-align: center;
   text-decoration: none;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .selectFile,
@@ -102,7 +106,7 @@ input[type="file"] {
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid #ddd;
-  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .modalVideoHeader h2 {
@@ -176,11 +180,11 @@ input[type="file"] {
 
 .modalVideoFormContainer,
 .modalVideoUploadFormContainer {
-  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .modalVideoUploadFormContainer {
-  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
   padding-top: 20px;
 }
 
@@ -227,6 +231,6 @@ input[type="file"] {
 
 .center-container {
   margin-left: 20px;
-  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 

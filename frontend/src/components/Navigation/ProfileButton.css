@@ -1,6 +1,6 @@
 .profileDropdown {
   position: absolute;
-  top: 40px; /* adjust this value to position the dropdown correctly */
+  top: 40px;
   right: 10px;
   width:280px;
   background-color: #fff;
@@ -8,6 +8,7 @@
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .profileContainer {

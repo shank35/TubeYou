@@ -3,7 +3,7 @@
 .comment-list {
   display: flex;
   flex-direction: column;
-  font-family: 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .comment-list .comment {

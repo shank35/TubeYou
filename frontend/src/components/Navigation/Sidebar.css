@@ -9,6 +9,7 @@
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.5);
   padding-top: 0px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .modalContent {
@@ -54,7 +55,7 @@
   display: flex;
   align-items: center;
   padding: 6px 8px 6px;
-  font-family: "Roboto","Arial",sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
   font-size: 1.0rem;
   line-height: 2rem;
   font-weight: 300;
@@ -83,7 +84,7 @@
 .sidebarHeader {
   display: block;
   padding: 6px 12px 4px;
-  font-family: "Roboto", "Arial", sans-serif;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
   line-height: 2.2rem;
   font-size: 1.2rem;
   font-weight: 400;

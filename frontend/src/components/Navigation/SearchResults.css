@@ -4,11 +4,13 @@
   margin: 0 auto;
   padding: 20px;
   margin-top: 3rem;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .searchResultsContainer h1 {
   font-size: 24px;
   margin-bottom: 20px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .searchResultsContainer ul {

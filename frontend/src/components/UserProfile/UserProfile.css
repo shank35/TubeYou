@@ -8,9 +8,11 @@
   font-size: 64px;
   font-weight: bold;
   color: white;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .user-info {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
