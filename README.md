@@ -20,7 +20,7 @@
 
 # Introduction - At a glance
 
-<img align="right" src="frontend/src/assets/icons/homepage.png" alt="homepage">
+<img align="right" src="frontend/src/assets/icons/homepage2.png" alt="homepage">
 
 ### [TubeYou](https://tubeyou.onrender.com/), a YouTube clone, is a video-sharing platform where users can watch, comment on, and like/dislike videos and upload and share their own videos.
 
