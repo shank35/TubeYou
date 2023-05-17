@@ -44,15 +44,17 @@ function VideoForm() {
     setIsUploading(false);
     if (!isUploading) {
       handleCloseModal();
+      fetchUserVideos();
     }
   };
 
+  const fetchUserVideos = async () => {
+    const response = await fetch(`/api/videos/user/${user.id}`);
+    const data = await response.json();
+    setUserVideos(data.videos);
+  };
+  
   useEffect(() => {
-    const fetchUserVideos = async () => {
-      const response = await fetch(`/api/videos/user/${user.id}`);
-      const data = await response.json();
-      setUserVideos(data.videos);
-    };
     if (user) {
       fetchUserVideos();
     }
