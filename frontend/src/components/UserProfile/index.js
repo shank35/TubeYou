@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import "./UserProfile.css"
 
 
-function UserAvatar() {
+function UserAvatar({ className = "" }) {
   const user = useSelector(state => state?.session.user);
 
   const letter = user.username.substr(0, 1).toUpperCase();
@@ -26,7 +26,7 @@ function UserAvatar() {
   }, [user]);
 
   return (
-    <div className="user-avatar" style={{backgroundColor}}>
+    <div className={`user-avatar ${className}`} style={{backgroundColor}}>
       {letter}
     </div>
   );

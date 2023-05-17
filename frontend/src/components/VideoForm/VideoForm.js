@@ -147,7 +147,7 @@ function VideoForm() {
             </div>
           </div>
         )}
-        <div><UserProfile/></div>
+        <div className="video-form-user-profile"><UserProfile/></div>
         <div className="video-section">
           <h2 className="video-form-my-videos">My Videos</h2>
           {userVideos?.map((video) => (

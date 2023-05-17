@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useTheme } from "./ThemeContext";
-
+import UserProfile from '../UserProfile';
 import { logout } from "../../store/session";
 import { useDropdown } from "./DropdownContext";
 import "./ProfileButton.css";

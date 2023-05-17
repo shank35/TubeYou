@@ -6,7 +6,6 @@ import "./Navigation.css";
 
 import { DropdownProvider } from "./DropdownContext";
 
-
 import ProfileButton from "./ProfileButton";
 import VideoButton from "./VideoButton";
 import Sidebar from "./Sidebar";
