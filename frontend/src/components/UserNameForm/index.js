@@ -42,8 +42,8 @@ function UsernameForm({ onSubmit }) {
   if (toPassword) return <Redirect to="/password" />;
 
   return (
-    <div className="container">
-      <div className="box">
+    <div className="username-container">
+      <div className="username-box">
         <h2>Sign In</h2>
         <h3>to continue to TubeYou</h3>
         <form onSubmit={handleSubmit}>
@@ -64,10 +64,10 @@ function UsernameForm({ onSubmit }) {
             </ul>
           </div>
           <div className="button-container">
-            <button type="submit">Next</button>
-            <button type="button" onClick={demoUser}>Demo User</button>
+            <button type="submit" className="usernameButton">Next</button>
+            <button type="button" className="usernameButton" onClick={demoUser}>Demo User</button>
             <Link to="/signup">
-              <button type="submit">Create Account</button>
+              <button type="submit" className="usernameButton">Create Account</button>
             </Link>
           </div>
         </form>
