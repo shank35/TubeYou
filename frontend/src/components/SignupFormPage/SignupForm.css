@@ -5,7 +5,7 @@ body {
   font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
-.box {
+.signup-box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -20,7 +20,7 @@ body {
   font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
-.box h2 {
+.signup-box h2 {
   margin: 0 0 1.5rem;
   padding: 0;
   color: #202124;
@@ -30,12 +30,17 @@ body {
   font-weight: 400;
 }
 
-.box .inputBox {
+.signup-continue {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.signup-box .inputBox {
   position: relative;
   margin-bottom: 1.5rem;
 }
 
-.box .inputBox input {
+.signup-box .inputBox input {
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
@@ -47,7 +52,7 @@ body {
   width: 93%;
 }
 
-.box .inputBox label {
+.signup-box .inputBox label {
   position: absolute;
   top:3px;
   left: 10px;
@@ -59,9 +64,9 @@ body {
   font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
-.box .inputBox input:focus ~ label,
-.box .inputBox input:valid ~ label,
-.box .inputBox input:not([value='']) ~ label {
+.signup-box .inputBox input:focus ~ label,
+.signup-box .inputBox input:valid ~ label,
+.signup-box .inputBox input:not([value='']) ~ label {
   top: -1.25rem;
   left: 10px;
   color: #1a73e8;
@@ -72,12 +77,12 @@ body {
   padding-right: 5px;
 }
 
-.box .inputBox input:focus {
+.signup-box .inputBox input:focus {
   outline: none;
   border-color: 2px solid #1a73e8;
 }
 
-.box button[type="submit"] {
+.signup-box button[type="submit"] {
   width: 100%;
   border: none;
   outline: none;
@@ -90,7 +95,7 @@ body {
   margin-top: 1rem;
 }
 
-.box button[type="submit"]:hover {
+.signup-box button[type="submit"]:hover {
   background-color: #287ae6;
   box-shadow: 0 1px 1px 0 rgba(66, 133, 244, 0.45), 0 1px 3px, 1px rgba(66, 133, 244, 0.34);
 }
@@ -111,32 +116,32 @@ body {
   font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
-.box .name-container {
+.signup-box .name-container {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
 }
 
-.box .name-container .inputBox {
+.signup-box .name-container .inputBox {
   width: 48%;
   margin-right: 4%;
 }
 
-.box .name-container .inputBox:last-child {
+.signup-box .name-container .inputBox:last-child {
   margin-right: 0;
 }
 
-.box .password-container {
+.signup-box .password-container {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
 }
 
-.box .password-container .inputBox {
+.signup-box .password-container .inputBox {
   width: 48%;
   margin-right: 4%;
 }
 
-.box .password-container .inputBox:last-child {
+.signup-box .password-container .inputBox:last-child {
   margin-right: 0;
 }

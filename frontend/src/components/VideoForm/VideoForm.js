@@ -51,7 +51,6 @@ function VideoForm() {
     const fetchUserVideos = async () => {
       const response = await fetch(`/api/videos/user/${user.id}`);
       const data = await response.json();
-      console.log("User video data:", data);
       setUserVideos(data.videos);
     };
     if (user) {

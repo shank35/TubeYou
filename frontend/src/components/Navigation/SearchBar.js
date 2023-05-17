@@ -48,7 +48,6 @@ function SearchBar() {
     e.preventDefault();
     const response = await fetch(`/api/videos?search=${searchTerm}`);
     const data = await response.json();
-    console.log("Data:", data);
     
     // Convert the object into an array of video objects
     const videosArray = Object.values(data.videos);

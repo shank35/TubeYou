@@ -15,7 +15,6 @@ function HomePage() {
     const fetchRandomVideos = async () => {
       const response = await fetch("/api/videos/random");
       const data = await response.json();
-      console.log("Random video data:", data);
       setVideos(data.videos);
     };
     fetchRandomVideos();

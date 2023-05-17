@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-// import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import '../../index.css';
 import './SignupForm.css';
 
 function SignupFormPage() {
@@ -85,7 +85,6 @@ function SignupFormPage() {
     }
   
     setErrors([]);
-    console.log({email, username, password, firstName, lastName});
     return dispatch(sessionActions.signup({ email, username, password, firstName, lastName }))
       .catch(async (res) => {
         let data;
@@ -113,10 +112,10 @@ function SignupFormPage() {
   };
 
   return (
-    <div className="container">
-      <div className="box">
+    <div className="signup-container">
+      <div className="signup-box">
         <h2>Create your TubeYou Account</h2>
-        <h3>to continue to TubeYou</h3>
+        <h3 className="signup-continue">to continue to TubeYou</h3>
         <form onSubmit={handleSubmit}>
           {/* <div className="name-container">
             <div className="inputBox">

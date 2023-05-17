@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../../index.css';
+import './PasswordForm.css';
 
 function PasswordForm({ onSubmit }) {
   const [password, setPassword] = useState('');
@@ -10,8 +12,8 @@ function PasswordForm({ onSubmit }) {
   };
 
   return (
-    <div className="container">
-      <div className="box">
+    <div className="password-container">
+      <div className="password-box">
         <h2>Sign In</h2>
         <h3>to continue to TubeYou</h3>
         <form onSubmit={handleSubmit}>
