@@ -11,6 +11,7 @@ const LikeButton = ({ videoId }) => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [isDisliked, setIsDisliked] = useState(null);
+  const [isSignInDropdownOpen, setIsSignInDropdownOpen] = useState(false);
 
   const fetchLikeStatus = async () => {
     if (!user) return;
@@ -45,6 +46,7 @@ const LikeButton = ({ videoId }) => {
 
   const handleLike = async (newLikeStatus) => {
     if (!user) {
+      setIsSignInDropdownOpen(true); // Open the sign-in dropdown
       return;
     }
     const response = await csrfFetch(`/api/videos/${videoId}/likes`, {
@@ -85,6 +87,10 @@ const LikeButton = ({ videoId }) => {
   };
 
   const handleDislike = async () => {
+    if (!user) {
+      setIsSignInDropdownOpen(true); // Open the sign-in dropdown
+      return;
+    }
     if (dislikeStatus === null || dislikeStatus === false) {
       await handleLike(false);
       dispatch(
@@ -109,7 +115,12 @@ const LikeButton = ({ videoId }) => {
       console.error(err);
     }
   };
-  
+
+  const handleSignIn = () => {
+    setIsSignInDropdownOpen(false); // Close the sign-in dropdown
+    // Add your sign-in logic here, such as opening a sign-in modal
+  };
+
   useEffect(() => {
     fetchLikeStatus();
     fetchLikesAndDislikes();
@@ -134,6 +145,13 @@ const LikeButton = ({ videoId }) => {
         <i className="fas fa-thumbs-down fa-2x"></i>
         Dislike
       </button>
+
+      {isSignInDropdownOpen && (
+        <div className="sign-in-dropdown">
+          <p>Please sign in to like or dislike this video.</p>
+          <button onClick={handleSignIn}>Sign In</button>
+        </div>
+      )}
     </div>
   );
 };

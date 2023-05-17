@@ -60,3 +60,38 @@
 .dislike-button .button-text {
   display: none;
 }
+
+.sign-in-dropdown {
+  position: absolute;
+  top: 72%;
+  left: 85%;
+  transform: translateX(-50%);
+  width: 200px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+.sign-in-dropdown p {
+  margin: 0 0 10px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+.sign-in-dropdown button {
+  background-color: #065fd4;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+.sign-in-dropdown button:hover {
+  background-color: #044cb1;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+}
