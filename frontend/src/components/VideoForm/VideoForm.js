@@ -57,7 +57,6 @@ function VideoForm() {
       fetchUserVideos();
     }
   }, [user]);
-  
 
   return (
     <>
@@ -150,11 +149,11 @@ function VideoForm() {
         )}
         <div><UserProfile/></div>
         <div className="video-section">
-          <h2>My Videos</h2>
+          <h2 className="video-form-my-videos">My Videos</h2>
           {userVideos?.map((video) => (
             <div key={video.id} className="video-form-container">
               <Link to={`/videos/${video.id}`}>
-                <img src={video2} alt="video thumbnail" className="video-thumbnail" />
+                <img src={video.thumbnail_url || video2} alt="video thumbnail" className="video-thumbnail" />
               </Link>
               <div className="videoInfo">
                 <h3 className="videoTitle">{video.title}</h3>

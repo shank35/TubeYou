@@ -34,15 +34,19 @@ class Api::VideosController < ApplicationController
         author_username: video.author_username,
         updated_at: video.updated_at.strftime("%B %d, %Y")
       )
-    end    
+    end
     render json: { videos: videos_json }
   end
-  
 
   def user_videos
     @videos = Video.where(user_id: params[:user_id])
-    render json: { videos: @videos }
-  end  
+    videos_json = @videos.map do |video|
+      video.as_json.merge(
+        thumbnail_url: video.thumbnail_url,
+      )
+    end
+    render json: { videos: videos_json }
+  end
 
   def create 
     if params[:video]
