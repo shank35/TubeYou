@@ -133,3 +133,9 @@
 .logoText {
   padding-right: 20px;
 }
+
+@media (max-width: 600px) {
+  .logoContainer {
+    margin-right: 0;
+  }
+}
