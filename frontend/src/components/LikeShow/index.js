@@ -49,7 +49,7 @@ const LikeButton = ({ videoId }) => {
 
   const handleLike = async (newLikeStatus) => {
     if (!user) {
-      setIsSignInDropdownOpen(true); // Open the sign-in dropdown
+      setIsSignInDropdownOpen(true);
       return;
     }
     const response = await csrfFetch(`/api/videos/${videoId}/likes`, {
@@ -91,7 +91,7 @@ const LikeButton = ({ videoId }) => {
 
   const handleDislike = async () => {
     if (!user) {
-      setIsSignInDropdownOpen(true); // Open the sign-in dropdown
+      setIsSignInDropdownOpen(true);
       return;
     }
     if (dislikeStatus === null || dislikeStatus === false) {
