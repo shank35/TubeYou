@@ -1,14 +1,22 @@
 // frontend/src/components/CommentForm.js
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import "./CommentForm.css";
 
 function CommentForm({ videoId, parentCommentId, onCommentSubmitted, user }) {
   const [content, setContent] = useState("");
+  const currentUser = useSelector((state) => state.session.user);
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (content.trim() === "") {
+      return;
+    }
+    if (!currentUser) {
+      history.push("/login"); // Redirect to login page if user is not signed in
       return;
     }
     if (onCommentSubmitted) {

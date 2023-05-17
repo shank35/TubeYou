@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import csrfFetch from "../../store/csrf";
 import { setLikes, setLikeStatus } from "../../actions/likeActions";
 import "./LikeShow.css";
@@ -10,6 +11,8 @@ const LikeButton = ({ videoId }) => {
   );
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [isDisliked, setIsDisliked] = useState(null);
   const [isSignInDropdownOpen, setIsSignInDropdownOpen] = useState(false);
 
@@ -117,8 +120,8 @@ const LikeButton = ({ videoId }) => {
   };
 
   const handleSignIn = () => {
-    setIsSignInDropdownOpen(false); // Close the sign-in dropdown
-    // Add your sign-in logic here, such as opening a sign-in modal
+    setIsSignInDropdownOpen(false);
+    history.push("/login");
   };
 
   useEffect(() => {
