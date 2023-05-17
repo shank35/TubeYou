@@ -41,12 +41,16 @@ function VideoForm() {
     event.preventDefault();
     setIsUploading(true);
     await dispatch(uploadVideo(title, description, selectedFile, thumbnailFile, setUploadProgress));
+    
     setIsUploading(false);
-    if (!isUploading) {
-      handleCloseModal();
-      fetchUserVideos();
-    }
+    setTitle("");
+    setDescription("");
+    setSelectedFile(null);
+    setThumbnailFile(null);
+    handleCloseModal();
+    fetchUserVideos();
   };
+
 
   const handleDeleteVideo = async (videoId) => {
     await dispatch(deleteVideo(videoId));

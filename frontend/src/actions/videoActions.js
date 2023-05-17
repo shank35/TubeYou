@@ -9,7 +9,7 @@ export const RECEIVE_VIDEO = 'RECEIVE_VIDEO';
 export const receiveVideo = (video) => {
   return {
     type: RECEIVE_VIDEO,
-    video,
+    payload: video,
   };
 };
 

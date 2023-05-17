@@ -16,8 +16,8 @@ const videoReducer = (state = initialState, action) => {
     case UPLOAD_VIDEO:
       return {
         ...state,
-        uploadSuccess: action.payload.success,
-        uploadErrors: action.payload.errors || [],
+        uploadSuccess: action.payload?.success,
+        uploadErrors: action.payload?.errors || [],
       };
     case DELETE_VIDEO:
       return {
