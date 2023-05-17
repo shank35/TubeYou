@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ClipLoader } from "react-spinners";
+
 import { uploadVideo, deleteVideo } from '../../actions/videoActions';
 import UserProfile from '../UserProfile';
 import './VideoForm.css';
@@ -41,7 +43,6 @@ function VideoForm() {
     event.preventDefault();
     setIsUploading(true);
     await dispatch(uploadVideo(title, description, selectedFile, thumbnailFile, setUploadProgress));
-    
     setIsUploading(false);
     setTitle("");
     setDescription("");
@@ -74,7 +75,7 @@ function VideoForm() {
       <div className="center-container">
         <form className="video-form">
           <div className="video-form-group">
-            <button type="button" className="selectFile" onClick={handleOpenModal}>Upload Video</button>
+            <button type="button" className="selectFile" onClick={handleOpenModal}>Upload a Video</button>
           </div>
         </form>
         {showModal && (
@@ -126,9 +127,13 @@ function VideoForm() {
                           </div>
                         </div>
                         <div className="uploadVideoContainer">
-                          <button className="uploadVideo" type="submit">
-                            Upload Video
-                          </button>
+                          {isUploading ? (
+                            <ClipLoader color="#db4437" size={50} />
+                          ) : (
+                            <button className="uploadVideo" type="submit">
+                              Upload Video
+                            </button>
+                          )}
                         </div>
                       </form>
                     </div>
