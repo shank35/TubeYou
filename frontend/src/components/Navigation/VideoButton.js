@@ -43,16 +43,16 @@ function VideoButton() {
       {videoDropdownVisible && (
         <div className="videoDropdown dropdown" ref={dropdownRef}>
           <ul>
-          <li className="uploadVideoButton">
-  <Link
-    to="/videos/upload"
-    className="uploadLink"
-    onClick={() => setVideoDropdownVisible(false)} // close dropdown on click
-  >
-    <span className="material-symbols-outlined">slideshow</span>
-    Upload Video
-  </Link>
-</li>
+            <li className="uploadVideoButton">
+              <Link
+                to="/videos/upload"
+                className="uploadLink"
+                onClick={() => setVideoDropdownVisible(false)} // close dropdown on click
+              >
+                <span className="material-symbols-outlined">slideshow</span>
+                Upload Video
+              </Link>
+            </li>
           </ul>
         </div>
       )}
