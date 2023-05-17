@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { uploadVideo } from '../../actions/videoActions';
+import { uploadVideo, deleteVideo } from '../../actions/videoActions';
 import UserProfile from '../UserProfile';
 import './VideoForm.css';
 import video2 from "./video2.png";
@@ -46,6 +46,11 @@ function VideoForm() {
       handleCloseModal();
       fetchUserVideos();
     }
+  };
+
+  const handleDeleteVideo = async (videoId) => {
+    await dispatch(deleteVideo(videoId));
+    fetchUserVideos();
   };
 
   const fetchUserVideos = async () => {
@@ -159,7 +164,7 @@ function VideoForm() {
               </Link>
               <div className="videoInfo">
                 <h3 className="videoTitle">{video.title}</h3>
-                <button className="delete-video-button">DELETE VIDEO</button>
+                <button className="delete-video-button" onClick={() => handleDeleteVideo(video.id)}>DELETE VIDEO</button>
               </div>
             </div>
           ))}
