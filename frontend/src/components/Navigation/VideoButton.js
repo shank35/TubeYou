@@ -47,7 +47,7 @@ function VideoButton() {
               <Link
                 to="/videos/upload"
                 className="uploadLink"
-                onClick={() => setVideoDropdownVisible(false)} // close dropdown on click
+                onClick={() => setVideoDropdownVisible(false)}
               >
                 <span className="material-symbols-outlined">slideshow</span>
                 Upload Video

@@ -197,7 +197,7 @@ input[type="file"] {
 .video-form-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-bottom: 20px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 0px;
@@ -221,6 +221,8 @@ input[type="file"] {
 
 .video-form-group {
   position: relative;
+  top: 130px;
+  right: 10px;
 }
 
 .selectFile {
