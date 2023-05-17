@@ -21,7 +21,7 @@ export function SearchResults({ location }) {
         {videos.map((video) => (
           <li key={video.id}>
             <Link to={`/videos/${video.id}`}>
-              <img className="thumbnail" src={video.thumbnail_url || video2} alt="Video thumbnail" />
+              <img className="search-thumbnail" src={video.thumbnail_url || video2} alt="Video thumbnail" />
               <div className="videoInfo">
                   <h3 className="videoTitle">{video.title}</h3>
                   <p className="videoChannel">{video.authorUsername}</p>

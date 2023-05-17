@@ -27,3 +27,10 @@
   color: #0079d3;
   font-size: 18px;
 }
+
+.search-thumbnail {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
